@@ -17,7 +17,7 @@ const index = ({inputval,sum}) => {
 
         <section>
         <section className='full flex justify-center items-center'>
-            <span className='text-xs text-[#91919F] font-semibold'>Account Bala</span>
+            <span className='text-xs text-[#91919F] font-semibold'>Account Balance</span>
         </section>
         <section className='full flex justify-center items-center'>
         <span className='text-4xl font-semibold text-[#161719]'>$000</span>
