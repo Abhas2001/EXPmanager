@@ -3,7 +3,7 @@ import Home from "../src/Home/index";
 import Income from '../src/Income/index';
 import Expense from '../src/Expense/index';
 import Practice from "../src/Practice/index";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
 function App() {
 
