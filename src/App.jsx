@@ -23,6 +23,7 @@ function App() {
     console.log(storedarr);
   return (
          <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home  sum={sum}/>}/>
       <Route path="/income" element={<Income change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
