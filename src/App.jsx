@@ -11,20 +11,20 @@ function App() {
 
   
   let sum=0;
-  const[inputval,setInputVal]=useState([])
-  inputval.map((x) => {
-    sum += x;
-    return sum;
-  });
-  let string = JSON.stringify([...inputval])
-  useEffect(()=>{
-    localStorage.setItem("arr",string);
-  },[inputval])
+  const[change,setChange] = useState(false);
+  const[storedarr] = useState([]);
+  
+  for(let i=0; i<storedarr.length; i++){
+    sum+=Number(storedarr[i])
+  }
+
+
  
+    console.log(storedarr);
   return (
          <Routes>
-      <Route path="/" element={<Home inputval={inputval} sum={sum}/>}/>
-      <Route path="/income" element={<Income inputval={inputval} setInputVal={setInputVal}/>} />
+      <Route path="/home" element={<Home  sum={sum}/>}/>
+      <Route path="/income" element={<Income change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
        </Routes>
      

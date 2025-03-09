@@ -17,7 +17,7 @@ const index = ({inputval,sum}) => {
 
         <section>
         <section className='full flex justify-center items-center'>
-            <span className='text-xs text-[#91919F] font-semibold'>Account Balance</span>
+            <span className='text-xs text-[#91919F] font-semibold'>Account Balances</span>
         </section>
         <section className='full flex justify-center items-center'>
         <span className='text-4xl font-semibold text-[#161719]'>$000</span>
@@ -43,7 +43,7 @@ const index = ({inputval,sum}) => {
                <div className='bg-[#FCFCFC] p-1 rounded-xl'><img src={down} alt="" srcset="" /></div>
               <div>
               <span className='w-full flex justify-center items-center text-[#FCFCFC] text-sm font-medium'>Expenses</span>
-              <h1 className='text-[22px] font-semibold'>$4000</h1>
+              <h1 className='text-[22px] font-semibold'>$000</h1>
               </div>
               </section>  
 

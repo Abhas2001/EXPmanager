@@ -3,33 +3,32 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const index = ({ inputval, setInputVal }) => {
+const index = ({ setChange,change,storedarr }) => {
+  let inputval=localStorage.getItem("ar1");
+  console.log(inputval);
+  
   
   const [val, setVal] = useState();
-  const [finalval, setfinalVal] = useState(() => {
-    const storedData = localStorage.getItem("arr");
-    return storedData ? JSON.parse(storedData) : [];
-  });
-  console.log(finalval);
-
-  
-  useEffect(() => {
-    localStorage.setItem("arr", JSON.stringify(finalval));
-  }, [finalval]);
-
+  const [finalval, setfinalVal] = useState([]);
+ 
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   const handleCont = () => {
-    finalval.push(val);
-    setInputVal([...finalval]);
+    setChange(!change)
+    localStorage.setItem("ar1",val)
+   
+    storedarr.push(localStorage.getItem("ar1"))
+   
 
-    console.log(inputval.length);
-    navigate("/");
-  
+    
+    finalval.push(val);
+ 
+
+    navigate("/home")
   };
   const handlechange = (e) => {
     setVal(Number(e.target.value));
