@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const index = ({ setChange,change,storedarr }) => {
+const index = ({ setChange,change,storedarr,setStoredArr }) => {
   let inputval=localStorage.getItem("ar1");
   console.log(inputval);
   
@@ -21,7 +21,10 @@ const index = ({ setChange,change,storedarr }) => {
     setChange(!change)
     localStorage.setItem("ar1",val)
    
-    storedarr.push(localStorage.getItem("ar1"))
+    const newItem = localStorage.getItem("ar1");
+    if (newItem) {
+      setStoredArr(prevArr => [...prevArr, newItem]); // Updating state immutably
+    }
    
 
     

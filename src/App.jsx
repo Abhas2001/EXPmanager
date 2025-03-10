@@ -12,20 +12,27 @@ function App() {
   
   let sum=0;
   const[change,setChange] = useState(false);
-  const[storedarr] = useState([]);
+  const[storedarr,setStoredArr] = useState(() => {
+   
+    const saved = localStorage.getItem("finalval");
+    const initialValue = JSON.parse(saved);
+    return initialValue || ""
+  });;
   
   for(let i=0; i<storedarr.length; i++){
     sum+=Number(storedarr[i])
   }
 
-
+  localStorage.setItem("finalval",JSON.stringify(storedarr))
+  
+  let finval = JSON.parse(localStorage.getItem("finalval"));
  
     console.log(storedarr);
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home  sum={sum}/>}/>
-      <Route path="/income" element={<Income change={change} setChange={setChange} storedarr={storedarr}/>} />
+      <Route path="/home" element={<Home  sum={sum} storedarr={storedarr}/>}/>
+      <Route path="/income" element={<Income setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
        </Routes>
      
