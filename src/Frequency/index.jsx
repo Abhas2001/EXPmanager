@@ -3,84 +3,87 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import { Chart } from 'primereact/chart';
 
 const index = ({storedarr}) => {
-  const [chartData, setChartData] = useState({});
-  const [chartOptions, setChartOptions] = useState({});
+    const [chartData, setChartData] = useState({});
+    const [chartOptions, setChartOptions] = useState({});
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    let d= new Date();
+    let m =d.getMonth();
+   let Income=[0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let sum=0;
+    for(let i=0;i<storedarr.length;i++){
+        sum+= Number(storedarr[i]);
+    }
+    Income[m]=sum;
+   
 
-  useEffect(() => {
-      const documentStyle = getComputedStyle(document.documentElement);
-      const textColor = documentStyle.getPropertyValue('--text-color');
-      const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-      const data = {
-          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-          datasets: [
-        
-              {
-                  label: 'expense',
-                  fill: false,
-                  borderColor: documentStyle.getPropertyValue('--green-500'),
-                  yAxisID: 'y1',
-                  tension: 0.1,
-                  data: storedarr
-              }
-          ]
-      };
-      const options = {
-          stacked: false,
-          maintainAspectRatio: false,
-          aspectRatio: 0.9,
-          plugins: {
-              legend: {
-                  labels: {
-                      color: textColor
-                  }
-              }
-          },
-          scales: {
-              x: {
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder
-                  }
-              },
-              y: {
-                  type: 'linear',
-                  display: true,
-                  position: 'left',
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder
-                  }
-              },
-              y1: {
-                  type: 'linear',
-                  display: true,
-                  position: 'right',
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      drawOnChartArea: false,
-                      color: surfaceBorder
-                  }
-              }
-          }
-      };
+    useEffect(() => {
+        const documentStyle = getComputedStyle(document.documentElement);
+        const textColor = documentStyle.getPropertyValue('#00A86B');
+        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        const data = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct','Nov','Dec'],
+            datasets: [
+                {
+                    label: 'Income',
+                    backgroundColor: documentStyle.getPropertyValue('--#00A86B'),
+                    borderColor: documentStyle.getPropertyValue('--#00A86B'),
+                    data: Income
+                },
+                {
+                    label: 'Expense',
+                    backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+                    borderColor: documentStyle.getPropertyValue('--pink-500'),
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0]
+                }
+            ]
+        };
+        const options = {
+            maintainAspectRatio: false,
+            aspectRatio: 0.9,
+            plugins: {
+                legend: {
+                    labels: {
+                        fontColor: textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: textColorSecondary,
+                        font: {
+                            weight: 500
+                        }
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                }
+            }
+        };
 
-      setChartData(data);
-      setChartOptions(options);
-  }, []);
+        setChartData(data);
+        setChartOptions(options);
+    }, []);
+
 
 
   return (
     <section className='p-5 '>
         <span className='text-[#0D0E0F] text-[18px] font-medium opacity-100 mb-3'>Spend Frequency</span>
 
-        <Chart type="line" data={chartData} options={chartOptions} />
+        <Chart type="bar" data={chartData} options={chartOptions} />
 
     </section>
   )
