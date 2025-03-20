@@ -10,9 +10,8 @@ import shopping from "../images/shopping.svg";
 import subs from "../images/subs.svg";
 import Tran from "../images/Tran.svg";
 
-const store = { setChange, change, storedarr, setStoredArr }
 
-const index = (store) => {
+const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const [showdropdown, setDropdown] = useState(false);
   const [flag, setflag] = useState(false);
   const handleShowdropdown = () => {
