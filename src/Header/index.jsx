@@ -6,12 +6,16 @@ import up from '../images/Frame 27.svg';
 
 
 const index = ({inputval,sum}) => {
+ 
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  let d=new Date();
+  let m=d.getMonth();
   return (
     <section className='w-full h-[220px] text-black rounded-b-[32px] bg-linear-to-b from-[#FFF6E5] to-[#F8EDD8]'>
         <section>
         <section className='w-full flex justify-between p-4'>
             <div></div>
-             <section className='flex'> <div><img src={arrow} alt="" srcset="" /></div><div className='text-sm font-medium text-[#212325]'>October</div></section> 
+             <section className='flex'> <div><img src={arrow} alt="" srcset="" /></div><div className='text-sm font-medium text-[#212325]'>{month[m]}</div></section> 
             <div> <img src={notification} alt="" srcset="" /></div>
         </section>
 

@@ -14,7 +14,7 @@ const index = ({storedarr}) => {
         sum+= Number(storedarr[i]);
     }
     Income[m]=sum;
-   
+    const[showgraph,setShowgraph]  = useState(false);
 
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
@@ -77,13 +77,18 @@ const index = ({storedarr}) => {
         setChartOptions(options);
     }, []);
 
+   
 
-
+    useEffect(()=>{
+      setShowgraph(true);
+    },[chartData,chartOptions])
   return (
-    <section className='p-5 '>
-        <span className='text-[#0D0E0F] text-[18px] font-medium opacity-100 mb-3'>Spend Frequency</span>
+    <section className='mt-2 p-4 '>
+        <span className='text-[#0D0E0F] text-[18px] font-medium opacity-100 '>Spend Frequency</span>
+{showgraph&&
 
-        <Chart type="bar" data={chartData} options={chartOptions} />
+        <Chart type="bar" data={chartData} options={chartOptions} className="mt-4" />
+}
 
     </section>
   )
