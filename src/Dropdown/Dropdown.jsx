@@ -5,12 +5,13 @@ import shopping from "../images/shopping.svg";
 import subs from "../images/subs.svg";
 import Tran from "../images/Tran.svg";
 import down from "../images/down.svg";
+import { useEffect } from 'react';
 
 const Dropdown = ({flag,setflag,label}) => {
    
-    console.log(label);
     const [showdropdown, setDropdown] = useState(false);
     const[dropdownarr,setDropdownarr] = useState([]);
+    const[walletdropdownarr,setwalletDropdownarr] = useState([]);
     const[bold,setBold] = useState(false);
     const handleShowdropdown = () => {
         setDropdown(!showdropdown);
@@ -20,15 +21,25 @@ const Dropdown = ({flag,setflag,label}) => {
 
     const handledropdown = (x) =>{
         setDropdown(false);
+      
       setDropdownarr([x]);
       setBold(true);
       setflag(false);
     }
+   
     const handleShowwallet = () => {
         setDropdown(!showdropdown);
        
         setBold(false);
       };
+
+      const handlewalletdropdown = (x) =>{
+        setDropdown(false);
+      
+      setwalletDropdownarr([x]);
+      setBold(true);
+      setflag(false);
+    }
    
   return (
     <div>
@@ -36,12 +47,19 @@ const Dropdown = ({flag,setflag,label}) => {
               <section className="relative w-full flex justify-center items-center px-4 pt-4">
                 <div className="border-[1px] py-4 border-[#F1F1FA] p-2 w-[790px] rounded-2xl text-black placeholder:text-[#91919F]">
                   {" "}
+                  {label==='Category'?
                   <section className='w-32 flex rounded-2xl bg-[#FCFCFC] justify-center items-center  gap-3'>
                   
                     <div className='rounded-full bg-[#00A86B] w-3 h-3'></div>
+                  
 
                   <p className={`${dropdownarr.length>0?'text-[#393939] font-medium':'text-[#91919F]'}`}>{dropdownarr.length>0?dropdownarr[0]:label}</p>{" "}
                   </section>
+                  :
+                  <section>
+                    <p className={`${walletdropdownarr.length>0?'text-[#393939] font-medium':'text-[#91919F]'}`}>{walletdropdownarr.length>0?walletdropdownarr[0]:label}</p>{" "}
+                  </section>
+}
                 </div>
                 <button
                   className=" absolute right-[20px]"
@@ -101,15 +119,27 @@ const Dropdown = ({flag,setflag,label}) => {
                 <section className="w-full text-[#212325]">
                   <ul className="w-full flex flex-col  ">
                     <li className="bg-gray-50 font-medium px-3 p-1 w-full flex gap-2 border-b-[1px] border-gray-100" 
-                    onClick={()=>handledropdown('Food')}
+                    onClick={()=>handlewalletdropdown('Paytm')}
                     >
-                      <img src={Food} width={30} /> <p>Phonepe</p>
+                       <p>Paytm</p>
                     </li>
                     <li className="bg-gray-50 font-medium px-3  p-1 w-full flex gap-2 border-b-[1px] border-gray-100"
-                     onClick={()=>handledropdown('Shopping')}
+                     onClick={()=>handlewalletdropdown('GPAY')}
                     >
                       {" "}
-                      <img src={shopping} width={30} /> <p> GPAY </p>{" "}
+                       <p> GPAY </p>{" "}
+                    </li>
+                    <li className="bg-gray-50 font-medium px-3  p-1 w-full flex gap-2 border-b-[1px] border-gray-100"
+                     onClick={()=>handlewalletdropdown('PAYPAL')}
+                    >
+                      {" "}
+                      <p> PAYPAL </p>{" "}
+                    </li>
+                    <li className="bg-gray-50 font-medium px-3  p-1 w-full flex gap-2 border-b-[1px] border-gray-100"
+                     onClick={()=>handlewalletdropdown('Mobiwik')}
+                    >
+                      {" "}
+                      <p> Mobiwik </p>{" "}
                     </li>
                     </ul>
                     </section>
