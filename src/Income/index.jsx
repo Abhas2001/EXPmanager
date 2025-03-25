@@ -51,35 +51,52 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const handleopenCamera = () =>{
     setOpenCamera(true);
   }
-  console.log(openCamera);
+  const[imgLink,setImgLink] = useState()
   
   const videoConstraints = {
     width: 1280,
     height: 1720,
     facingMode: "environment"
   };
+  const handleClick = ({ getScreenshot }) =>{
+    const imageSrc = getScreenshot()
+    setImgLink(imageSrc);
+    setOpenCamera(false);
+  }
 
   return (
    
     <section className="w-full h-screen flex justify-center items-center bg-black overflow-hidden">
       {openCamera?  
+    
       <Webcam
-    audio={false}
-    height={920}
-    screenshotFormat="image/jpeg"
-    width={1280}
-    videoConstraints={videoConstraints}
+      audio={false}
+     height={1280}
+     screenshotFormat="image/jpeg"
+     width={2280}
+     videoConstraints={videoConstraints}
+     style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100vw",  // Ensures full width
+      height: "100vh", // Ensures full height
+      objectFit: "cover", // Keeps aspect ratio while covering full area
+    }}
   >
     {({ getScreenshot }) => (
       <button
         onClick={() => {
-          const imageSrc = getScreenshot()
+         handleClick( { getScreenshot } )
         }}
+        className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white text-black px-5 py-2 rounded shadow-md"
+           
       >
         Capture photo
       </button>
     )}
   </Webcam>
+ 
   :
       <section className="flex flex-col justify-between text-white w-[375px] h-screen bg-[#00A86B] ">
 
@@ -127,12 +144,16 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
             <Dropdown flag={flag} setflag={setflag} label={'Wallet'}/>
            }
             <section className="relative w-full flex justify-center items-center p-4">
+              {imgLink?
+              <section className="w-40 h-18"> <img src={imgLink} alt="" srcset="" /> </section>
+              :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">
               <section className="flex">
                <img src={attachment} alt="" srcset="" />
                <span className="font-normal text-[#91919F]">Add attachment</span>
                </section> 
              </button>
+}
             
             </section>
             <section className="relative w-full flex justify-center items-center p-4">
