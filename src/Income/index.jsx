@@ -4,20 +4,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import left from "../images/left.svg";
 import down from "../images/down.svg";
-import Food from "../images/Food.svg";
-import salary from "../images/salary.svg";
-import shopping from "../images/shopping.svg";
-import subs from "../images/subs.svg";
-import Tran from "../images/Tran.svg";
+import Dropdown from "../Dropdown/Dropdown";
+
 
 
 const index = ({ setChange, change, storedarr, setStoredArr }) => {
-  const [showdropdown, setDropdown] = useState(false);
+
   const [flag, setflag] = useState(false);
-  const handleShowdropdown = () => {
-    setDropdown(!showdropdown);
-    setflag(!flag);
-  };
+ let label=''
   let inputval = localStorage.getItem("ar1");
   console.log(inputval);
 
@@ -25,6 +19,11 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const [finalval, setfinalVal] = useState([]);
 
   const navigate = useNavigate();
+ 
+
+  
+
+ 
 
   const handleBack = () => {
     navigate("/home");
@@ -74,47 +73,9 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
         </section>
         <section className="bg-[#FFFFFF] rounded-t-4xl w-full min-h-[556px]">
           <section className="max-h-[458px]">
-            <section className="flex flex-col ">
-              <section className="relative w-full flex justify-center items-center px-4 pt-4">
-                <div className="border-[1px] py-4 border-[#F1F1FA] p-2 w-[790px] rounded-2xl text-black placeholder:text-[#91919F]">
-                  {" "}
-                  <p className="text-[#91919F]">Category</p>{" "}
-                </div>
-                <button
-                  className=" absolute right-[20px]"
-                  onClick={handleShowdropdown}
-                >
-                  <img src={down} alt="" srcset="" />
-                </button>
-              </section>
-              {showdropdown && (
-                <section className=" border-[1px] border-[#F1F1FA]  h-[15vh] w-[340px] ml-4 rounded-2xl overflow-y-scroll">
-                  <section className="w-full text-[#212325]">
-                    <ul className="w-full flex flex-col  ">
-                      <li className="bg-gray-50 font-medium px-3 p-1 w-full flex gap-2 border-b-[1px] border-gray-100">
-                        <img src={Food} width={30} /> <p>Food</p>
-                      </li>
-                      <li className="bg-gray-50 font-medium px-3  p-1 w-full flex gap-2 border-b-[1px] border-gray-100">
-                        {" "}
-                        <img src={shopping} width={30} /> <p> Shopping </p>{" "}
-                      </li>
-                      <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 border-b-[1px] border-gray-100">
-                        {" "}
-                        <img src={subs} width={30} /> <p> Subscription </p>{" "}
-                      </li>
-                      <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 border-b-[1px] border-gray-100">
-                        {" "}
-                        <img src={salary} width={30} /> <p> Salary </p>{" "}
-                      </li>
-                      <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 ">
-                        {" "}
-                        <img src={Tran} width={30} /> <p>Transportation</p>
-                      </li>
-                    </ul>
-                  </section>
-                </section>
-              )}
-            </section>
+          {
+            <Dropdown flag={flag} setflag={setflag} label={'Category'}/>
+          }
 
             <section
               className={`relative w-full flex justify-center items-center p-4 ${
@@ -128,17 +89,9 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
                 onInput={handlechange}
               />
             </section>
-            <section className="relative w-full flex justify-center items-center p-4">
-              <input
-                type="string"
-                placeholder="Wallet"
-                className="border-[1px] py-3 border-[#F1F1FA] p-2 w-[790px] rounded-2xl text-black placeholder:text-[#91919F]"
-                onInput={handlechange}
-              />
-              <section className=" absolute right-[20px]">
-                <img src={down} alt="" srcset="" />
-              </section>
-            </section>
+           {
+            <Dropdown flag={flag} setflag={setflag} label={'Wallet'}/>
+           }
             <section className="relative w-full flex justify-center items-center p-4">
               <input
                 type="string"
