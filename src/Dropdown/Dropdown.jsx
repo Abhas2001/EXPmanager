@@ -48,9 +48,9 @@ const Dropdown = ({flag,setflag,label}) => {
                 <div className="border-[1px] py-4 border-[#F1F1FA] p-2 w-[790px] rounded-2xl text-black placeholder:text-[#91919F]">
                   {" "}
                   {label==='Category'?
-                  <section className='w-32 flex rounded-2xl bg-[#FCFCFC] justify-center items-center  gap-3'>
+                  <section className='w-16 flex rounded-2xl bg-[#FCFCFC] justify-center items-center  gap-3'>
                   
-                    <div className='rounded-full bg-[#00A86B] w-3 h-3'></div>
+                  
                   
 
                   <p className={`${dropdownarr.length>0?'text-[#393939] font-medium':'text-[#91919F]'}`}>{dropdownarr.length>0?dropdownarr[0]:label}</p>{" "}

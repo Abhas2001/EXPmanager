@@ -6,6 +6,7 @@ import left from "../images/left.svg";
 import down from "../images/down.svg";
 import attachment from "../images/attachment.svg";
 import Dropdown from "../Dropdown/Dropdown";
+import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
 
 
@@ -20,6 +21,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const [val, setVal] = useState();
   const [finalval, setfinalVal] = useState([]);
   const[openCamera,setOpenCamera] = useState(false);
+  const[showoverlay,setShowoverlay] = useState(false);
 
   const navigate = useNavigate();
  
@@ -49,8 +51,9 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
     setVal(Number(e.target.value));
   };
   const handleopenCamera = () =>{
-    setOpenCamera(true);
+    setShowoverlay(true);
   }
+
   const[imgLink,setImgLink] = useState()
   
   const videoConstraints = {
@@ -62,6 +65,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
     const imageSrc = getScreenshot()
     setImgLink(imageSrc);
     setOpenCamera(false);
+    setShowoverlay(false);
   }
 
   return (
@@ -100,7 +104,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   :
       <section className="flex flex-col justify-between text-white w-[375px] h-screen bg-[#00A86B] ">
 
-        <section className="w-full flex justify-between p-4">
+        <section className=" w-full flex justify-between p-4">
           <button className="text-white cursor-pointer" onClick={handleBack}>
             <img src={left} alt="" srcset="" />
           </button>
@@ -122,8 +126,8 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
             />
           </section>
         </section>
-        <section className="bg-[#FFFFFF] rounded-t-4xl w-full min-h-[556px]">
-          <section className="max-h-[458px]">
+        <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
+          <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
             <Dropdown flag={flag} setflag={setflag} label={'Category'}/>
           }
@@ -145,7 +149,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
            }
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
-              <section className="w-40 h-18"> <img src={imgLink} alt="" srcset="" /> </section>
+              <section className="w-40 h-18 "> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section>
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">
               <section className="flex">
@@ -156,7 +160,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
 }
             
             </section>
-            <section className="relative w-full flex justify-center items-center p-4">
+             <section className={`${showoverlay?'hidden':""} relative w-full flex justify-center items-center p-4`}>
               <input
                 type="string"
                 placeholder="Wallet"
@@ -167,16 +171,22 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
                 <img src={down} alt="" srcset="" />
               </section>
             </section>
-            <section className="w-full flex justify-center items-center mb-12">
+            <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
               <button
                 className="bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer"
                 onClick={handleCont}
               >
                 Continue
               </button>
-            </section>
+             
+            </section> 
+           
           </section>
+          {showoverlay&&
+          <Overlay setShowoverlay={setShowoverlay} setOpenCamera={setOpenCamera}/>
+}
         </section>
+       
       </section>
 }
     </section>
