@@ -11,6 +11,7 @@ import Webcam from "react-webcam";
 
 
 
+
 const index = ({ setChange, change, storedarr, setStoredArr }) => {
 
   const [flag, setflag] = useState(false);
@@ -22,6 +23,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const [finalval, setfinalVal] = useState([]);
   const[openCamera,setOpenCamera] = useState(false);
   const[showoverlay,setShowoverlay] = useState(false);
+  const[gallery,setGallery] = useState(false);
 
   const navigate = useNavigate();
  
@@ -66,6 +68,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
     setImgLink(imageSrc);
     setOpenCamera(false);
     setShowoverlay(false);
+    
   }
 
   return (
@@ -149,7 +152,9 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
            }
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
-              <section className="w-40 h-18 "> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section>
+
+              <section className={`${ gallery?'w-15 h-16 mb-4':'w-40 h-18 mb-6'}`}> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section>
+              
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">
               <section className="flex">
@@ -183,7 +188,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
            
           </section>
           {showoverlay&&
-          <Overlay setShowoverlay={setShowoverlay} setOpenCamera={setOpenCamera}/>
+          <Overlay setGallery={setGallery}  setShowoverlay={setShowoverlay} setOpenCamera={setOpenCamera} setImgLink={setImgLink}/>
 }
         </section>
        
