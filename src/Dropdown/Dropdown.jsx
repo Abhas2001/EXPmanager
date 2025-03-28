@@ -48,12 +48,44 @@ const Dropdown = ({flag,setflag,label}) => {
                 <div className="border-[1px] py-4 border-[#F1F1FA] p-2 w-[790px] rounded-2xl text-black placeholder:text-[#91919F]">
                   {" "}
                   {label==='Category'?
-                  <section className='w-16 flex rounded-2xl bg-[#FCFCFC] justify-center items-center  gap-3'>
+                  <section className='w-16 flex rounded-2xl  justify-center items-center  gap-3'>
                   
                   
                   
 
-                  <p className={`${dropdownarr.length>0?'text-[#393939] font-medium':'text-[#91919F]'}`}>{dropdownarr.length>0?dropdownarr[0]:label}</p>{" "}
+                  <p className={`${dropdownarr.length>0?'text-[#393939] font-medium':'text-[#91919F]'}`}>
+                    {dropdownarr.length>0?
+                    
+                  (
+                    dropdownarr[0]==='Food'?
+                  <section className='flex gap-3 '>     
+                    <img src={Food} width={30} />
+                    {dropdownarr[0]}
+                    </section>
+                    :dropdownarr[0]==='Shopping'?
+                    <section className='flex gap-3 ml-3'> 
+                    <img src={shopping} width={30} />
+                    {dropdownarr[0]}
+                    </section>
+                    : dropdownarr[0]==='Subscription'?
+                    <section className='flex gap-3 ml-12'> 
+                    <img src={subs} width={30} />
+                    {dropdownarr[0]}
+                    </section>
+                    :dropdownarr[0]==='Salary'?
+                    <section className='flex gap-3 '> 
+                    <img src={salary} width={30} />
+                    {dropdownarr[0]}
+                    </section>
+                    :
+                    <section className='flex gap-3 ml-12'> 
+                    <img src={Tran} width={30} /> 
+                    {dropdownarr[0]}
+                    </section>
+
+                    )
+                  :
+                  label}</p>{" "}
                   </section>
                   :
                   <section>

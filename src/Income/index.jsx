@@ -24,7 +24,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const[openCamera,setOpenCamera] = useState(false);
   const[showoverlay,setShowoverlay] = useState(false);
   const[gallery,setGallery] = useState(false);
-
+  const[finalInput,setFinalInput]= useState('');
   const navigate = useNavigate();
  
 
@@ -50,7 +50,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
     navigate("/home");
   };
   const handlechange = (e) => {
-    setVal(Number(e.target.value));
+    setVal(e.target.value);
   };
   const handleopenCamera = () =>{
     setShowoverlay(true);
@@ -69,6 +69,13 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
     setOpenCamera(false);
     setShowoverlay(false);
     
+  }
+  const handledesc = (event) =>{
+    if(event.key === "Enter"){
+      console.log("ENTERED VALUE",val);
+      setFinalInput(val);
+      event.target.blur();
+    }
   }
 
   return (
@@ -143,6 +150,8 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
               <input
                 type="string"
                 placeholder="Description"
+                value={finalInput?finalInput:val}
+                onKeyUp={()=>handledesc(event)}
                 className="w-full border-[1px] py-3 border-[#F1F1FA] p-2 rounded-2xl text-black placeholder:text-[#91919F]"
                 onInput={handlechange}
               />
@@ -153,7 +162,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
 
-              <section className={`${ gallery?'w-15 h-16 mb-4':'w-40 h-18 mb-6'}`}> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section>
+              <section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section>
               
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">
@@ -165,7 +174,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
 }
             
             </section>
-             <section className={`${showoverlay?'hidden':""} relative w-full flex justify-center items-center p-4`}>
+             {/* <section className={`${showoverlay?'hidden':""} relative w-full flex justify-center items-center p-4`}>
               <input
                 type="string"
                 placeholder="Wallet"
@@ -175,11 +184,12 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
               <section className=" absolute right-[20px]">
                 <img src={down} alt="" srcset="" />
               </section>
-            </section>
+            </section> */}
             <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
               <button
                 className="bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer"
                 onClick={handleCont}
+                disabled={true}
               >
                 Continue
               </button>
