@@ -43,8 +43,8 @@ catarr.map((x)=>{
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home  sum={sum} storedarr={storedarr}/>}/>
-      <Route path="/income" element={<Income setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
+      <Route path="/home" element={<Home catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
+      <Route path="/income" element={<Income  setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
        </Routes>
      
