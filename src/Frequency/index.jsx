@@ -11,7 +11,9 @@ const index = ({storedarr}) => {
    let Income=[0,0,0,0,0,0,0,0,0,0,0,0,0]
     let sum=0;
     for(let i=0;i<storedarr.length;i++){
+        if(!isNaN(storedarr[i])){
         sum+= Number(storedarr[i]);
+        }
     }
     Income[m]=sum;
     const[showgraph,setShowgraph]  = useState(false);
@@ -40,7 +42,7 @@ const index = ({storedarr}) => {
         };
         const options = {
             maintainAspectRatio: false,
-            aspectRatio: 0.9,
+            aspectRatio: 1.8,
             plugins: {
                 legend: {
                     labels: {

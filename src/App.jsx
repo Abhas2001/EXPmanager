@@ -12,6 +12,7 @@ function App() {
   
   let sum=0;
   const[change,setChange] = useState(false);
+  const[catarr,setcatarr] = useState([]);
   const[storedarr,setStoredArr] = useState(() => {
    
     const saved = localStorage.getItem("finalval");
@@ -19,20 +20,31 @@ function App() {
     return initialValue || ""
   });;
   
+
+
   for(let i=0; i<storedarr.length; i++){
+  
+    if(!isNaN(storedarr[i])){
     sum+=Number(storedarr[i])
+    console.log(sum);
+    }
   }
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   
-  let finval = JSON.parse(localStorage.getItem("finalval"));
+console.log(catarr);
+
+
+catarr.map((x)=>{
+  console.log(x.input);
+})
  
-    console.log(storedarr);
+   
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home  sum={sum} storedarr={storedarr}/>}/>
-      <Route path="/income" element={<Income setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
+      <Route path="/income" element={<Income setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
        </Routes>
      

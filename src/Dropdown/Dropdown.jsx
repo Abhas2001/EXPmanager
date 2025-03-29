@@ -7,12 +7,15 @@ import Tran from "../images/Tran.svg";
 import down from "../images/down.svg";
 import { useEffect } from 'react';
 
-const Dropdown = ({flag,setflag,label}) => {
+const Dropdown = ({walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdownarr,flag,setflag,label,setDisabled}) => {
    
+
     const [showdropdown, setDropdown] = useState(false);
-    const[dropdownarr,setDropdownarr] = useState([]);
-    const[walletdropdownarr,setwalletDropdownarr] = useState([]);
+    
+   
     const[bold,setBold] = useState(false);
+   
+   
     const handleShowdropdown = () => {
         setDropdown(!showdropdown);
         setflag(!flag);
@@ -20,11 +23,13 @@ const Dropdown = ({flag,setflag,label}) => {
       };
 
     const handledropdown = (x) =>{
+       
         setDropdown(false);
-      
-      setDropdownarr([x]);
-      setBold(true);
+        setBold(true);
       setflag(false);
+      setDropdownarr([x]);
+    
+    
     }
    
     const handleShowwallet = () => {
@@ -40,7 +45,7 @@ const Dropdown = ({flag,setflag,label}) => {
       setBold(true);
       setflag(false);
     }
-   
+ 
   return (
     <div>
            <section className="flex flex-col ">

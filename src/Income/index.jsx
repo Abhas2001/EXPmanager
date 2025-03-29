@@ -12,7 +12,7 @@ import Webcam from "react-webcam";
 
 
 
-const index = ({ setChange, change, storedarr, setStoredArr }) => {
+const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
 
   const [flag, setflag] = useState(false);
  let label=''
@@ -25,9 +25,11 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
   const[showoverlay,setShowoverlay] = useState(false);
   const[gallery,setGallery] = useState(false);
   const[finalInput,setFinalInput]= useState('');
+  const[disabled,setDisabled] = useState(false);
   const navigate = useNavigate();
  
-
+  const[dropdownarr,setDropdownarr] = useState([]);
+  const[walletdropdownarr,setwalletDropdownarr] = useState([]);
   
 
  
@@ -38,9 +40,10 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
 
   const handleCont = () => {
     setChange(!change);
-    localStorage.setItem("ar1", val);
+    localStorage.setItem("ar7", val);
 
-    const newItem = localStorage.getItem("ar1");
+    const newItem = localStorage.getItem("ar7");
+    console.log(newItem);
     if (newItem) {
       setStoredArr((prevArr) => [...prevArr, newItem]);
     }
@@ -49,8 +52,10 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
 
     navigate("/home");
   };
+ 
   const handlechange = (e) => {
     setVal(e.target.value);
+    console.log(val);
   };
   const handleopenCamera = () =>{
     setShowoverlay(true);
@@ -77,7 +82,13 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
       event.target.blur();
     }
   }
+  useEffect(()=>{
 
+  if(dropdownarr.length>0&&walletdropdownarr.length>0){
+    setDisabled(true);
+    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val}])
+  }
+},[dropdownarr,walletdropdownarr])
   return (
    
     <section className="w-full h-screen flex justify-center items-center bg-black overflow-hidden">
@@ -139,7 +150,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
         <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
           <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
-            <Dropdown flag={flag} setflag={setflag} label={'Category'}/>
+            <Dropdown dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
           }
 
             <section
@@ -150,14 +161,14 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
               <input
                 type="string"
                 placeholder="Description"
-                value={finalInput?finalInput:val}
+                value={finalInput?finalInput:''}
                 onKeyUp={()=>handledesc(event)}
                 className="w-full border-[1px] py-3 border-[#F1F1FA] p-2 rounded-2xl text-black placeholder:text-[#91919F]"
                 onInput={handlechange}
               />
             </section>
            {
-            <Dropdown flag={flag} setflag={setflag} label={'Wallet'}/>
+            <Dropdown walletdropdownarr={walletdropdownarr} setwalletDropdownarr={setwalletDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Wallet'}/>
            }
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
@@ -189,7 +200,7 @@ const index = ({ setChange, change, storedarr, setStoredArr }) => {
               <button
                 className="bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer"
                 onClick={handleCont}
-                disabled={true}
+                disabled={!disabled}
               >
                 Continue
               </button>
