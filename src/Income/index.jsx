@@ -20,6 +20,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
   console.log(inputval);
 
   const [val, setVal] = useState();
+  const [Input, setInput] = useState('');
   const [finalval, setfinalVal] = useState([]);
   const[openCamera,setOpenCamera] = useState(false);
   const[showoverlay,setShowoverlay] = useState(false);
@@ -49,13 +50,18 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
     }
 
     finalval.push(val);
-
+    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val,"description":Input}])
     navigate("/home");
   };
  
   const handlechange = (e) => {
     setVal(e.target.value);
     console.log(val);
+  };
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+    console.log(Input);
   };
   const handleopenCamera = () =>{
     setShowoverlay(true);
@@ -77,16 +83,24 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
   }
   const handledesc = (event) =>{
     if(event.key === "Enter"){
-      console.log("ENTERED VALUE",val);
-      setFinalInput(val);
+      console.log("ENTERED VALUE",Input);
+      setFinalInput(Input);
       event.target.blur();
     }
   }
+
+  const handleamount  = (event) =>{
+    if(event.key==="Enter"){
+       event.target.blur();
+    }
+  }
+
   useEffect(()=>{
 
   if(dropdownarr.length>0&&walletdropdownarr.length>0){
     setDisabled(true);
-    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val}])
+   
+   
   }
 },[dropdownarr,walletdropdownarr])
   return (
@@ -142,6 +156,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
             <input
               type="number"
               placeholder="0"
+              onKeyUp={()=>handleamount(event)}
               className="text-xl font-bold text-white p-0 border-2 border-[#00A86B] enabled:outline-none focus:text-white focus:border-2 focus:outline-[#00A86B] focus:border-[#00A86B]  placeholder:text-2xl placeholder:text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               onInput={handlechange}
             />
@@ -161,10 +176,10 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
               <input
                 type="string"
                 placeholder="Description"
-                value={finalInput?finalInput:''}
+                value={finalInput?finalInput:Input}
                 onKeyUp={()=>handledesc(event)}
                 className="w-full border-[1px] py-3 border-[#F1F1FA] p-2 rounded-2xl text-black placeholder:text-[#91919F]"
-                onInput={handlechange}
+                onInput={handleInput}
               />
             </section>
            {

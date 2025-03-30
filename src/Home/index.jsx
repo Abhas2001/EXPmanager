@@ -19,7 +19,7 @@ const index = ({catarr,inputval,sum,storedarr}) => {
       <Frequency storedarr={storedarr}/>
        <Recent catarr={catarr}/>
       </section>
-      <section className="sticky bottom-[22px] ">
+      <section className="sticky  ">
           <Footer />
         </section>
     </section>
