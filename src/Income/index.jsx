@@ -33,7 +33,9 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
   const[walletdropdownarr,setwalletDropdownarr] = useState([]);
   
 
- 
+    
+  const now = new Date();
+
 
   const handleBack = () => {
     navigate("/home");
@@ -50,7 +52,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
     }
 
     finalval.push(val);
-    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val,"description":Input}])
+    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}])
     navigate("/home");
   };
  
@@ -80,6 +82,12 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
     setOpenCamera(false);
     setShowoverlay(false);
     
+  }
+  const handleinputdisabled = () =>{
+       if(showoverlay){
+        return true;
+       }
+       else false;
   }
   const handledesc = (event) =>{
     if(event.key === "Enter"){
@@ -156,6 +164,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
             <input
               type="number"
               placeholder="0"
+              disabled={handleinputdisabled()}
               onKeyUp={()=>handleamount(event)}
               className="text-xl font-bold text-white p-0 border-2 border-[#00A86B] enabled:outline-none focus:text-white focus:border-2 focus:outline-[#00A86B] focus:border-[#00A86B]  placeholder:text-2xl placeholder:text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               onInput={handlechange}
@@ -165,7 +174,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
         <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
           <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
-            <Dropdown dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
+            <Dropdown showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
           }
 
             <section
@@ -183,12 +192,12 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
               />
             </section>
            {
-            <Dropdown walletdropdownarr={walletdropdownarr} setwalletDropdownarr={setwalletDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Wallet'}/>
+            <Dropdown showoverlay={showoverlay} walletdropdownarr={walletdropdownarr} setwalletDropdownarr={setwalletDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Wallet'}/>
            }
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
 
-              <section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section>
+             <section className="mb-4 w-32 h-18"><section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section></section> 
               
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">

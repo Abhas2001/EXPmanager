@@ -7,7 +7,7 @@ import Tran from "../images/Tran.svg";
 import down from "../images/down.svg";
 import { useEffect } from 'react';
 
-const Dropdown = ({walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdownarr,flag,setflag,label,setDisabled}) => {
+const Dropdown = ({showoverlay,walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdownarr,flag,setflag,label,setDisabled}) => {
    
 
     const [showdropdown, setDropdown] = useState(false);
@@ -44,6 +44,16 @@ const Dropdown = ({walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdo
       setwalletDropdownarr([x]);
       setBold(true);
       setflag(false);
+    }
+
+    const handledisabledrop = () => {
+       if(showoverlay===true){
+        return true;
+       }
+       else{
+        return false;
+       }
+      
     }
  
   return (
@@ -100,6 +110,7 @@ const Dropdown = ({walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdo
                 </div>
                 <button
                   className=" absolute right-[20px]"
+                  disabled={handledisabledrop()}
                   onClick={label==='Category'?handleShowdropdown:handleShowwallet}
                 >
                   <img src={down} alt="" srcset="" />

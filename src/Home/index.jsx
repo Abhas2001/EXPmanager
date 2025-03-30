@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 const index = ({catarr,inputval,sum,storedarr}) => {
    
+  const now = new Date();
+console.log(now.toLocaleTimeString());
  
 
   return (
