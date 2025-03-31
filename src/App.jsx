@@ -18,7 +18,7 @@ function App() {
   const[catarr,setcatarr] = useState(()=>{
     const Saved = localStorage.getItem("Recent")
     const initials = JSON.parse(Saved);
-    return initials||{}
+    return Array.isArray(initials) ? initials : [];
   });
   const[storedarr,setStoredArr] = useState(() => {
    
