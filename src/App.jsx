@@ -47,9 +47,6 @@ function App() {
 
 
 
-catarr.map((x)=>{
-  console.log(x.input);
-})
  
    
   return (
