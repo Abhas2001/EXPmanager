@@ -10,7 +10,7 @@ const index = ({catarr}) => {
   return (
       <section>
         <div className='w-full flex justify-between items-between text-black p-4'> <span className='text-lg font-semibold text-[#292B2D]'>Recent Transaction</span> <div className='p-1 px-3 bg-[#EEE5FF] rounded-full flex justify-center items-center'><button className='text-[#7F3DFF] text-sm font-medium'>See All</button></div> </div>
-         { catarr.map((x)=>{
+         { catarr?.map((x)=>{
             return(
                 <section className='w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2'>
                 <section className='flex justify-between py-3'>
