@@ -3,6 +3,7 @@ import Home from "../src/Home/index";
 import Income from '../src/Income/index';
 import Expense from '../src/Expense/index';
 import Practice from "../src/Practice/index";
+import Transaction from "../src/Transaction/index";
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
   
 
   const[change,setChange] = useState(false);
+  const[transaction,settransaction] = useState(false);
+  const[home,sethome] = useState(true);
   const[catarr,setcatarr] = useState(()=>{
     const Saved = localStorage.getItem("Recent")
     const initials = JSON.parse(Saved);
@@ -52,9 +55,10 @@ function App() {
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
+      <Route path="/home" element={<Home home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income  setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
+      <Route path="/recenttransaction" element={<Transaction sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr}/>}/>
        </Routes>
      
   );

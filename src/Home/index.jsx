@@ -5,10 +5,8 @@ import Footer from '../Footer/index';
 import Recent from '../RecentTrans/index'
 import { useState } from 'react';
 
-const index = ({catarr,inputval,sum,storedarr}) => {
-   
-  const now = new Date();
-console.log(now.toLocaleTimeString());
+const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransaction}) => {
+
  
 
   return (
@@ -19,10 +17,10 @@ console.log(now.toLocaleTimeString());
       <Header inputval={inputval} sum={sum} />
 
       <Frequency storedarr={storedarr}/>
-       <Recent catarr={catarr}/>
+       <Recent sethome={sethome} catarr={catarr} settransaction={settransaction}/>
       </section>
       <section className="sticky  ">
-          <Footer />
+          <Footer sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
         </section>
     </section>
     </section>
