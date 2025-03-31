@@ -11,8 +11,15 @@ function App() {
 
   
   let sum=0;
+  
+  
+
   const[change,setChange] = useState(false);
-  const[catarr,setcatarr] = useState([]);
+  const[catarr,setcatarr] = useState(()=>{
+    const Saved = localStorage.getItem("Recent")
+    const initials = JSON.parse(Saved);
+    return initials||{}
+  });
   const[storedarr,setStoredArr] = useState(() => {
    
     const saved = localStorage.getItem("finalval");
@@ -20,6 +27,11 @@ function App() {
     return initialValue || ""
   });;
   
+
+  useEffect(()=>{
+       localStorage.setItem("Recent",JSON.stringify(catarr))
+       
+  },[catarr])
 
 
   for(let i=0; i<storedarr.length; i++){
@@ -32,7 +44,7 @@ function App() {
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   
-console.log(catarr);
+
 
 
 catarr.map((x)=>{

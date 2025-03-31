@@ -11,15 +11,15 @@ const index = ({inputval,sum}) => {
   let d=new Date();
   let m=d.getMonth();
   return (
-    <section className='w-full h-[220px] text-black rounded-b-[32px] bg-linear-to-b from-[#FFF6E5] to-[#F8EDD8]'>
+    <section className='w-full h-[170px] text-black rounded-b-[32px] bg-linear-to-b from-[#FFF6E5] to-[#F8EDD8]'>
         <section>
-        <section className='w-full flex justify-between p-4'>
+        {/* <section className='w-full flex justify-between p-4'>
             <div></div>
              <section className='flex'> <div><img src={arrow} alt="" srcset="" /></div><div className='text-sm font-medium text-[#212325]'>{month[m]}</div></section> 
             <div> <img src={notification} alt="" srcset="" /></div>
-        </section>
+        </section> */}
 
-        <section>
+        <section className='pt-2'>
         <section className='full flex justify-center items-center'>
             <span className='text-xs text-[#91919F] font-semibold'>Account Balances</span>
         </section>
