@@ -32,6 +32,7 @@ const index = ({sethome,transaction,home,settransaction}) => {
     console.log("clicked");
     navigate("/")
     settransaction(false);
+    sethome(true);
     
   }
 

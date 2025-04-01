@@ -36,13 +36,13 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
         </section>
 
         <section>
-          <Recent catarr={catarr} />
+          <Recent label={'detailed'} catarr={catarr} />
         </section>
       </section>
 
       {/* Sticky Footer at Bottom */}
       <section className="bg-white shadow-md sticky bottom-0">
-        <Footer transaction={transaction} settransaction={settransaction} />
+        <Footer sethome={sethome} transaction={transaction} settransaction={settransaction} />
       </section>
     </section>
   );

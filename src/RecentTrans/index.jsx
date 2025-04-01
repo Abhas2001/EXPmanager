@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const index = ({catarr,settransaction,sethome}) => {
+const index = ({catarr,settransaction,sethome,label}) => {
 
     const navigate = useNavigate()
+    console.log(label);
 
 const handleTransactions = () => {
     sethome(false);
@@ -21,7 +22,7 @@ const handleTransactions = () => {
 }
   return (
       <section>
-        <div className='w-full flex justify-between items-between text-black p-4'> <span className='text-lg font-semibold text-[#292B2D]'>Recent Transaction</span> <div className='p-1 px-3 bg-[#EEE5FF] rounded-full flex justify-center items-center'><button className='text-[#7F3DFF] text-sm font-medium' onClick={()=>handleTransactions()}>See All</button></div> </div>
+        <div className='w-full flex justify-between items-between text-black p-4'> <span className='text-lg font-semibold text-[#292B2D]'>{label==='detailed'?'Today':'Recent Transaction'}</span> <div className='p-1 px-3 bg-[#EEE5FF] rounded-full flex justify-center items-center'><button className='text-[#7F3DFF] text-sm font-medium' onClick={()=>handleTransactions()}>{label==='detailed'?'':'See All'}</button></div> </div>
          { catarr?.map((x)=>{
             return(
                 <section className='w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2'>
