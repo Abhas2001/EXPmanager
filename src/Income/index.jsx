@@ -36,7 +36,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
     
   const now = new Date();
 
-
+ console.log("TODAY",now.getDate());
   const handleBack = () => {
     navigate("/home");
   };
@@ -52,7 +52,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
     }
 
     finalval.push(val);
-    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}])
+    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
     navigate("/home");
   };
  

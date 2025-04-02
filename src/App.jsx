@@ -48,7 +48,10 @@ function App() {
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   
 
+const newarr = catarr.filter((x)=>x.CurrentD===2);
 
+
+console.log("YAHI CHAHIYE", newarr);
 
  
    
