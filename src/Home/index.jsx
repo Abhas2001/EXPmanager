@@ -11,7 +11,7 @@ const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransa
 
   return (
        
-    <section className='w-full h-screen flex justify-center items-center bg-black overflow-hidden'>
+    <section className={`w-full h-[95vh] flex justify-center items-center bg-black overflow-hidden`}>
     <section className='flex flex-col justify-between text-white w-[395px] h-screen bg-[#FFFFFF] '>
       <section className='overflow-y-auto'>
       <Header inputval={inputval} sum={sum} />
@@ -20,7 +20,7 @@ const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransa
        <Recent sethome={sethome} catarr={catarr} settransaction={settransaction}/>
       </section>
       <section className="sticky  ">
-          <Footer sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
+          <Footer  sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
         </section>
     </section>
     </section>
