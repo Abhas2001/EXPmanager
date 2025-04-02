@@ -14,9 +14,10 @@ const index = ({catarr,settransaction,sethome,label,highest}) => {
 
     const navigate = useNavigate()
     console.log(label);
+    const d = new Date();
 
-    const Today = catarr.filter((x)=>x.CurrentD===2);
-    const Yesterday = catarr.filter((x)=>x.CurrentD!==2);
+    const Today = catarr.filter((x)=>x.CurrentD===d.getDate());
+    const Yesterday = catarr.filter((x)=>x.CurrentD!==d.getDate());
 
 
     let max = 0;
