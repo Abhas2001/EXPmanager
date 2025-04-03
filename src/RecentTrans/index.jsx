@@ -19,7 +19,7 @@ const index = ({catarr,settransaction,sethome,label,highest}) => {
     const Today = catarr.filter((x)=>x.CurrentD===d.getDate());
     const Yesterday = catarr.filter((x)=>x.CurrentD!==d.getDate());
 
-
+  //gfkjifkhljfghjigj
     let max = 0;
     let ymax = 0;
     const Highest = () =>{
