@@ -46,41 +46,13 @@ function App() {
   }
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
-  console.log("YAHI NA CHAHIYE",catarr[12].CurrentD);
+ 
   
 
-let newarr = catarr
- newarr.filter((x)=>x.CurrentD!==undefined);
-console.log(newarr);
     
 
-let newbeta = [...catarr];  
 
-for(let i=0;i<newbeta.length;i++){
-  for(let j=i+1;j<newbeta.length;j++){
-    if(Number(newbeta[i].input)<Number(newbeta[j].input)){
-      
 
-      
-      console.log(i,j);
-      
-      let temp=newbeta[i];
-
-      console.log("temp:",temp);
-      newbeta[i] = newbeta[j];
-
-      console.log("newbeta[i]:",newbeta[i],i);
-      newbeta[j]=temp;
-
-      console.log(" newbeta[j]:", newbeta[j],j);
-    
-    }
-  }
-}
-
-  
-console.log(newbeta);
-console.log(catarr);
 
 
 
