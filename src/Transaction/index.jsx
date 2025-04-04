@@ -54,7 +54,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
       <section className={`${showfilter?'':'hidden'} h-[495px] w-full bg-[#FFFFFF] rounded-4xl shadow-2xl`}>
         <Filter setShowFilter={setShowFilter} setHighest={setHighest} highest={highest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
-      <section className={`bg-white shadow-md sticky bottom-0 ${showfilter?'hidden':""}`}>
+      <section className={`bg-white shadow-md w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     
         <Footer sethome={sethome} transaction={transaction} settransaction={settransaction} />
       </section>
