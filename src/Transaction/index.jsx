@@ -12,6 +12,8 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
   const[lowest,setLowest] = useState(false);
+  const[newest,setNewest] = useState(false);
+  const[oldest,setOldest] = useState(false);
   
   const handleBack = () => {
     sethome(true);

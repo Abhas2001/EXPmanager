@@ -8,15 +8,18 @@ const index = ({setShowFilter,setHighest,highest, setLowest, lowest}) => {
 
     const handleHighest = () =>{
         setHighest(true);
+        setLowest(false);
 
     }
 
     const handleLowest = () =>{
         setLowest(true);
+        setHighest(false);
     }
 
     const handleReset = () =>{
         setHighest(false);
+        setLowest(false);
     }
 
     const handleClose = () =>{
