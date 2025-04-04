@@ -28,7 +28,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
 
   return (
     <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
-    <section className="md:w-auto md:flex md:justify-center md:items-center h-screen flex flex-col bg-gray-50 overflow-hidden">
+    <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
 
         <section className='flex md:w-full md:flex md:justify-start w-full justify-start' onClick={()=>handleClose()}>
 
