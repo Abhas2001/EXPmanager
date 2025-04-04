@@ -19,7 +19,7 @@ const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransa
       <Frequency storedarr={storedarr}/>
        <Recent sethome={sethome} catarr={catarr} settransaction={settransaction}/>
       </section>
-      <section className="fixed w-full bottom-0">
+      <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">
           <Footer  sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
         </section>
     </section>
