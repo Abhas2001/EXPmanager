@@ -11,6 +11,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
+  const[lowest,setLowest] = useState(false);
   
   const handleBack = () => {
     sethome(true);
@@ -45,13 +46,13 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
         </section>
 
         <section>
-          <Recent label={'detailed'} catarr={catarr} highest={highest} />
+          <Recent label={'detailed'} catarr={catarr} highest={highest} lowest={lowest}/>
         </section>
       </section>
 
 
       <section className={`${showfilter?'':'hidden'} h-[495px] w-full bg-[#FFFFFF] rounded-4xl shadow-2xl`}>
-        <Filter setShowFilter={setShowFilter} setHighest={setHighest} highest={highest}/> 
+        <Filter setShowFilter={setShowFilter} setHighest={setHighest} highest={highest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
       <section className={`bg-white shadow-md sticky bottom-0 ${showfilter?'hidden':""}`}>
     

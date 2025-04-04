@@ -1,6 +1,6 @@
 import React from 'react'
 
-const index = ({setShowFilter,setHighest,highest}) => {
+const index = ({setShowFilter,setHighest,highest, setLowest, lowest}) => {
 
     const handleApply =() =>{
         setShowFilter(false);
@@ -9,6 +9,10 @@ const index = ({setShowFilter,setHighest,highest}) => {
     const handleHighest = () =>{
         setHighest(true);
 
+    }
+
+    const handleLowest = () =>{
+        setLowest(true);
     }
 
     const handleReset = () =>{
@@ -40,7 +44,7 @@ const index = ({setShowFilter,setHighest,highest}) => {
         <span className='text-[#0D0E0F] font-semibold text-lg'>Sort By</span>
         <section className='flex justify-between mt-3'>
             <button onClick={()=>handleHighest()} className={`${highest?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${highest?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Highest  </span> </button>
-            <button className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Lowest </span>  </button>
+            <button onClick={()=>handleLowest()} className={`${lowest?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${lowest?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Lowest </span>  </button>
             <button className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Newest</span>  </button>
         </section>
         <button className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3 mt-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Oldest</span>  </button>

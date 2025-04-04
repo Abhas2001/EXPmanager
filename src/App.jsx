@@ -46,13 +46,15 @@ function App() {
   }
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
-  console.log("YAHI NA CHAHIYE", catarr);
+  console.log("YAHI NA CHAHIYE",catarr[12].CurrentD);
   
 
-const newarr = catarr.filter((x)=>x.CurrentD===2);
+let newarr = catarr
+ newarr.filter((x)=>x.CurrentD!==undefined);
+console.log(newarr);
     
 
-var newbeta = catarr;  
+let newbeta = [...catarr];  
 
 for(let i=0;i<newbeta.length;i++){
   for(let j=i+1;j<newbeta.length;j++){
@@ -78,6 +80,7 @@ for(let i=0;i<newbeta.length;i++){
 
   
 console.log(newbeta);
+console.log(catarr);
 
 
 
