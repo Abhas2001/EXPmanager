@@ -51,7 +51,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
       </section>
 
 
-      <section className={`${showfilter?'':'hidden'} h-[495px] w-full bg-[#FFFFFF] rounded-4xl shadow-2xl fixed bottom-0`}>
+      <section className={`${showfilter?'':'hidden'} h-[495px] w-full bg-[#FFFFFF] rounded-t-4xl shadow-2xl fixed bottom-0`}>
         <Filter setShowFilter={setShowFilter} setHighest={setHighest} highest={highest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
       <section className={`bg-white shadow-md w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
