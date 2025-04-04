@@ -12,7 +12,7 @@ const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransa
   return (
        
     <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
-    <section className='flex flex-col justify-between text-white w-[395px] h-screen bg-[#FFFFFF] '>
+    <section className='flex flex-col justify-between text-white w-[420px] h-screen bg-[#FFFFFF] '>
       <section className='overflow-y-auto h-[80vh]'>
       <Header inputval={inputval} sum={sum} />
 
