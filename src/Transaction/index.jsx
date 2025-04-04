@@ -27,7 +27,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
   }
 
   return (
-    <section className="h-screen flex flex-col bg-gray-50 ">
+    <section className="h-screen flex flex-col bg-gray-50 overflow-hidden">
 
         <section className='flex w-full justify-start' onClick={()=>handleClose()}>
 
