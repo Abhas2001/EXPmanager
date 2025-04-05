@@ -4,6 +4,7 @@ import Income from '../src/Income/index';
 import Expense from '../src/Expense/index';
 import Practice from "../src/Practice/index";
 import Transaction from "../src/Transaction/index";
+import Detailed from "../src/Detailed/index"
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
     return initialValue || ""
   });;
   
+const[detailed,setDetailed] = useState([]);
+
+
+
 
   useEffect(()=>{
        localStorage.setItem("Recent",JSON.stringify(catarr))
@@ -49,9 +54,6 @@ function App() {
  
   
 
-    
-console.log(catarr);
-
 
 
 
@@ -61,10 +63,11 @@ console.log(catarr);
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
+      <Route path="/home" element={<Home setDetailed={setDetailed} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income  setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
       <Route path="/recenttransaction" element={<Transaction sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr}/>}/>
+      <Route path="/detailed" element={<Detailed detailed={detailed} />} />
        </Routes>
      
   );

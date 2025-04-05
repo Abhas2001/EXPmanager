@@ -5,7 +5,7 @@ import Footer from '../Footer/index';
 import Recent from '../RecentTrans/index'
 import { useState } from 'react';
 
-const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransaction}) => {
+const index = ({setDetailed,home,sethome,transaction,catarr,inputval,sum,storedarr,settransaction}) => {
 
  
 
@@ -17,7 +17,7 @@ const index = ({home,sethome,transaction,catarr,inputval,sum,storedarr,settransa
       <Header inputval={inputval} sum={sum} />
 
       <Frequency storedarr={storedarr}/>
-       <Recent sethome={sethome} catarr={catarr} settransaction={settransaction}/>
+       <Recent setDetailed={setDetailed} sethome={sethome} catarr={catarr} settransaction={settransaction}/>
       </section>
       <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">
           <Footer  sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>

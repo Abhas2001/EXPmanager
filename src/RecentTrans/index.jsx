@@ -8,7 +8,7 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({ catarr,newest, settransaction, sethome, label, highest,lowest,oldest,option}) => {
+const index = ({setDetailed, catarr,newest, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
   console.log(label);
   const d = new Date();
@@ -189,7 +189,10 @@ else{
   if(newest){
     Newest();
   }
-
+const handledetailed = (values) =>{
+    navigate("/detailed");
+    setDetailed([values])
+}
   const handleTransactions = () => {
     sethome(false);
     settransaction(true);
@@ -273,7 +276,7 @@ else{
                         <img src={Tran} alt="" srcset="" />
                       )}
                     </section>
-                    <section className="flex flex-col">
+                    <section className="flex flex-col" >
                       {" "}
                       <span className="text-[#292B2D] text-base font-medium">
                         {x.label[0]}
@@ -384,7 +387,7 @@ else{
                         <img src={Tran} alt="" srcset="" />
                       )}
                     </section>
-                    <section className="flex flex-col">
+                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time})}>
                       {" "}
                       <span className="text-[#292B2D] text-base font-medium">
                         {x.label[0]}
