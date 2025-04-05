@@ -12,7 +12,7 @@ import Webcam from "react-webcam";
 
 
 
-const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
+const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredArr }) => {
 
   const [flag, setflag] = useState(false);
  let label=''
@@ -79,6 +79,8 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
   const handleClick = ({ getScreenshot }) =>{
     const imageSrc = getScreenshot()
     setImgLink(imageSrc);
+    console.log(imgLink);
+    setImgLinks(imageSrc);
     setOpenCamera(false);
     setShowoverlay(false);
     
@@ -111,6 +113,8 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
    
   }
 },[dropdownarr,walletdropdownarr])
+
+
   return (
    
     <section className="w-full h-screen flex justify-center items-center bg-black overflow-hidden">

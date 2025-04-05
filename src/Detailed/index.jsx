@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import trash from '../images/trash.svg'
 import left from "../images/left.svg";
 
-const index = ({detailed}) => {
+const index = ({detailed,imgLinks}) => {
  
     const navigate = useNavigate()
      
@@ -39,6 +39,17 @@ const index = ({detailed}) => {
             <p className='text-[#0D0E0F] font-medium text-[16px]'>{detailed[0].description}</p>
       </section>
 
+{ imgLinks&&
+   <section className='mt-8'>
+        <span className='font-semibold text-[16px] text-[#91919F]'>Attachment</span>
+    <section className='flex justify-center items-center p-4'>
+    <img className='w-[500px] h-[130px] rounded-3xl' src={imgLinks}  alt="" srcset="" />
+    </section>
+   </section>
+}
+   <section className='w-full flex justify-center items-center'>
+    <button>Edit</button>
+   </section>
    
     </div>
   )

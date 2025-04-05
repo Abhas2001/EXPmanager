@@ -32,7 +32,7 @@ function App() {
   });;
   
 const[detailed,setDetailed] = useState([]);
-
+const[imgLinks,setImgLinks] = useState()
 
 
 
@@ -64,10 +64,10 @@ const[detailed,setDetailed] = useState([]);
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home setDetailed={setDetailed} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
-      <Route path="/income" element={<Income  setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
+      <Route path="/income" element={<Income setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
       <Route path="/recenttransaction" element={<Transaction sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr}/>}/>
-      <Route path="/detailed" element={<Detailed detailed={detailed} />} />
+      <Route path="/detailed" element={<Detailed detailed={detailed} imgLinks={imgLinks}/>} />
        </Routes>
      
   );
