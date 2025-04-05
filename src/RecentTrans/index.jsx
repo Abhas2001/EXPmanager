@@ -8,7 +8,7 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
+const index = ({ catarr,newest, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
   console.log(label);
   const d = new Date();
@@ -16,12 +16,95 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
   let Today = catarr.filter((x) => x.CurrentD === d.getDate());
   let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate());
 
-  console.log("AJ", Today);
 
+ let Naya = catarr.filter((x)=>
+   
+    x.label[0]==option
+
+  )
+
+
+ 
+
+
+  const Newest = () => {
+ 
+
+    let finalarr = [...catarr];
+
+
+    for (let i = 0; i < finalarr.length; i++) {
+        for (let j = i + 1; j < finalarr.length; j++) {
+          if (Number(finalarr[i].time.split(':')[0]) < Number(finalarr[j].time.split(':')[0])) {
+            let temp = finalarr[i];
+  
+           
+            finalarr[i] = finalarr[j];
+  
+            finalarr[j] = temp;
+          }
+        }
+      }
+  
+      catarr = finalarr;
+      
+    
+
+  }
   
 
-  const Highest = () => {
+
+  const Oldest = () => {
+
     let finalarr = [...catarr];
+
+
+    for (let i = 0; i < finalarr.length; i++) {
+        for (let j = i + 1; j < finalarr.length; j++) {
+          if (finalarr[i].time.split(':')[0]> finalarr[j].time.split(':')[0]) {
+
+            console.log(finalarr[i].time.split(':')[0]);
+            console.log(finalarr[j].time.split(':')[0]);
+            let temp = finalarr[i];
+  
+           
+            finalarr[i] = finalarr[j];
+  
+            finalarr[j] = temp;
+
+          }
+        }
+      }
+  
+      catarr = finalarr;
+
+  }
+
+  const Highest = () => {
+    if(option){
+
+    let finalarr = [...Naya];
+
+
+    for (let i = 0; i < finalarr.length; i++) {
+      for (let j = i + 1; j < finalarr.length; j++) {
+        if (Number(finalarr[i].input) < Number(finalarr[j].input)) {
+          let temp = finalarr[i];
+
+          console.log("temp:", temp);
+          finalarr[i] = finalarr[j];
+
+          finalarr[j] = temp;
+        }
+      }
+    }
+
+   Naya = finalarr;
+}
+else{
+
+    let finalarr = [...catarr];
+
 
     for (let i = 0; i < finalarr.length; i++) {
       for (let j = i + 1; j < finalarr.length; j++) {
@@ -37,6 +120,9 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
     }
 
     catarr = finalarr;
+
+
+}
   };
 
 
@@ -44,22 +130,48 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
   
 
   const Lowest = () => {
-    let finalarr = [...catarr];
+    if(option){
 
-    for (let i = 0; i < finalarr.length; i++) {
-      for (let j = i + 1; j < finalarr.length; j++) {
-        if (Number(finalarr[i].input) > Number(finalarr[j].input)) {
-          let temp = finalarr[i];
-
-          console.log("temp:", temp);
-          finalarr[i] = finalarr[j];
-
-          finalarr[j] = temp;
+        let finalarr = [...Naya];
+    
+    
+        for (let i = 0; i < finalarr.length; i++) {
+          for (let j = i + 1; j < finalarr.length; j++) {
+            if (Number(finalarr[i].input) > Number(finalarr[j].input)) {
+              let temp = finalarr[i];
+    
+              console.log("temp:", temp);
+              finalarr[i] = finalarr[j];
+    
+              finalarr[j] = temp;
+            }
+          }
         }
-      }
+    
+       Naya = finalarr;
     }
-
-    catarr = finalarr;
+    else{
+    
+        let finalarr = [...catarr];
+    
+    
+        for (let i = 0; i < finalarr.length; i++) {
+          for (let j = i + 1; j < finalarr.length; j++) {
+            if (Number(finalarr[i].input) > Number(finalarr[j].input)) {
+              let temp = finalarr[i];
+    
+              console.log("temp:", temp);
+              finalarr[i] = finalarr[j];
+    
+              finalarr[j] = temp;
+            }
+          }
+        }
+    
+        catarr = finalarr;
+    
+    
+    }
   };
 
   if (highest) {
@@ -69,6 +181,15 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
   if(lowest){
    Lowest();
   }
+
+  if(oldest){
+    Oldest();
+  }
+
+  if(newest){
+    Newest();
+  }
+
   const handleTransactions = () => {
     sethome(false);
     settransaction(true);
@@ -77,7 +198,7 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
   };
   return (
     <section>
-      {label === "detailed" && !highest && !lowest ? (
+      {label === "detailed" && !highest && !lowest && !newest && !oldest && !option ? (
         <section>
           <div
             className={` w-full flex justify-between items-between text-black p-4`}
@@ -180,7 +301,7 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
           <div className="w-full flex justify-between items-between text-black p-4">
             {" "}
             <span className="text-lg font-semibold text-[#292B2D]">
-              {label === "detailed" && !highest && !lowest
+              {label === "detailed" && !highest && !lowest && !newest && !oldest
                 ? "Today"
                 : "Recent Transaction"}
             </span>{" "}
@@ -193,7 +314,59 @@ const index = ({ catarr, settransaction, sethome, label, highest,lowest}) => {
               </button>
             </div>{" "}
           </div>
-          {catarr?.map((x) => {
+        {option?      
+        
+        Naya?.map((x) => {
+            return (
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
+                <section className="flex justify-between py-3">
+                  <div className="text-black flex gap-2">
+                    <section className="flex justify-center items-center">
+                      {x.label[0] === "Shopping" ? (
+                        <img src={shopping} alt="" srcset="" />
+                      ) : x.label[0] === "Food" ? (
+                        <img src={Food} alt="" srcset="" />
+                      ) : x.label[0] === "Subscription" ? (
+                        <img src={subs} alt="" srcset="" />
+                      ) : x.label[0] === "Salary" ? (
+                        <img src={salary} alt="" srcset="" />
+                      ) : (
+                        <img src={Tran} alt="" srcset="" />
+                      )}
+                    </section>
+                    <section className="flex flex-col">
+                      {" "}
+                      <span className="text-[#292B2D] text-base font-medium">
+                        {x.label[0]}
+                      </span>
+                      <span className="text-[#91919F] font-medium text-[13px] pt-2">
+                        {x.description}
+                      </span>
+                    </section>
+                  </div>
+                  <div className="text-black flex flex-col">
+                    <span className="w-full flex justify-end text-[#00A86B] text-base font-semibold">
+                      {x.input}
+                    </span>{" "}
+                    <span className="text-[#91919F] font-medium text-[13px] pt-2">
+                      {x.time}
+                    </span>
+                  </div>
+                </section>
+              </section>
+            );
+          })
+        
+        
+        
+        
+        
+        :
+        
+        
+        
+        
+        catarr?.map((x) => {
             return (
               <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
                 <section className="flex justify-between py-3">

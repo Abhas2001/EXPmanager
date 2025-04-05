@@ -14,6 +14,8 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
   const[lowest,setLowest] = useState(false);
   const[newest,setNewest] = useState(false);
   const[oldest,setOldest] = useState(false);
+  const[option,setOption] = useState('')
+  const[count,setcount]= useState(0);
   
   const handleBack = () => {
     sethome(true);
@@ -41,7 +43,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
       <section className={`flex-1 overflow-y-auto ${showfilter?'opacity-60':""}`}>
         <section className="flex justify-between  p-4 mt-4" >
           <div><img src={drop} alt="Drop" /></div> 
-          <div onClick={()=>handlefilter()}><img src={filter} alt="Filter" /></div>
+            <div className='flex' onClick={()=>handlefilter()}><img src={filter} alt="Filter" /> <span className={`${count==0?'hidden':''}  bg-[#7F3DFF] text-white relative right-4 w-[24px] h-[24px] flex justify-center items-center rounded-full`}>{count}</span></div>
         </section>
 
         <section className="flex justify-between px-4">
@@ -49,13 +51,13 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
         </section>
 
         <section>
-          <Recent label={'detailed'} catarr={catarr} highest={highest} lowest={lowest}/>
+          <Recent label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
       </section>
 
 
-      <section className={`${showfilter?'':'hidden'} h-[495px] w-full bg-[#FFFFFF] rounded-t-4xl shadow-2xl fixed bottom-0`}>
-        <Filter setShowFilter={setShowFilter} setHighest={setHighest} highest={highest}  setLowest={setLowest} lowest={lowest}/> 
+      <section className={`${showfilter?'':'hidden'} h-[95%] w-full bg-[#FFFFFF] rounded-t-4xl shadow-2xl fixed bottom-0`}>
+        <Filter setcount={setcount} option={option} setOption={setOption} setShowFilter={setShowFilter} setHighest={setHighest} highest={highest} newest={newest} oldest={oldest} setNewest={setNewest} setOldest={setOldest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
       <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     

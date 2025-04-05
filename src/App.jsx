@@ -50,7 +50,7 @@ function App() {
   
 
     
-
+console.log(catarr);
 
 
 
