@@ -197,7 +197,7 @@ const index = ({setcatarr, setChange, change, storedarr, setStoredArr }) => {
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
 
-             <section className="mb-4 w-32 h-18"><section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg" src={imgLink} alt="" srcset="" /> </section></section> 
+             <section className="mb-4 w-32 h-18"><section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg w-32 h-16" src={imgLink} alt="" srcset="" /> </section></section> 
               
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">
