@@ -31,7 +31,7 @@ const  handleDeleteTransaction = (value) =>{
     setTimeout(() => {
         navigate(-1)
         
-    }, 400);
+    }, 2000);
   }
 
 
