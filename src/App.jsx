@@ -52,13 +52,8 @@ const[imgLinks,setImgLinks] = useState()
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
  
-  
-
-
-
-
-
  
+
    
   return (
          <Routes>
@@ -67,7 +62,7 @@ const[imgLinks,setImgLinks] = useState()
       <Route path="/income" element={<Income setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense/>}/>
       <Route path="/recenttransaction" element={<Transaction sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr}/>}/>
-      <Route path="/detailed" element={<Detailed detailed={detailed} imgLinks={imgLinks}/>} />
+      <Route path="/detailed" element={<Detailed catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks}/>} />
        </Routes>
      
   );
