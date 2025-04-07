@@ -5,6 +5,7 @@ import Expense from '../src/Expense/index';
 import Practice from "../src/Practice/index";
 import Transaction from "../src/Transaction/index";
 import Detailed from "../src/Detailed/index"
+import Report from '../src/FinancialReport/index';
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
 function App() {
@@ -63,6 +64,7 @@ const[imgLinks,setImgLinks] = useState()
       <Route path="/expense" element={<Expense/>}/>
       <Route path="/recenttransaction" element={<Transaction sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr}/>}/>
       <Route path="/detailed" element={<Detailed catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks}/>} />
+      <Route path="/report" element={<Report/>}/>
        </Routes>
      
   );

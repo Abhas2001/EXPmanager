@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/index';
 import Recent from '../RecentTrans/index';
 import Filter from '../Filter/index';
+import Financial from '../Financial/index';
 
 const Index = ({sethome,catarr,transaction,settransaction }) => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
   const[oldest,setOldest] = useState(false);
   const[option,setOption] = useState('')
   const[count,setcount]= useState(0);
+  const[financialreport,setFinancialreport] = useState(false);
   
   const handleBack = () => {
     sethome(true);
@@ -30,8 +32,17 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
          setShowFilter(true);
   }
 
+  const handlefinancial = () =>{
+    setFinancialreport(true);
+  }
+
   return (
     <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
+{ financialreport?
+ 
+ <Financial/>
+ :
+
     <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
 
         <section className='flex md:w-full md:flex md:justify-start w-full justify-start' onClick={()=>handleClose()}>
@@ -47,7 +58,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
         </section>
 
         <section className="flex justify-between px-4">
-          <div><img src={financial} alt="Financial" /></div>
+          <div onClick={()=>handlefinancial()}><img src={financial} alt="Financial" /></div>
         </section>
 
         <section>
@@ -64,6 +75,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
         <Footer sethome={sethome} transaction={transaction} settransaction={settransaction} />
       </section>
     </section>
+}
     </section>
   );
 };
