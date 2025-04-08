@@ -7,6 +7,7 @@ import Footer from '../Footer/index';
 import Recent from '../RecentTrans/index';
 import Filter from '../Filter/index';
 import Financial from '../Financial/index';
+import arrow from '../images/Vector.svg'
 
 const Index = ({sethome,catarr,transaction,settransaction }) => {
   const navigate = useNavigate();
@@ -57,10 +58,22 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
             <div className='flex' onClick={()=>handlefilter()}><img src={filter} alt="Filter" /> <span className={`${count==0?'hidden':''}  bg-[#7F3DFF] text-white relative right-4 w-[24px] h-[24px] flex justify-center items-center rounded-full`}>{count}</span></div>
         </section>
 
+        <section className='w-full flex justify-center items-center'>
         <section className="flex justify-between px-4">
-          <div onClick={()=>handlefinancial()}><img src={financial} alt="Financial" /></div>
-        </section>
+          <div onClick={()=>handlefinancial()}>
+            
+          
+           <section className='w-[363px] bg-[#EEE5FF] h-12  rounded-xl px-4'>
+            <section className='w-full h-full flex justify-between items-center '>
+                  <p className='text-[#7F3DFF] text-[16px] font-normal'>See your financial report</p>
+                  <span><img src={arrow} alt="" srcset="" /></span>
+                  
+           </section>
+           </section>
 
+          </div>
+        </section>
+        </section>
         <section>
           <Recent label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
