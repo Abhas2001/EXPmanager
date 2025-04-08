@@ -14,6 +14,7 @@ function App() {
 
   
   let sum=0;
+  let negatives=0;
   
   
 
@@ -25,12 +26,26 @@ function App() {
     const initials = JSON.parse(Saved);
     return Array.isArray(initials) ? initials : [];
   });
+
+  const[negarr,setnegarr] = useState(()=>{
+    const Saved = localStorage.getItem("Recentneg")
+    const initials = JSON.parse(Saved);
+    return Array.isArray(initials) ? initials : [];
+  });
   const[storedarr,setStoredArr] = useState(() => {
    
     const saved = localStorage.getItem("finalval");
     const initialValue = JSON.parse(saved);
     return initialValue || ""
+  });
+
+  const[storednegarr,setStorednegArr] = useState(() => {
+   
+    const saved = localStorage.getItem("negval");
+    const initialValue = JSON.parse(saved);
+    return initialValue || ""
   });;
+  
   
 const[detailed,setDetailed] = useState([]);
 const[imgLinks,setImgLinks] = useState()
@@ -38,9 +53,14 @@ const[imgLinks,setImgLinks] = useState()
 
 
   useEffect(()=>{
-       localStorage.setItem("Recent",JSON.stringify(catarr))
+       localStorage.setItem("Recentneg",JSON.stringify(catarr))
        
   },[catarr])
+
+  useEffect(()=>{
+    localStorage.setItem("Recent",JSON.stringify(negarr))
+    
+},[negarr])
 
 
   for(let i=0; i<storedarr.length; i++){
@@ -51,7 +71,18 @@ const[imgLinks,setImgLinks] = useState()
     }
   }
 
+
+  
+  for(let i=0; i<storednegarr.length; i++){
+  
+    if(!isNaN(storednegarr[i])){
+      negatives+=Number(storednegarr[i])
+    console.log(negatives);
+    }
+  }
+
   localStorage.setItem("finalval",JSON.stringify(storedarr))
+  localStorage.setItem("negval",JSON.stringify(storednegarr))
  
  
 
@@ -59,9 +90,9 @@ const[imgLinks,setImgLinks] = useState()
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home setDetailed={setDetailed} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} sum={sum} storedarr={storedarr}/>}/>
+      <Route path="/home" element={<Home setDetailed={setDetailed} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} sum={sum} storednegarr={storednegarr} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
-      <Route path="/expense" element={<Expense/>}/>
+      <Route path="/expense" element={<Expense setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>
       <Route path="/recenttransaction" element={<Transaction sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr}/>}/>
       <Route path="/detailed" element={<Detailed catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks}/>} />
       <Route path="/report" element={<Report/>}/>

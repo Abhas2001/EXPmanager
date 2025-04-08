@@ -2,20 +2,29 @@ import React,{useState,useEffect} from 'react'
 import { LineChart } from '@mui/x-charts/LineChart';
 import { Chart } from 'primereact/chart';
 
-const index = ({storedarr}) => {
+const index = ({storedarr,storednegarr}) => {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
     const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     let d= new Date();
     let m =d.getMonth();
    let Income=[0,0,0,0,0,0,0,0,0,0,0,0,0]
+   let Expense=[0,0,0,0,0,0,0,0,0,0,0,0,0]
     let sum=0;
+    let negatives = 0;
     for(let i=0;i<storedarr.length;i++){
         if(!isNaN(storedarr[i])){
         sum+= Number(storedarr[i]);
         }
     }
     Income[m]=sum;
+
+    for(let i=0;i<storednegarr.length;i++){
+        if(!isNaN(storednegarr[i])){
+            negatives+= Number(storednegarr[i]);
+        }
+    }
+    Expense[m]=negatives;
     const[showgraph,setShowgraph]  = useState(false);
 
     useEffect(() => {
@@ -36,7 +45,7 @@ const index = ({storedarr}) => {
                     label: 'Expense',
                     backgroundColor: documentStyle.getPropertyValue('--pink-500'),
                     borderColor: documentStyle.getPropertyValue('--pink-500'),
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0]
+                    data: Expense
                 }
             ]
         };

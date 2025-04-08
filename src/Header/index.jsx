@@ -5,7 +5,7 @@ import down from '../images/Frame 26.svg';
 import up from '../images/Frame 27.svg';
 
 
-const index = ({inputval,sum}) => {
+const index = ({inputval,sum,negatives}) => {
  
   const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   let d=new Date();
@@ -24,7 +24,7 @@ const index = ({inputval,sum}) => {
             <span className='text-xs text-[#91919F] font-semibold'>Account Balances</span>
         </section>
         <section className='full flex justify-center items-center'>
-        <span className='text-4xl font-semibold text-[#161719]'>$000</span>
+        <span className='text-4xl font-semibold text-[#161719]'>{sum-negatives}</span>
         </section>
         </section>
         
@@ -47,7 +47,7 @@ const index = ({inputval,sum}) => {
                <div className='bg-[#FCFCFC] p-1 rounded-xl'><img src={down} alt="" srcset="" /></div>
               <div>
               <span className='w-full flex justify-center items-center text-[#FCFCFC] text-sm font-medium'>Expenses</span>
-              <h1 className='text-[22px] font-semibold'>$000</h1>
+              <h1 className='text-[22px] font-semibold'>{negatives?negatives:"$000"}</h1>
               </div>
               </section>  
 

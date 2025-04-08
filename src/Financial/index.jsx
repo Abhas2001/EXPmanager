@@ -51,7 +51,8 @@ const index = () => {
 
   return (
         <div className={`w-full h-screen ${exp?'bg-[#FD3C4A]':inc?'bg-[#00A86B]':bud?'bg-[#7F3DFF]':'bg-[#7F3DFF]'}`}>
-            <section className={`w-full flex justify-between p-4 gap-2`}>
+            
+            <section className={`w-full  flex justify-between p-4 gap-2`}>
                 <div onClick={()=>handleexp()} className={`w-[90px] rounded-2xl border-[4px] border-[#FFFFFF] ${exp?'':'opacity-25'}`}></div>
                 <div onClick={()=>handleinc()} className={`w-[90px] rounded-2xl border-[4px] border-[#FFFFFF] ${inc?'':'opacity-25'}`}></div>
                 <div onClick={()=>handlebud()} className={`w-[90px] rounded-2xl border-[4px] border-[#FFFFFF] ${bud?'':'opacity-25'}`}></div>

@@ -149,7 +149,7 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
   </Webcam>
  
   :
-      <section className="flex flex-col justify-between text-white w-[375px] h-screen bg-[#00A86B] ">
+      <section className=" flex flex-col justify-between text-white w-[375px] h-screen bg-[#00A86B] ">
 
         <section className=" w-full flex justify-between p-4">
           <button className="text-white cursor-pointer" onClick={handleBack}>
