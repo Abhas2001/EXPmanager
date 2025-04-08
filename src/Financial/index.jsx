@@ -45,7 +45,7 @@ const index = () => {
  }
 
  const handlefinancreport = () =>{
-    
+    //,lvd,,vfl,;f
   navigate("/report");
  }
 
