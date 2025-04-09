@@ -18,6 +18,7 @@ const index = ({setDetailed, catarr,newest,negarr, settransaction, sethome, labe
   let Today = catarr.filter((x) => x.CurrentD === d.getDate()).concat(negarr?.filter((x) => x.CurrentD === d.getDate()));
   let Todayexp = negarr?.filter((x) => x.CurrentD === d.getDate())
   let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate());
+  let Total = catarr.concat(negarr);
  
 Today.map((x)=>{
     if(x.Exp){
@@ -377,7 +378,7 @@ const handledetailed = (values) =>{
         
         
         
-        catarr?.map((x) => {
+        Total?.map((x) => {
             return (
               <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
                 <section className="flex justify-between py-3">
@@ -406,8 +407,8 @@ const handledetailed = (values) =>{
                     </section>
                   </div>
                   <div className="text-black flex flex-col">
-                    <span className="w-full flex justify-end text-[#00A86B] text-base font-semibold">
-                      {x.input}
+                    <span className={`w-full flex justify-end ${x.Exp?'text-[#FD3C4A]':'text-[#00A86B]'} text-base font-semibold`}>
+                    {x.Exp? -x.input:x.input}
                     </span>{" "}
                     <span className="text-[#91919F] font-medium text-[13px] pt-2">
                       {x.time}
