@@ -9,7 +9,7 @@ import Filter from '../Filter/index';
 import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
 
-const Index = ({sethome,catarr,transaction,settransaction }) => {
+const Index = ({sethome,catarr,transaction,settransaction,negarr }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
@@ -75,7 +75,7 @@ const Index = ({sethome,catarr,transaction,settransaction }) => {
         </section>
         </section>
         <section>
-          <Recent label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
+          <Recent negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
       </section>
 

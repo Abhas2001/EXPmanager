@@ -52,7 +52,7 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
     }
 
     finalval.push(val);
-    setcatarr((prev)=>[...prev, {"label":dropdownarr,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
+    setcatarr((prev)=>[...prev, {"label":dropdownarr,"Exp":false,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
     navigate("/home");
   };
  

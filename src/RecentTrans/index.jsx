@@ -8,14 +8,22 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({setDetailed, catarr,newest, settransaction, sethome, label, highest,lowest,oldest,option}) => {
+const index = ({setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
   console.log(label);
   const d = new Date();
+  console.log("NGARR",negarr);
+  console.log(catarr);
 
-  let Today = catarr.filter((x) => x.CurrentD === d.getDate());
+  let Today = catarr.filter((x) => x.CurrentD === d.getDate()).concat(negarr?.filter((x) => x.CurrentD === d.getDate()));
+  let Todayexp = negarr?.filter((x) => x.CurrentD === d.getDate())
   let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate());
-
+ 
+Today.map((x)=>{
+    if(x.Exp){
+    console.log(x.Exp);
+    }
+})
 
  let Naya = catarr.filter((x)=>
    
@@ -239,9 +247,9 @@ const handledetailed = (values) =>{
                       </span>
                     </section>
                   </div>
-                  <div className="text-black flex flex-col">
-                    <span className="w-full flex justify-end text-[#00A86B] text-base font-semibold">
-                      {x.input}
+                  <div className=" flex flex-col">
+                        <span className={`w-full flex justify-end ${x.Exp?'text-[#FD3C4A]':'text-[#00A86B]'} text-base font-semibold`}>
+                      {x.Exp? -x.input:x.input}
                     </span>{" "}
                     <span className="text-[#91919F] font-medium text-[13px] pt-2">
                       {x.time}
