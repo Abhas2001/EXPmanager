@@ -134,7 +134,7 @@ else{
 }
   };
 
-
+//njkfxxjvkhjkgbkjgdjkf
 
   
 
@@ -400,6 +400,7 @@ const handledetailed = (values) =>{
                       {" "}
                       <span className="text-[#292B2D] text-base font-medium">
                         {x.label[0]}
+                        
                       </span>
                       <span className="text-[#91919F] font-medium text-[13px] pt-2">
                         {x.description}
