@@ -199,8 +199,9 @@ else{
     Newest();
   }
 const handledetailed = (values) =>{
-    navigate("/detailed");
+   
     setDetailed([values])
+    navigate("/detailed");
 }
   const handleTransactions = () => {
     sethome(false);
@@ -222,7 +223,7 @@ const handledetailed = (values) =>{
           </div>
           {Today?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -396,7 +397,7 @@ const handledetailed = (values) =>{
                         <img src={Tran} alt="" srcset="" />
                       )}
                     </section>
-                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time})}>
+                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
                       {" "}
                       <span className="text-[#292B2D] text-base font-medium">
                         {x.label[0]}

@@ -38,7 +38,7 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
 
  console.log("TODAY",now.getDate());
   const handleBack = () => {
-    navigate("/home");
+    navigate(-1);
   };
 
   const handleCont = () => {

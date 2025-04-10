@@ -8,10 +8,11 @@ const index = ({ detailed, imgLinks,catarr,setcatarr }) => {
 
     const[deletedialog,setDeletedialog]=useState(false);
     const[deletesuccess,setDeletesuccess] = useState(false);
+    const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
 
 
-  console.log("OLD",catarr);
+  console.log("OLD",detailed);
 
   let New = catarr
 
@@ -46,7 +47,19 @@ const  handleDeleteTransaction = (value) =>{
   }
   return (
     <div>
-      <section className={`w-full h-[282px] bg-[#00A86B] rounded-b-3xl ${(deletedialog||deletesuccess)?'opacity-70':''}`}>
+            { deletesuccess &&
+        
+        <section className="flex justify-center items-center bg-[#ffffff] rounded-3xl shadow-2xl p-6 fixed bottom-72 left-4">
+            <section>
+                <div className="w-full flex justify-center items-center">
+            <img src={correct} alt="" srcset="" />
+            </div>
+            <span>Transaction has been successfully removed</span>
+            </section>
+        </section>
+}
+
+      <section className={`w-full h-[282px] ${detailed[0]?.Exp?'bg-[#FD3C4A]':'bg-[#00A86B]'} rounded-b-3xl ${(deletedialog||deletesuccess)?'opacity-50':''}`}>
         <section className="flex justify-between p-2 pt-4">
           <button onClick={() => handleback()}>
             {" "}
@@ -74,12 +87,12 @@ const  handleDeleteTransaction = (value) =>{
         </section>
       </section>
 
-      <section className={`flex justify-center items-center ${(deletedialog||deletesuccess)?'opacity-70':''}`}>
+      <section className={`flex justify-center items-center ${(deletedialog||deletesuccess)?'opacity-50':''}`}>
         <div className="flex gap-12 bg-[#FFFFFF] border-[1px] border-[#F1F1FA] p-4   rounded-2xl relative bottom-8">
           <div className="flex flex-col ">
             <span className="font-medium text-[12px] text-[#91919F]">Type</span>
             <span className="font-semibold text-[16px] text-[#0D0E0F]">
-              Income
+            {detailed[0]?.Exp?'Expense' :'Income'}
             </span>
           </div>
 
@@ -112,20 +125,11 @@ const  handleDeleteTransaction = (value) =>{
       </section>
 
 
-      <section className=" mt-4 px-4 ">
+      <section className={` mt-4 px-4 ${(deletedialog||deletesuccess)?'opacity-50':''}`}>
         <span className="font-semibold text-lg text-[#91919F]">
           Description
         </span>
-        { deletesuccess &&
-        <section className="flex justify-center items-center bg-[#ffffff] rounded-3xl shadow-2xl p-6 fixed bottom-48">
-            <section>
-                <div className="w-full flex justify-center items-center">
-            <img src={correct} alt="" srcset="" />
-            </div>
-            <span>Transaction has been successfully removed</span>
-            </section>
-        </section>
-}
+ 
         <p className="text-[#0D0E0F] font-medium text-[16px]">
           {detailed[0]?.description}
         </p>
@@ -161,7 +165,7 @@ const  handleDeleteTransaction = (value) =>{
       </section>
       </section>
     :
-      <section className={` w-full flex justify-center items-center fixed bottom-7 ${(deletedialog||deletesuccess)?'opacity-70':''}`}>
+      <section className={` w-full flex justify-center items-center fixed bottom-7 ${(deletedialog||deletesuccess)?'opacity-30':''}`}>
       <section className=" w-[90%] flex justify-center items-center bg-[#7F3DFF] h-14 rounded-3xl">
         <button className="text-[#ffffff] text-lg font-semibold">Edit</button>
       </section>
