@@ -11,7 +11,7 @@ import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 function App() {
 
 
-
+localStorage.clear();
   
   let sum=0;
   let negatives=0;
