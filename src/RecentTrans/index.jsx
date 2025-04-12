@@ -8,32 +8,16 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({Expense,Income,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
+const index = ({Expenses,Incomes,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
-  console.log(label);
   const d = new Date();
-  console.log("NGARR",negarr);
-  console.log(catarr);
-  const[Todayarr,setTodayarr] = useState([]);
+
 
   let Today = catarr.filter((x) => x.CurrentD === d.getDate()).concat(negarr?.filter((x) => x.CurrentD === d.getDate()));
-
   let Todayexp = negarr?.filter((x) => x.CurrentD === d.getDate())
   let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate()).concat(negarr?.filter((x)=> x.CurrentD !== d.getDate()));
   let Total = catarr.concat(negarr);
-
-  useEffect(()=>{
-    if(!Expense){
-      console.log("YAHAAA",Today);
-    setTodayarr(Today);
-    console.log("Todayarr",Todayarr);
-  }  },[])
-
-
-  console.log(Expense);
-
-  console.log(Todayarr); 
-
+ 
 let Naya = [];
 Naya = Total.filter((x)=>
    
@@ -41,52 +25,64 @@ x.label[0]==option
 
 
 )
-useEffect(()=>{
+// useEffect(()=>{
 
 
  
-  console.log("KHELLGAYA",Naya)
-},[option])
+//   console.log("KHELLGAYA",Naya)
+// },[option])
 
-console.log("KHELL",Naya);
-  const handleIncome = () =>{
+
+  const handleIncomes = () =>{
+
+    if(option){
+      let New = Naya.filter((x)=> x.Exp===false)
+     console.log("CHAL RAHA HAI");
+    Naya=New;
+    }else{
     let New = Today.filter((x)=> x.Exp===false)
+    let Old = Yesterday.filter((x)=> x.Exp===false)
     console.log(New);
     console.log(Today);
     Today=New;
+    Yesterday=Old;
+    }
   }
 
-  const handleExpense = () =>{
+  const handleExpenses = () =>{
 
     
     if(option){
       let New = Naya.filter((x)=> x.Exp!==false)
-  
+     console.log("CHAL RAHA HAI");
     Naya=New;
     }
     else{  
       
       console.log("Hello");
     let New = Today.filter((x)=> x.Exp!==false)
+    let Old = Yesterday.filter((x)=> x.Exp!==false)
     console.log(New);
     console.log(Today);
     Today=New;
-    setTodayarr(Today);
+    Yesterday=Old;
     }
 
    
   
   }
 
-
-
-  if(Income){
-    handleIncome();
+  if(Incomes){
+    handleIncomes();
   }
-  useEffect(()=>{
-    console.log("Heyyyyyyy");
-    handleExpense();
-  },[Expense,option])
+  // useEffect(()=>{
+  //   console.log("Heyyyyyyy");
+  //   handleExpenses();
+  // },[Expenses,option])
+
+  if(Expenses){
+    handleExpenses();
+  }
  
 
 
@@ -145,7 +141,7 @@ console.log("KHELL",Naya);
 
   const Highest = () => {
     
-    if(Expense&&highest){
+    if(Expenses&&highest){
       {
 
         let finalarr = [...Today];
@@ -220,7 +216,7 @@ else{
   const Lowest = () => {
     console.log(Today);
 
-    if(Expense){
+    if(Expenses){
       {
 
         let finalarr = [...Today];
@@ -326,9 +322,9 @@ const handledetailed = (values) =>{
               {label === "detailed" ? "Today" : "Recent Transaction"}
             </span>{" "}
           </div>
-          {Todayarr?.map((x) => {
+          {Today?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -375,7 +371,7 @@ const handledetailed = (values) =>{
           </div>
           {Yesterday?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -436,7 +432,7 @@ const handledetailed = (values) =>{
         
         Naya?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -486,7 +482,7 @@ const handledetailed = (values) =>{
         
         Total?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
+              <button className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -502,7 +498,7 @@ const handledetailed = (values) =>{
                         <img src={Tran} alt="" srcset="" />
                       )}
                     </section>
-                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
+                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                       {" "}
                       <span className="text-[#292B2D] text-base font-medium">
                         {x.label[0]}
@@ -522,7 +518,7 @@ const handledetailed = (values) =>{
                     </span>
                   </div>
                 </section>
-              </section>
+              </button>
             );
           })}
         </section>

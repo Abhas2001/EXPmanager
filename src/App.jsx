@@ -11,16 +11,14 @@ import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 function App() {
 
 
-  
-
-  
   let sum=0;
   let negatives=0;
-  
-  
+
+ 
 
   const[change,setChange] = useState(false);
   const[totexpense,settotexpense]=useState()
+  const[totIncome,settotIncome]=useState()
   const[transaction,settransaction] = useState(false);
   const[home,sethome] = useState(true);
   const[catarr,setcatarr] = useState(()=>{
@@ -30,8 +28,8 @@ function App() {
   });
 
   const[negarr,setnegarr] = useState(()=>{
-    const Saved = localStorage.getItem("Recentneg")
-    const initials = JSON.parse(Saved);
+    const Savedneg = localStorage.getItem("Recentneg")
+    const initials = JSON.parse(Savedneg);
     return Array.isArray(initials) ? initials : [];
   });
   const[storedarr,setStoredArr] = useState(() => {
@@ -43,68 +41,81 @@ function App() {
 
   const[storednegarr,setStorednegArr] = useState(() => {
    
-    const saved = localStorage.getItem("negval");
-    const initialValue = JSON.parse(saved);
+    const savedneg = localStorage.getItem("negval");
+    const initialValue = JSON.parse(savedneg);
     return initialValue || ""
   });;
   
+
   
 const[detailed,setDetailed] = useState([]);
 const[imgLinks,setImgLinks] = useState()
+const[Incomes,setIncomes] = useState(false);
+const[Expenses,setExpenses] = useState(false);
 
 
 
   useEffect(()=>{
-       localStorage.setItem("Recentneg",JSON.stringify(catarr))
+       localStorage.setItem("Recent",JSON.stringify(catarr))
        
   },[catarr])
 
+  
   useEffect(()=>{
-    localStorage.setItem("Recent",JSON.stringify(negarr))
+    localStorage.setItem("Recentneg",JSON.stringify(negarr))
     
 },[negarr])
 
 const handlesum = () =>{
 
-  console.log("hysdgfhdsgfsdg",catarr);
-  for(let i=0; i<catarr.length; i++){
-  
-    if(!isNaN(catarr[i].input)){
-    sum+=Number(catarr[i].input)
+  for(let i=0; i<storedarr.length; i++){
+   
+    if(!isNaN(storedarr[i])){
+    sum+=Number(storedarr[i])
      
     }
   }
   settotexpense(sum);
+
   
 }
 
-console.log("Bhae",totexpense);
+
 useEffect(()=>{
   handlesum();
-},[catarr])
+},[storedarr])
 
+
+
+const handlenegatives = () =>{
   
   for(let i=0; i<storednegarr.length; i++){
   
     if(!isNaN(storednegarr[i])){
       negatives+=Number(storednegarr[i])
-    console.log(negatives);
+ 
     }
   }
+  settotIncome(negatives);
+
+}
+
+
+useEffect(()=>{
+  handlenegatives();
+},[negarr])
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   localStorage.setItem("negval",JSON.stringify(storednegarr))
- 
- 
 
    
   return (
          <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
+      <Route path="/home" element={<Home setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>
-      <Route path="/recenttransaction" element={<Transaction setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
+      <Route path="/recenttransaction" element={<Transaction Expenses={Expenses} Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
       <Route path="/detailed" element={<Detailed negarr={negarr}  catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks}/>} />
       <Route path="/report" element={<Report/>}/>
        </Routes>

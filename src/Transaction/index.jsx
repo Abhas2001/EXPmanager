@@ -10,7 +10,7 @@ import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
 import Left from '../images/Back.svg';
 
-const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) => {
+const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
@@ -20,12 +20,13 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) 
   const[option,setOption] = useState('')
   const[count,setcount]= useState(0);
   const[financialreport,setFinancialreport] = useState(false);
-  const[Income,setIncome] = useState(false);
-  const[Expense,setExpense] = useState(false);
+ 
   
   const handleBack = () => {
     sethome(true);
     settransaction(false);
+    setIncomes(false)
+    setExpenses(false);
     navigate("/home");
   };
 
@@ -41,17 +42,17 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) 
   }
 
   return (
-    <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
+    <section className={`w-full h-screen flex justify-center items-center bg-black `}>
 { financialreport?
  
  <Financial/>
  :
 
-    <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
+    <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 ">
 
 
    
-      <section className={`flex-1 overflow-y-auto ${showfilter?'opacity-60':""}`}>
+      <section className={`flex-1 overflow-y-auto h-screen ${showfilter?'opacity-60':""}`}>
         <section className="flex justify-between  p-4 mt-4" >
         
         <section className='flex md:w-full md:flex md:justify-start w-full justify-start' onClick={()=>handleClose()}>
@@ -78,13 +79,13 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) 
         </section>
         </section>
         <section>
-          <Recent Expense={Expense} Income={Income} setDetailed={setDetailed} negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
+          <Recent Expenses={Expenses} Incomes={Incomes} setDetailed={setDetailed} negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
       </section>
 
 
       <section className={`${showfilter?'':'hidden'} h-[95%] w-full bg-[#FFFFFF] rounded-t-4xl shadow-2xl fixed bottom-0`}>
-        <Filter Expense={Expense} Income={Income} setIncome={setIncome}  setExpense={setExpense} setcount={setcount} option={option} setOption={setOption} setShowFilter={setShowFilter} setHighest={setHighest} highest={highest} newest={newest} oldest={oldest} setNewest={setNewest} setOldest={setOldest}  setLowest={setLowest} lowest={lowest}/> 
+        <Filter Expenses={Expenses} Incomes={Incomes} setIncomes={setIncomes}  setExpenses={setExpenses} setcount={setcount} option={option} setOption={setOption} setShowFilter={setShowFilter} setHighest={setHighest} highest={highest} newest={newest} oldest={oldest} setNewest={setNewest} setOldest={setOldest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
       <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     

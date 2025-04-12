@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import left from "../images/left.svg";
 import down from "../images/down.svg";
 import attachment from "../images/attachment.svg";
+import close from "../assets/close.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
@@ -50,9 +51,9 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
     if (newItem) {
       setStoredArr((prevArr) => [...prevArr, newItem]);
     }
-
+   
     finalval.push(val);
-    setcatarr((prev)=>[...prev, {"label":dropdownarr,"Exp":false,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
+    setcatarr((prev)=>[...prev, {"label":dropdownarr,"imglink":imgLink  ,"Exp":false,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
     navigate("/home");
   };
  
@@ -60,6 +61,8 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
     setVal(e.target.value);
     console.log(val);
   };
+
+  
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -70,6 +73,8 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
   }
 
   const[imgLink,setImgLink] = useState()
+
+  
   
   const videoConstraints = {
     width: 1280,
@@ -84,6 +89,9 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
     setOpenCamera(false);
     setShowoverlay(false);
     
+  }
+  const handlecloseimg = () =>{
+    setImgLink();
   }
   const handleinputdisabled = () =>{
        if(showoverlay){
@@ -201,7 +209,10 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
 
-             <section className="mb-4 w-32 h-18"><section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg w-32 h-16" src={imgLink} alt="" srcset="" /> </section></section> 
+             <section  className="mb-4 w-32 h-18 flex justify-start"><section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg w-32 h-16" src={imgLink} alt="" srcset="" /> </section>
+             
+             <span className="relative right-[10px] bottom-[10px]" onClick={()=>handlecloseimg()}> <img src={close} alt="" srcset="" /></span>
+             </section> 
               
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">

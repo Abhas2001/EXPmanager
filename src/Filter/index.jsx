@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import left from '../images/leftt.svg'
 
-const index = ({Expense,Income, setExpense,setIncome,setcount,setShowFilter,setHighest,highest,setNewest,setOldest, setLowest, lowest,newest,oldest,option,setOption}) => {
+const index = ({Expenses,Incomes, setExpenses,setIncomes,setcount,setShowFilter,setHighest,highest,setNewest,setOldest, setLowest, lowest,newest,oldest,option,setOption}) => {
 
     const[showdrop,setShowdrop] = useState(false);
    
@@ -16,14 +16,14 @@ const index = ({Expense,Income, setExpense,setIncome,setcount,setShowFilter,setH
     }
 
 
-    const handleIncome = () =>{
-      setIncome(true);
-      setExpense(false);
+    const handleIncomes = () =>{
+      setIncomes(true);
+      setExpenses(false);
     }
 
-    const handleExpense = () =>{
-      setExpense(true);
-      setIncome(false);
+    const handleExpenses = () =>{
+      setExpenses(true);
+      setIncomes(false);
     }
 
   const handleNewest  = () =>{
@@ -61,8 +61,8 @@ const index = ({Expense,Income, setExpense,setIncome,setcount,setShowFilter,setH
         setLowest(false);
         setNewest(false);
         setOldest(false);
-        setIncome(false);
-        setExpense(false);
+        setIncomes(false);
+        setExpenses(false);
         setOption('')
         setcount(0);
     }
@@ -93,8 +93,8 @@ const index = ({Expense,Income, setExpense,setIncome,setcount,setShowFilter,setH
       <section className='mt-1 p-4'>
         <span className='text-[#0D0E0F] font-semibold text-lg'>Filter By</span>
         <section className='flex justify-between mt-3'>
-            <button onClick={()=>handleIncome()}  className={`${Income?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${Income?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Income  </span> </button>
-            <button onClick={()=>handleExpense()}  className={`${Expense?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${Expense?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Expense </span>  </button>
+            <button onClick={()=>handleIncomes()}  className={`${Incomes?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${Incomes?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Incomes  </span> </button>
+            <button onClick={()=>handleExpenses()}  className={`${Expenses?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${Expenses?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Expenses </span>  </button>
             <button   className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Transfer</span>  </button>
         </section>
       </section>

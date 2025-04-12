@@ -5,18 +5,18 @@ import Footer from '../Footer/index';
 import Recent from '../RecentTrans/index'
 import { useState } from 'react';
 
-const index = ({setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,negatives,storedarr,settransaction,storednegarr}) => {
+const index = ({setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
  
 
-  console.log("HERE", negarr);
+  
   settransaction(false);
 
   return (
        
     <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
     <section className='flex flex-col justify-between text-white w-[420px] h-screen bg-[#FFFFFF] '>
-      <section className='overflow-y-auto h-[80vh]'>
-      <Header inputval={inputval} totexpense={totexpense} negatives={negatives} />
+      <section className='overflow-y-auto overflow-x-hidden h-[80vh]'>
+      <Header setIncomes={setIncomes} setExpenses={setExpenses} inputval={inputval} totexpense={totexpense} totIncome={totIncome} negatives={negatives} />
 
       <Frequency storedarr={storedarr} storednegarr={storednegarr}/>
        <Recent setDetailed={setDetailed} sethome={sethome} catarr={catarr} negarr={negarr} settransaction={settransaction}/>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import left from "../images/left.svg";
 import down from "../images/down.svg";
 import attachment from "../images/attachment.svg";
+import close from "../assets/close.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
@@ -43,24 +44,26 @@ const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStoredne
 
   const handleCont = () => {
     setChange(!change);
-    localStorage.setItem("ar7", val);
+    localStorage.setItem("ar8", val);
 
-    const newItem = localStorage.getItem("ar7");
+    const newItem = localStorage.getItem("ar8");
     console.log(newItem);
     if (newItem) {
       setStorednegArr((prevArr) => [...prevArr, newItem]);
     }
 
     finalval.push(val);
-    setnegarr((prev)=>[...prev, {"label":dropdownarr,"Exp":true, "input":-(val),"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
+    setnegarr((prev)=>[...prev, {"label":dropdownarr,"Exp":true,"imglink":imgLink, "input":-(val),"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
     navigate("/home");
   };
  
   const handlechange = (e) => {
+    localStorage.setItem("inputval",e.target.value);
     setVal(e.target.value);
     console.log(val);
   };
-
+   
+  let inputvalue = localStorage.getItem('inputval')
   const handleInput = (e) => {
     setInput(e.target.value);
     console.log(Input);
@@ -84,6 +87,10 @@ const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStoredne
     setOpenCamera(false);
     setShowoverlay(false);
     
+  }
+
+  const handlecloseimg = () =>{
+    setImgLink();
   }
   const handleinputdisabled = () =>{
        if(showoverlay){
@@ -168,6 +175,7 @@ const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStoredne
             <input
               type="number"
               placeholder="0"
+              value={val}
               disabled={handleinputdisabled()}
               onKeyUp={()=>handleamount(event)}
               className="text-xl font-bold text-white p-0 border-2 border-[#FD3C4A] enabled:outline-none focus:text-white focus:border-2 focus:outline-[#FD3C4A] focus:border-[#FD3C4A]  placeholder:text-2xl placeholder:text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
@@ -201,13 +209,16 @@ const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStoredne
             <section className="relative w-full flex justify-center items-center p-4">
               {imgLink?
 
-             <section className="mb-4 w-32 h-18"><section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg w-32 h-16" src={imgLink} alt="" srcset="" /> </section></section> 
+             <section className="mb-4 w-32 h-18 flex justify-start">  <section className={`${ gallery?'w-24 h-16 mb-14':'w-40 h-18 mb-6'}`}> <img className="rounded-lg w-32 h-16" src={imgLink} alt="" srcset="" /> </section>
+             <span className="relative right-[10px] bottom-[10px]" onClick={()=>handlecloseimg()}> <img src={close} alt="" srcset="" /></span>
+             </section> 
               
               :
              <button onClick={()=>handleopenCamera()} className="cursor-pointer border-[1px] py-3 border-[#F1F1FA] w-[790px] rounded-2xl  flex justify-center items-center">
               <section className="flex">
                <img src={attachment} alt="" srcset="" />
                <span className="font-normal text-[#91919F]">Add attachment</span>
+              
                </section> 
              </button>
 }

@@ -9,10 +9,11 @@ const index = ({ detailed, imgLinks,catarr,setcatarr }) => {
     const[deletedialog,setDeletedialog]=useState(false);
     const[deletesuccess,setDeletesuccess] = useState(false);
     const [visible, setVisible] = useState(false);
+    console.log(detailed);
   const navigate = useNavigate();
 
 
-  console.log("OLD",detailed);
+  console.log("OLD",detailed[0].img);
 
   let New = catarr
 
@@ -135,15 +136,15 @@ const  handleDeleteTransaction = (value) =>{
         </p>
       </section>
 
-      {imgLinks && (
+      {detailed[0].img && (
         <section className="mt-8">
-          <span className="font-semibold text-[16px] text-[#91919F]">
+          <span className="font-semibold text-[16px] text-[#91919F] ml-5">
             Attachment
           </span>
           <section className="flex justify-center items-center p-4">
             <img
               className="w-[500px] h-[130px] rounded-3xl"
-              src={imgLinks}
+              src={detailed[0].img}
               alt=""
               srcset=""
             />
