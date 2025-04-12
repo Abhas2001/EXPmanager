@@ -8,31 +8,85 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
+const index = ({Expense,Income,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
   console.log(label);
   const d = new Date();
   console.log("NGARR",negarr);
   console.log(catarr);
+  const[Todayarr,setTodayarr] = useState([]);
 
   let Today = catarr.filter((x) => x.CurrentD === d.getDate()).concat(negarr?.filter((x) => x.CurrentD === d.getDate()));
+
   let Todayexp = negarr?.filter((x) => x.CurrentD === d.getDate())
-  let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate());
+  let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate()).concat(negarr?.filter((x)=> x.CurrentD !== d.getDate()));
   let Total = catarr.concat(negarr);
- 
-Today.map((x)=>{
-    if(x.Exp){
-    console.log(x.Exp);
-    }
-})
 
- let Naya = catarr.filter((x)=>
+  useEffect(()=>{
+    if(!Expense){
+      console.log("YAHAAA",Today);
+    setTodayarr(Today);
+    console.log("Todayarr",Todayarr);
+  }  },[])
+
+
+  console.log(Expense);
+
+  console.log(Todayarr); 
+
+let Naya = [];
+Naya = Total.filter((x)=>
    
-    x.label[0]==option
-
-  )
+x.label[0]==option
 
 
+)
+useEffect(()=>{
+
+
+ 
+  console.log("KHELLGAYA",Naya)
+},[option])
+
+console.log("KHELL",Naya);
+  const handleIncome = () =>{
+    let New = Today.filter((x)=> x.Exp===false)
+    console.log(New);
+    console.log(Today);
+    Today=New;
+  }
+
+  const handleExpense = () =>{
+
+    
+    if(option){
+      let New = Naya.filter((x)=> x.Exp!==false)
+  
+    Naya=New;
+    }
+    else{  
+      
+      console.log("Hello");
+    let New = Today.filter((x)=> x.Exp!==false)
+    console.log(New);
+    console.log(Today);
+    Today=New;
+    setTodayarr(Today);
+    }
+
+   
+  
+  }
+
+
+
+  if(Income){
+    handleIncome();
+  }
+  useEffect(()=>{
+    console.log("Heyyyyyyy");
+    handleExpense();
+  },[Expense,option])
  
 
 
@@ -90,6 +144,29 @@ Today.map((x)=>{
   }
 
   const Highest = () => {
+    
+    if(Expense&&highest){
+      {
+
+        let finalarr = [...Today];
+    
+    
+        for (let i = 0; i < finalarr.length; i++) {
+          for (let j = i + 1; j < finalarr.length; j++) {
+            if (Number(finalarr[i].input) <  Number(finalarr[j].input)) {
+              let temp = finalarr[i];
+    
+              console.log("temp:", temp);
+              finalarr[i] = finalarr[j];
+    
+              finalarr[j] = temp;
+            }
+          }
+        }
+    
+       Total = finalarr;
+    }
+    }
     if(option){
 
     let finalarr = [...Naya];
@@ -112,7 +189,7 @@ Today.map((x)=>{
 }
 else{
 
-    let finalarr = [...catarr];
+    let finalarr = [...Total];
 
 
     for (let i = 0; i < finalarr.length; i++) {
@@ -128,7 +205,9 @@ else{
       }
     }
 
-    catarr = finalarr;
+    console.log(finalarr);
+
+    Total = finalarr;
 
 
 }
@@ -139,6 +218,30 @@ else{
   
 
   const Lowest = () => {
+    console.log(Today);
+
+    if(Expense){
+      {
+
+        let finalarr = [...Today];
+    
+    
+        for (let i = 0; i < finalarr.length; i++) {
+          for (let j = i + 1; j < finalarr.length; j++) {
+            if (Number(finalarr[i].input) > Number(finalarr[j].input)) {
+              let temp = finalarr[i];
+    
+              console.log("temp:", temp);
+              finalarr[i] = finalarr[j];
+    
+              finalarr[j] = temp;
+            }
+          }
+        }
+    
+       Total = finalarr;
+    }
+    }
     if(option){
 
         let finalarr = [...Naya];
@@ -159,9 +262,10 @@ else{
     
        Naya = finalarr;
     }
+  
     else{
     
-        let finalarr = [...catarr];
+        let finalarr = [...Total];
     
     
         for (let i = 0; i < finalarr.length; i++) {
@@ -177,10 +281,11 @@ else{
           }
         }
     
-        catarr = finalarr;
+        Total = finalarr;
     
     
     }
+    console.log(Naya);
   };
 
   if (highest) {
@@ -221,7 +326,7 @@ const handledetailed = (values) =>{
               {label === "detailed" ? "Today" : "Recent Transaction"}
             </span>{" "}
           </div>
-          {Today?.map((x) => {
+          {Todayarr?.map((x) => {
             return (
               <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
                 <section className="flex justify-between py-3">
@@ -251,7 +356,7 @@ const handledetailed = (values) =>{
                   </div>
                   <div className=" flex flex-col">
                         <span className={`w-full flex justify-end ${x.Exp?'text-[#FD3C4A]':'text-[#00A86B]'} text-base font-semibold`}>
-                      {x.Exp? -x.input:x.input}
+                      {x.input}
                     </span>{" "}
                     <span className="text-[#91919F] font-medium text-[13px] pt-2">
                       {x.time}
@@ -270,7 +375,7 @@ const handledetailed = (values) =>{
           </div>
           {Yesterday?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -297,7 +402,7 @@ const handledetailed = (values) =>{
                     </section>
                   </div>
                   <div className="text-black flex flex-col">
-                    <span className="w-full flex justify-end text-[#00A86B] text-base font-semibold">
+                  <span className={`w-full flex justify-end ${x.Exp?'text-[#FD3C4A]':'text-[#00A86B]'} text-base font-semibold`}>
                       {x.input}
                     </span>{" "}
                     <span className="text-[#91919F] font-medium text-[13px] pt-2">
@@ -316,7 +421,7 @@ const handledetailed = (values) =>{
             <span className="text-lg font-semibold text-[#292B2D]">
               {label === "detailed" && !highest && !lowest && !newest && !oldest
                 ? "Today"
-                : "Recent Transaction"}
+                : "All Transaction"}
             </span>{" "}
             <div className="p-1 px-3 bg-[#EEE5FF] rounded-full flex justify-center items-center">
               <button
@@ -331,7 +436,7 @@ const handledetailed = (values) =>{
         
         Naya?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2">
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -358,8 +463,8 @@ const handledetailed = (values) =>{
                     </section>
                   </div>
                   <div className="text-black flex flex-col">
-                    <span className="w-full flex justify-end text-[#00A86B] text-base font-semibold">
-                      {x.input}
+                  <span className={`w-full flex justify-end ${x.Exp?'text-[#FD3C4A]':'text-[#00A86B]'} text-base font-semibold`}>
+                    {x.input}
                     </span>{" "}
                     <span className="text-[#91919F] font-medium text-[13px] pt-2">
                       {x.time}
@@ -410,7 +515,7 @@ const handledetailed = (values) =>{
                   </div>
                   <div className="text-black flex flex-col">
                     <span className={`w-full flex justify-end ${x.Exp?'text-[#FD3C4A]':'text-[#00A86B]'} text-base font-semibold`}>
-                    {x.Exp? -x.input:x.input}
+                    {x.input}
                     </span>{" "}
                     <span className="text-[#91919F] font-medium text-[13px] pt-2">
                       {x.time}

@@ -8,6 +8,7 @@ import Recent from '../RecentTrans/index';
 import Filter from '../Filter/index';
 import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
+import Left from '../images/Back.svg';
 
 const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) => {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) 
   const[option,setOption] = useState('')
   const[count,setcount]= useState(0);
   const[financialreport,setFinancialreport] = useState(false);
+  const[Income,setIncome] = useState(false);
+  const[Expense,setExpense] = useState(false);
   
   const handleBack = () => {
     sethome(true);
@@ -46,15 +49,15 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) 
 
     <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
 
-        <section className='flex md:w-full md:flex md:justify-start w-full justify-start' onClick={()=>handleClose()}>
-
-      <button onClick={handleBack}>Back</button>
-      </section>
 
    
       <section className={`flex-1 overflow-y-auto ${showfilter?'opacity-60':""}`}>
         <section className="flex justify-between  p-4 mt-4" >
-          <div><img src={drop} alt="Drop" /></div> 
+        
+        <section className='flex md:w-full md:flex md:justify-start w-full justify-start' onClick={()=>handleClose()}>
+
+      <button onClick={handleBack}><img className='text-black color-black' src={Left} alt="" srcset="" /></button>
+      </section>
             <div className='flex' onClick={()=>handlefilter()}><img src={filter} alt="Filter" /> <span className={`${count==0?'hidden':''}  bg-[#7F3DFF] text-white relative right-4 w-[24px] h-[24px] flex justify-center items-center rounded-full`}>{count}</span></div>
         </section>
 
@@ -75,13 +78,13 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed }) 
         </section>
         </section>
         <section>
-          <Recent setDetailed={setDetailed} negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
+          <Recent Expense={Expense} Income={Income} setDetailed={setDetailed} negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
       </section>
 
 
       <section className={`${showfilter?'':'hidden'} h-[95%] w-full bg-[#FFFFFF] rounded-t-4xl shadow-2xl fixed bottom-0`}>
-        <Filter setcount={setcount} option={option} setOption={setOption} setShowFilter={setShowFilter} setHighest={setHighest} highest={highest} newest={newest} oldest={oldest} setNewest={setNewest} setOldest={setOldest}  setLowest={setLowest} lowest={lowest}/> 
+        <Filter Expense={Expense} Income={Income} setIncome={setIncome}  setExpense={setExpense} setcount={setcount} option={option} setOption={setOption} setShowFilter={setShowFilter} setHighest={setHighest} highest={highest} newest={newest} oldest={oldest} setNewest={setNewest} setOldest={setOldest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
       <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import left from '../images/leftt.svg'
 
-const index = ({setcount,setShowFilter,setHighest,highest,setNewest,setOldest, setLowest, lowest,newest,oldest,option,setOption}) => {
+const index = ({Expense,Income, setExpense,setIncome,setcount,setShowFilter,setHighest,highest,setNewest,setOldest, setLowest, lowest,newest,oldest,option,setOption}) => {
 
     const[showdrop,setShowdrop] = useState(false);
    
@@ -13,6 +13,17 @@ const index = ({setcount,setShowFilter,setHighest,highest,setNewest,setOldest, s
 
     const handleApply =() =>{
         setShowFilter(false);
+    }
+
+
+    const handleIncome = () =>{
+      setIncome(true);
+      setExpense(false);
+    }
+
+    const handleExpense = () =>{
+      setExpense(true);
+      setIncome(false);
     }
 
   const handleNewest  = () =>{
@@ -50,6 +61,8 @@ const index = ({setcount,setShowFilter,setHighest,highest,setNewest,setOldest, s
         setLowest(false);
         setNewest(false);
         setOldest(false);
+        setIncome(false);
+        setExpense(false);
         setOption('')
         setcount(0);
     }
@@ -80,9 +93,9 @@ const index = ({setcount,setShowFilter,setHighest,highest,setNewest,setOldest, s
       <section className='mt-1 p-4'>
         <span className='text-[#0D0E0F] font-semibold text-lg'>Filter By</span>
         <section className='flex justify-between mt-3'>
-            <button className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Income  </span> </button>
-            <button className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Expense </span>  </button>
-            <button className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Transfer</span>  </button>
+            <button onClick={()=>handleIncome()}  className={`${Income?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${Income?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Income  </span> </button>
+            <button onClick={()=>handleExpense()}  className={`${Expense?'bg-[#EEE5FF]':''} border-[1px] border-[#E3E5E5] rounded-full px-6 py-3`}> <span className={`font-medium text-sm ${Expense?'text-[#7F3DFF]':'text-[#0D0E0F]'}`}>Expense </span>  </button>
+            <button   className='border-[1px] border-[#E3E5E5] rounded-full px-6 py-3'> <span className='font-medium text-sm text-[#0D0E0F]'>Transfer</span>  </button>
         </section>
       </section>
 
@@ -117,6 +130,7 @@ const index = ({setcount,setShowFilter,setHighest,highest,setNewest,setOldest, s
                 <span  onClick={()=>handleSelect('Transportation')} className='border-b-[1px] border-gray-100'>Transportation</span>
                 <span  onClick={()=>handleSelect('Shopping')} className='border-b-[1px] border-gray-100'>Shopping</span>
                 <span  onClick={()=>handleSelect('Salary')} className='border-b-[1px] border-gray-100'>Salary</span>
+                <span onClick={()=>handleSelect('Subscription')} className='border-b-[1px] border-gray-100'>Subscription </span>
              </section>
  
         </section>
