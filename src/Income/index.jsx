@@ -178,6 +178,7 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
               placeholder="0"
               disabled={handleinputdisabled()}
               onKeyUp={()=>handleamount(event)}
+              value={val}
               className="text-xl font-bold text-white p-0 border-2 border-[#00A86B] enabled:outline-none focus:text-white focus:border-2 focus:outline-[#00A86B] focus:border-[#00A86B]  placeholder:text-2xl placeholder:text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               onInput={handlechange}
             />
@@ -237,7 +238,7 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
             </section> */}
             <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
               <button
-                className="bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer"
+                className={`${!disabled&&'opacity-[0.4]'} bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer`}
                 onClick={handleCont}
                 disabled={!disabled}
               >

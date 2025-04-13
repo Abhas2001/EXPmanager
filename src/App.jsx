@@ -13,9 +13,8 @@ function App() {
 
   let sum=0;
   let negatives=0;
-
  
-
+ 
   const[change,setChange] = useState(false);
   const[totexpense,settotexpense]=useState()
   const[totIncome,settotIncome]=useState()
@@ -103,11 +102,12 @@ const handlenegatives = () =>{
 
 useEffect(()=>{
   handlenegatives();
-},[negarr])
+},[storednegarr])
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   localStorage.setItem("negval",JSON.stringify(storednegarr))
-
+  console.log(storedarr);
+console.log(storednegarr);
    
   return (
          <Routes>
@@ -116,7 +116,7 @@ useEffect(()=>{
       <Route path="/income" element={<Income setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>
       <Route path="/recenttransaction" element={<Transaction Expenses={Expenses} Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
-      <Route path="/detailed" element={<Detailed negarr={negarr}  catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks}/>} />
+      <Route path="/detailed" element={<Detailed setnegarr={setnegarr} storednegarr={storednegarr} setStorednegArr={setStorednegArr} negarr={negarr}  catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks} storedarr={storedarr} setStoredArr={setStoredArr}/>} />
       <Route path="/report" element={<Report/>}/>
        </Routes>
      

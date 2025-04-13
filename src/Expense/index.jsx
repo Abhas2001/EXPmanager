@@ -236,8 +236,8 @@ const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStoredne
               </section>
             </section> */}
             <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
-              <button
-                className="bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer"
+            <button
+                className={`${!disabled&&'opacity-[0.4]'} bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer`}
                 onClick={handleCont}
                 disabled={!disabled}
               >

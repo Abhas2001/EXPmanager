@@ -4,7 +4,7 @@ import trash from "../images/trash.svg";
 import left from "../images/left.svg";
 import correct from "../images/correct.svg"
 
-const index = ({ detailed, imgLinks,catarr,setcatarr }) => {
+const index = ({ detailed,setnegarr,negarr, imgLinks,catarr,setcatarr,storedarr,setStoredArr,setStorednegArr,storednegarr }) => {
 
     const[deletedialog,setDeletedialog]=useState(false);
     const[deletesuccess,setDeletesuccess] = useState(false);
@@ -13,25 +13,47 @@ const index = ({ detailed, imgLinks,catarr,setcatarr }) => {
   const navigate = useNavigate();
 
 
-  console.log("OLD",detailed[0].img);
+  console.log("OLD",storedarr);
 
   let New = catarr
-
-  console.log(New);
+  let summation = storedarr
+  let negation = storednegarr
+  
 
 const  handleDeleteTransaction = (value) =>{
-    console.log(value);
-        New= catarr.filter((x)=>Number(x.input)!==Number(value));
-        setcatarr(New)
-        console.log("NAYAAA",catarr);
-        setDeletesuccess(true);
-        setDeletedialog(false);
+   
+      
+        if(detailed[0].exp===true){
+          New= negarr.filter((x)=>Number(x.input)!==Number(value));
+      
+          setnegarr(New)
+          negation = storednegarr.filter((x)=>Number(x)!==Number(-value))
+          console.log(negation);
+          setStorednegArr(negation);
+        
+          setDeletesuccess(true);
+          setDeletedialog(false);
+         
+        }
+        else{
+          New= catarr.filter((x)=>Number(x.input)!==Number(value));
+      
+          setcatarr(New)
+          summation = storedarr.filter((x)=>Number(x)!==Number(value))
+          setStoredArr(summation)
+        
+          console.log("NAYAAA",catarr);
+          setDeletesuccess(true);
+          setDeletedialog(false);
+  
+         
+        }
        
   }
   
   if(deletesuccess){
     setTimeout(() => {
-        navigate(-1)
+      navigate("/");
         
     }, 2000);
   }
@@ -102,7 +124,7 @@ const  handleDeleteTransaction = (value) =>{
               Category
             </span>
             <span className="font-semibold text-[16px] text-[#0D0E0F]">
-              Salary
+             {detailed[0].label}
             </span>
           </div>
 

@@ -324,7 +324,7 @@ const handledetailed = (values) =>{
           </div>
           {Today?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"exp":x.Exp ,"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -371,7 +371,7 @@ const handledetailed = (values) =>{
           </div>
           {Yesterday?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"exp":x.Exp ,"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -432,7 +432,7 @@ const handledetailed = (values) =>{
         
         Naya?.map((x) => {
             return (
-              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
+              <section className="w-[90%] mx-5 px-4 bg-[#FCFCFC] rounded-3xl mb-2" onClick={()=>handledetailed({"label":x.label[0],"exp":x.Exp ,"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                 <section className="flex justify-between py-3">
                   <div className="text-black flex gap-2">
                     <section className="flex justify-center items-center">
@@ -498,7 +498,7 @@ const handledetailed = (values) =>{
                         <img src={Tran} alt="" srcset="" />
                       )}
                     </section>
-                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
+                    <section className="flex flex-col" onClick={()=>handledetailed({"label":x.label[0],"exp":x.Exp ,"description":x.description,"input":x.input,"time":x.time,"Exp":x.Exp,"img":x.imglink})}>
                       {" "}
                       <span className="text-[#292B2D] text-base font-medium">
                         {x.label[0]}
