@@ -4,9 +4,11 @@ import left from '../images/Back.svg';
 import chart1 from '../assets/chart10.svg';
 import chart2 from '../assets/chart2.svg';
 import Frequency from '../Frequency/index';
+import Bar from '../Bar/index'
 import shopping from "../images/shopping.svg";
 import Food from "../images/Food.svg";
 import salary from "../images/salary.svg";
+import full from "../assets/full.svg"
 
 import subs from "../images/subs.svg";
 import Tran from "../images/Tran.svg";
@@ -18,11 +20,20 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
     const navigate = useNavigate()
     const[incomehilight,setIncomehilight] = useState(true);
     const[expensehilight,setexpensehilight] = useState(false);
+    const[openBar,setOpenBar] = useState(false);
     const[Total,setTotal]=useState()
      
 
     const handleback = () =>{
         navigate(-1);
+    }
+
+    const handlebar = () =>{
+        setOpenBar(true);
+    }
+
+    const handlenonbar  = () =>{
+        setOpenBar(false);
     }
 
     const handleincomehilight = () =>{
@@ -68,13 +79,25 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
               &#8377;
             </p>{!incomehilight?totexpense:totIncome}</div>
           <div className='flex'>
-            <img src={chart1} alt="" srcset="" />
-            <img src={chart2} alt="" srcset="" />
+            { openBar?
+            <div onClick={()=> handlenonbar()}>
+            <img  src={full} alt="" srcset="" />
+            </div>
+            :
+            <div className='flex'>
+            <img onClick={()=> handlenonbar()} src={chart1} alt="" srcset="" />
+            <img onClick={()=>handlebar()} src={chart2} alt="" srcset="" />
+            </div>
+}
           </div>
         </section>
 
         <section>
+            {!openBar?
         <Frequency storedarr={storedarr} storednegarr={storednegarr}/>
+        :
+        <Bar storednegarr={storednegarr}/>
+            }
         </section>
 
         <section>
