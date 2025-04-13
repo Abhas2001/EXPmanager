@@ -11,11 +11,16 @@ import ex from '../images/Expense.svg';
 import Trans from '../images/Trans.svg';
 import transcolored from '../images/transcolored.svg';
 
-const index = ({sethome,transaction,home,settransaction}) => {
+const index = ({setloader,sethome,transaction,home,settransaction}) => {
 
   const[btn,setBtn] = useState(false);
   const navigate = useNavigate();
   const handletrans = () =>{
+    setloader(true);
+    setTimeout(() => {
+      setloader(false)
+    },5000);
+    console.log("TRANSAC");
     settransaction(true);
     navigate("/recenttransaction")
   }

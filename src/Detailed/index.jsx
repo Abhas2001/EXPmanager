@@ -53,7 +53,7 @@ const  handleDeleteTransaction = (value) =>{
   
   if(deletesuccess){
     setTimeout(() => {
-      navigate("/");
+      navigate("/home");
         
     }, 2000);
   }
@@ -71,14 +71,15 @@ const  handleDeleteTransaction = (value) =>{
   return (
     <div>
             { deletesuccess &&
-        
-        <section className="flex justify-center items-center bg-[#ffffff] rounded-3xl shadow-2xl p-6 fixed bottom-72 left-4">
+        <section className="w-full h-screen flex justify-center items-center">
+        <section className="flex justify-center items-center bg-[#ffffff] rounded-3xl shadow-2xl p-6 fixed ">
             <section>
                 <div className="w-full flex justify-center items-center">
             <img src={correct} alt="" srcset="" />
             </div>
             <span>Transaction has been successfully removed</span>
             </section>
+        </section>
         </section>
 }
 
@@ -96,7 +97,7 @@ const  handleDeleteTransaction = (value) =>{
           </button>
         </section>
 
-        <section className="w-full flex justify-center items-center mt-6">
+        <section className={`${deletesuccess&&'hidden'} w-full flex justify-center items-center mt-6`}>
           <p className="text-[#FCFCFC] font-bold text-[48px]">&#8377;</p>
           <section className="felx flex-col">
             <span className="text-[#FCFCFC] font-bold text-[48px]">
@@ -148,7 +149,7 @@ const  handleDeleteTransaction = (value) =>{
       </section>
 
 
-      <section className={` mt-4 px-4 ${(deletedialog||deletesuccess)?'opacity-50':''}`}>
+      <section className={`${deletesuccess&&'hidden'} mt-4 px-4 ${(deletedialog)?'opacity-50':''}`}>
         <span className="font-semibold text-lg text-[#91919F]">
           Description
         </span>
@@ -159,7 +160,7 @@ const  handleDeleteTransaction = (value) =>{
       </section>
 
       {detailed[0].img && (
-        <section className="mt-8">
+        <section className={`${deletesuccess&&'hidden'} mt-8`}>
           <span className="font-semibold text-[16px] text-[#91919F] ml-5">
             Attachment
           </span>
