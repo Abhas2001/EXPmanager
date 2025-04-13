@@ -40,11 +40,12 @@ const index = ({storedarr,storednegarr}) => {
                     backgroundColor: documentStyle.getPropertyValue('--#00A86B'),
                     borderColor: documentStyle.getPropertyValue('--#00A86B'),
                     data: Income
+                    
                 },
                 {
                     label: 'Expense',
-                    backgroundColor: documentStyle.getPropertyValue('--pink-500'),
-                    borderColor: documentStyle.getPropertyValue('--pink-500'),
+                    backgroundColor: documentStyle.getPropertyValue('--#FD3C4A'),
+                    borderColor: documentStyle.getPropertyValue('--#FD3C4A'),
                     data: Expense
                 }
             ]
@@ -95,7 +96,7 @@ const index = ({storedarr,storednegarr}) => {
     },[chartData,chartOptions])
   return (
     <section className='mt-2 p-4 '>
-        <span className='text-[#0D0E0F] text-[18px] font-medium opacity-100 '>Spend Frequency</span>
+       
 {showgraph&&
 
         <Chart type="bar" data={chartData} options={chartOptions} className="mt-4" />

@@ -115,9 +115,9 @@ console.log(storednegarr);
       <Route path="/home" element={<Home setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>
-      <Route path="/recenttransaction" element={<Transaction Expenses={Expenses} Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
+      <Route path="/recenttransaction" element={<Transaction totexpense={totexpense} totIncome={totIncome} storednegarr={storednegarr} Expenses={Expenses} Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
       <Route path="/detailed" element={<Detailed setnegarr={setnegarr} storednegarr={storednegarr} setStorednegArr={setStorednegArr} negarr={negarr}  catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks} storedarr={storedarr} setStoredArr={setStoredArr}/>} />
-      <Route path="/report" element={<Report/>}/>
+      <Route path="/report" element={<Report totexpense={totexpense} totIncome={totIncome} negarr={negarr} catarr={catarr} storedarr={storedarr} storednegarr={storednegarr}/>}/>
        </Routes>
      
   );

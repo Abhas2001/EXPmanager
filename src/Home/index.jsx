@@ -17,8 +17,9 @@ const index = ({setIncomes,setExpenses, setDetailed,home,sethome,transaction,cat
     <section className='flex flex-col justify-between text-white w-[420px] h-screen bg-[#FFFFFF] '>
       <section className='overflow-y-auto overflow-x-hidden h-[80vh]'>
       <Header setIncomes={setIncomes} setExpenses={setExpenses} inputval={inputval} totexpense={totexpense} totIncome={totIncome} negatives={negatives} />
-
+        <section> <span className='text-lg font-semibold text-[#292B2D] px-3'>Spend Frequency</span>
       <Frequency storedarr={storedarr} storednegarr={storednegarr}/>
+      </section>
        <Recent setDetailed={setDetailed} sethome={sethome} catarr={catarr} negarr={negarr} settransaction={settransaction}/>
       </section>
       <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">

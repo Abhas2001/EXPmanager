@@ -10,7 +10,7 @@ import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
 import Left from '../images/Back.svg';
 
-const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes }) => {
+const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
@@ -20,7 +20,7 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed,Exp
   const[option,setOption] = useState('')
   const[count,setcount]= useState(0);
   const[financialreport,setFinancialreport] = useState(false);
- 
+  
   
   const handleBack = () => {
     sethome(true);
@@ -45,7 +45,7 @@ const Index = ({sethome,catarr,transaction,settransaction,negarr,setDetailed,Exp
     <section className={`w-full h-screen flex justify-center items-center bg-black `}>
 { financialreport?
  
- <Financial/>
+ <Financial totexpense={totexpense} storednegarr={storednegarr} totIncome={totIncome}/>
  :
 
     <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 ">

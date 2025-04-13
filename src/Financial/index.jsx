@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
-const index = () => {
+const index = ({storednegarr,totIncome,totexpense}) => {
   
     const[exp,setexp] = useState(true);
     const[inc,setinc] = useState(false);
@@ -10,6 +10,11 @@ const index = () => {
     const[qoute,setqoute] = useState(false);
     const[financereport,setFinancereport] = useState(false);
     const navigate= useNavigate();
+    
+  let numarr = storednegarr.map(Number);
+
+   let final=numarr.sort(function(a, b){return b - a});
+  console.log(final);
 
  const handleexp = () =>{
     setexp(true);
@@ -63,8 +68,9 @@ const index = () => {
                 <p className='text-[#ffffff] opacity-60 text-[24px] font-semibold'>This Month</p>
             </section>
 
-            <section className='w-full h-56 flex justify-center items-center'>
+            <section className='w-full h-56 flex flex-col gap-4 justify-center items-center'>
                 <p className='font-bold text-3xl text-[#ffffff]'>{exp?'You Spend 💸':'You Earned 💰'}</p>
+                <p className='font-bold text-3xl text-[#ffffff]'>{exp? totIncome:totexpense}</p>
             </section>
             { qoute&&
             <section className='w-full flex justify-center items-center fixed bottom-8'>
