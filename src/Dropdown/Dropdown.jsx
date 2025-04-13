@@ -7,15 +7,16 @@ import Tran from "../images/Tran.svg";
 import down from "../images/down.svg";
 import { useEffect } from 'react';
 
-const Dropdown = ({showoverlay,walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdownarr,flag,setflag,label,setDisabled}) => {
+const Dropdown = ({showincomepage,showoverlay,walletdropdownarr, setwalletDropdownarr,dropdownarr,setDropdownarr,flag,setflag,label,setDisabled}) => {
    
+
 
     const [showdropdown, setDropdown] = useState(false);
     
    
     const[bold,setBold] = useState(false);
    
-   
+   console.log("HUSDHF",showincomepage);
     const handleShowdropdown = () => {
         setDropdown(!showdropdown);
         setflag(!flag);
@@ -117,9 +118,11 @@ const Dropdown = ({showoverlay,walletdropdownarr, setwalletDropdownarr,dropdowna
                 </button>
               </section>
               {showdropdown&&label==='Category'&& (
-                <section className=" border-[1px] border-[#F1F1FA]  h-[15vh] w-[340px] ml-4 rounded-2xl overflow-y-scroll">
+                <section className={` border-[1px] border-[#F1F1FA]  ${!showincomepage?'h-[15vh]':'h-[6vh]'} w-[340px] ml-4 rounded-2xl overflow-y-scroll`}>
                   <section className="w-full text-[#212325]">
+                  { !showincomepage?
                     <ul className="w-full flex flex-col  ">
+                   
                       <li className="bg-gray-50 font-medium px-3 p-1 w-full flex gap-2 border-b-[1px] border-gray-100" 
                       onClick={()=>handledropdown('Food')}
                       >
@@ -137,12 +140,7 @@ const Dropdown = ({showoverlay,walletdropdownarr, setwalletDropdownarr,dropdowna
                         {" "}
                         <img src={subs} width={30} /> <p> Subscription </p>{" "}
                       </li>
-                      <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 border-b-[1px] border-gray-100"
-                           onClick={()=>handledropdown('Salary')}
-                      >
-                        {" "}
-                        <img src={salary} width={30} /> <p> Salary </p>{" "}
-                      </li>
+                     
                       <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 "
                       
                       onClick={()=>handledropdown('Transportation')}
@@ -150,7 +148,26 @@ const Dropdown = ({showoverlay,walletdropdownarr, setwalletDropdownarr,dropdowna
                         {" "}
                         <img src={Tran} width={30} /> <p>Transportation</p>
                       </li>
+
+                     
                     </ul>
+                    :
+                    <ul>
+                           <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 border-b-[1px] border-gray-100"
+                           onClick={()=>handledropdown('Salary')}
+                      >
+                        {" "}
+                        <img src={salary} width={30} /> <p> Salary </p>{" "}
+                      </li>
+
+                      <li className="bg-gray-50 font-medium px-3 p-1 w-full flex  gap-2 border-b-[1px] border-gray-100"
+                           onClick={()=>handledropdown('Salary')}
+                      >
+                        {" "}
+                        <img src={salary} width={30} /> <p> Others </p>{" "}
+                      </li>
+                    </ul>
+}
                   </section>
                 </section>
               )

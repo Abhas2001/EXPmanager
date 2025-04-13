@@ -13,8 +13,12 @@ import Webcam from "react-webcam";
 
 
 
-const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStorednegArr }) => {
+const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setChange, change, storedarr, setStorednegArr }) => {
 
+  setshowincomepage(false);
+  useEffect(()=>{
+    console.log(showincomepage);
+  },[showincomepage])
   const [flag, setflag] = useState(false);
  let label=''
   let inputval = localStorage.getItem("ar1");
@@ -186,7 +190,7 @@ const index = ({setnegarr,setImgLinks, setChange, change, storedarr, setStoredne
         <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
           <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
-            <Dropdown showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
+            <Dropdown showincomepage={showincomepage}  showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
           }
 
             <section

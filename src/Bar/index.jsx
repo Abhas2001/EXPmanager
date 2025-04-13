@@ -2,13 +2,28 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 
-const index = ({storednegarr}) => {
+const index = ({storednegarr, storedarr,expensehilight}) => {
     
  
 
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
-    let Numarr = storednegarr.map(Number);
+    const[showbar,setshowbar] = useState(false);
+    const[Numarr,setNumarr] = useState( storednegarr.map(Number))
+
+    useEffect(()=>{
+        if(!expensehilight){
+              let arr = storednegarr.map(Number)
+              setNumarr(arr);
+        }
+        else{
+                 let arr1 = storedarr.map(Number);
+                 setNumarr(arr1);
+        }
+
+    },[expensehilight])
+
+    console.log(Numarr);
 
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
@@ -16,7 +31,7 @@ const index = ({storednegarr}) => {
             labels: ['A', 'B', 'C'],
             datasets: [
                 {
-                    data: [...Numarr],
+                    data: Numarr || [],
                     backgroundColor: ['#42A5F5', '#FFCA28', '#66BB6A'], // hardcoded test colors
                     hoverBackgroundColor: ['#64B5F6', '#FFD54F', '#81C784']
                 }
@@ -33,10 +48,13 @@ const index = ({storednegarr}) => {
                 }
             }
         };
-
+        
         setChartData(data);
         setChartOptions(options);
-    }, []);
+    }, [Numarr,expensehilight]);
+
+
+    
   return (
     <div>
       
@@ -44,7 +62,9 @@ const index = ({storednegarr}) => {
 
 
         <div className="card flex justify-content-center">
+         
             <Chart type="pie" data={chartData} options={chartOptions} className="w-full md:w-10rem" />
+
         </div>
     
 

@@ -9,6 +9,7 @@ import shopping from "../images/shopping.svg";
 import Food from "../images/Food.svg";
 import salary from "../images/salary.svg";
 import full from "../assets/full.svg"
+import Loader from '../Loader/index';
 
 import subs from "../images/subs.svg";
 import Tran from "../images/Tran.svg";
@@ -21,6 +22,7 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
     const[incomehilight,setIncomehilight] = useState(true);
     const[expensehilight,setexpensehilight] = useState(false);
     const[openBar,setOpenBar] = useState(false);
+    const[loader,setloader] = useState(false);
     const[Total,setTotal]=useState()
      
 
@@ -29,7 +31,12 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
     }
 
     const handlebar = () =>{
-        setOpenBar(true);
+          setloader(true);
+        setTimeout(() => {
+            setOpenBar(true);
+            setloader(false);
+        }, 3000);
+      
     }
 
     const handlenonbar  = () =>{
@@ -66,12 +73,14 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
     <div className='w-full h-screen bg-white'>
         <section className='w-full flex justify-between p-6'>
         <button onClick={()=>handleback()}> <img src={left} alt="" srcset="" /></button>
-
+      
             <p className='text-lg font-bold text-black'>
                 Financial Report
             </p>
             <p></p>
         </section>
+
+
 
         <section className='w-full flex justify-between p-2'>
                 <div className='flex gap-1 ml-5 font-bold text-[32px] text-[#000000]'> 
@@ -92,11 +101,17 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
           </div>
         </section>
 
+{ loader?
+<Loader/>
+:
+      
+      
+<section>
         <section>
             {!openBar?
-        <Frequency storedarr={storedarr} storednegarr={storednegarr}/>
+        <Frequency  storedarr={storedarr} storednegarr={storednegarr}/>
         :
-        <Bar storednegarr={storednegarr}/>
+        <Bar expensehilight={expensehilight}  storedarr={storedarr} storednegarr={storednegarr}/>
             }
         </section>
 
@@ -110,7 +125,13 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
         </section>
 
         <section className='w-full flex flex-col justify-center items-center mt-5'>
-               
+    {openBar?
+    <section className='w-full flex justify-center items-center'>
+       <progress className='w-[70%] bg-yellow' value={10} max={100}/>
+
+    </section>
+    :
+       <section className='w-full'>    
         {
        Total?.map((x) => {
             return (
@@ -153,7 +174,11 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
               </button>
             );
           })}
+          </section>  
+}  
         </section>
+        </section>
+}
       
     </div>
   )
