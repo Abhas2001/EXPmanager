@@ -69,7 +69,10 @@ const index = ({setcatarr,setImgLinks, setChange, change, storedarr, setStoredAr
     console.log(Input);
   };
   const handleopenCamera = () =>{
-    setShowoverlay(true);
+    setTimeout(() => {
+      setShowoverlay(true);
+    }, 2000);
+   
   }
 
   const[imgLink,setImgLink] = useState()
