@@ -311,7 +311,7 @@ const handledetailed = (values) =>{
     navigate("/recenttransaction");
   };
   return (
-    <section>
+    <section >
       {label === "detailed" && !highest && !lowest && !newest && !oldest && !option ? (
         <section>
           <div
@@ -419,14 +419,18 @@ const handledetailed = (values) =>{
                 ? "Today"
                 : "All Transaction"}
             </span>{" "}
+       
             <div className="p-1 px-3 bg-[#EEE5FF] rounded-full flex justify-center items-center">
               <button
                 className="text-[#7F3DFF] text-sm font-medium"
                 onClick={() => handleTransactions()}
               >
-                {label === "detailed" ? "" : "See All"}
+               See All
               </button>
-            </div>{" "}
+            </div>
+   
+            
+            {" "}
           </div>
         {option?      
         

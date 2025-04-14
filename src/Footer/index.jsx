@@ -35,7 +35,7 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
   }
   const handlehomes = () => {
     console.log("clicked");
-    navigate("/")
+    navigate("/home")
     settransaction(false);
     sethome(true);
     

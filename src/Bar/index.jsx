@@ -2,22 +2,22 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 
-const index = ({storednegarr, storedarr,expensehilight}) => {
+const index = ({nsumarr, sumarr,expensehilight}) => {
     
  
 
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
     const[showbar,setshowbar] = useState(false);
-    const[Numarr,setNumarr] = useState( storednegarr.map(Number))
+    const[Numarr,setNumarr] = useState( nsumarr.map(Number))
 
     useEffect(()=>{
         if(!expensehilight){
-              let arr = storednegarr.map(Number)
+              let arr = nsumarr.map(Number)
               setNumarr(arr);
         }
         else{
-                 let arr1 = storedarr.map(Number);
+                 let arr1 = sumarr.map(Number);
                  setNumarr(arr1);
         }
 
@@ -28,7 +28,7 @@ const index = ({storednegarr, storedarr,expensehilight}) => {
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
         const data = {
-            labels: ['A', 'B', 'C'],
+            labels: !expensehilight?['Food','Shopping','Subscription','Transportation']: [ 'salary', 'others'],
             datasets: [
                 {
                     data: Numarr || [],

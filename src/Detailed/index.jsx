@@ -62,7 +62,7 @@ const  handleDeleteTransaction = (value) =>{
 
 
   const handleback = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   const handleDeletedialog = () =>{

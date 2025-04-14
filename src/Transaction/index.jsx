@@ -21,6 +21,7 @@ const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,set
   const[count,setcount]= useState(0);
   const[financialreport,setFinancialreport] = useState(false);
   
+  console.log(option);
   
   const handleBack = () => {
     sethome(true);
@@ -78,7 +79,7 @@ const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,set
           </div>
         </section>
         </section>
-        <section>
+        <section className='w-full h-full overflow-y-auto'>
           <Recent Expenses={Expenses} Incomes={Incomes} setDetailed={setDetailed} negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
       </section>

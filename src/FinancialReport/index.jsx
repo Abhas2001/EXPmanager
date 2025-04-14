@@ -18,24 +18,76 @@ import { useEffect } from 'react';
 
 const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
 
+    console.log("DHONI",catarr);
+
     const navigate = useNavigate()
     const[incomehilight,setIncomehilight] = useState(true);
     const[expensehilight,setexpensehilight] = useState(false);
     const[openBar,setOpenBar] = useState(false);
     const[loader,setloader] = useState(false);
     const[Total,setTotal]=useState()
+    const[sumarr,setSumarr]=useState([]);
+    const[nsumarr,setNsumarr] = useState([]);
+    let Foodsum = 0;
+    let Shoppingsum = 0;
+    let Subscription = 0;
+    let Transportation =0;
+    let salarysum = 0;
+    let otherssum = 0;
      
+
+    console.log(negarr);
+    catarr.map((x)=>{
+           if(x.label[0]==='Salary'){
+            
+            salarysum+= Number(x.input)
+           
+           }
+           else{
+            otherssum+=Number(x.input)
+                       }
+
+          
+    })
+   
+    
+    negarr.map((x)=>{
+        if(x.label[0]==='Food'){
+            Foodsum+=Number(x.input)
+        }
+
+        else if(x.label[0]==='Shopping'){
+            Shoppingsum+=Number(x.input)
+        }
+
+        else if(x.label[0]==='Subscription'){
+           Subscription+=Number(x.input)
+        }
+        else {
+                Transportation+=Number(x.input)
+        }
+    })
+
+
+   useEffect(()=>{
+    setSumarr([ salarysum,salarysum])
+   },[ salarysum,salarysum])
+   
+       
+    useEffect(()=>{
+        setNsumarr([Foodsum,Shoppingsum,Subscription,Transportation])
+    },[Foodsum,Shoppingsum,Subscription,Transportation])
+
+
 
     const handleback = () =>{
         navigate(-1);
     }
 
     const handlebar = () =>{
-          setloader(true);
-        setTimeout(() => {
+         
             setOpenBar(true);
-            setloader(false);
-        }, 3000);
+      
       
     }
 
@@ -101,9 +153,7 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
           </div>
         </section>
 
-{ loader?
-<Loader/>
-:
+
       
       
 <section>
@@ -111,7 +161,7 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
             {!openBar?
         <Frequency  storedarr={storedarr} storednegarr={storednegarr}/>
         :
-        <Bar expensehilight={expensehilight}  storedarr={storedarr} storednegarr={storednegarr}/>
+        <Bar expensehilight={expensehilight}  sumarr={sumarr} nsumarr={nsumarr}/>
             }
         </section>
 
@@ -124,13 +174,8 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
             </div>
         </section>
 
-        <section className='w-full flex flex-col justify-center items-center mt-5'>
-    {openBar?
-    <section className='w-full flex justify-center items-center'>
-       <progress className='w-[70%] bg-yellow' value={10} max={100}/>
-
-    </section>
-    :
+        <section className='w-full flex flex-col justify-center items-center mt-5 overflow-y-auto'>
+   
        <section className='w-full'>    
         {
        Total?.map((x) => {
@@ -175,10 +220,10 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
             );
           })}
           </section>  
-}  
+
         </section>
         </section>
-}
+
       
     </div>
   )

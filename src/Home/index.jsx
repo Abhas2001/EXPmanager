@@ -9,6 +9,9 @@ import Loader from '../Loader/index';
 const index = ({setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
  
 const[loader,setloader] =useState(false);
+useEffect(()=>{
+  sethome(true);
+},[])
  
 useEffect(()=>{
   console.log("LOADER ACTI",loader);

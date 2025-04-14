@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 function App() {
 
 
+
   let sum=0;
   let negatives=0;
  
@@ -109,8 +110,7 @@ useEffect(()=>{
 
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   localStorage.setItem("negval",JSON.stringify(storednegarr))
-  console.log(storedarr);
-console.log(storednegarr);
+
    
   return (
          <Routes>
