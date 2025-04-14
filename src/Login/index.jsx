@@ -34,14 +34,14 @@ const index = () => {
   return (
     <div className='w-full h-screen flex justify-center items-center bg-[#7F3DFF]'>
         <section className='flex flex-col gap-10'>
-        <h1 className='text-[#FCFCFC]'>Login Page</h1>
+      
         <section className='flex gap-3 ' >
-      <input className='flex justify-center items-center border-3 border-[#FCFCFC] rounded-full w-8 h-8 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,0)} />
-      <input className='flex justify-center items-center border-3 border-[#FCFCFC] rounded-full w-8 h-8 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,1)} />
-      <input className='flex justify-center items-center border-3 border-[#FCFCFC] rounded-full w-8 h-8 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,2)} />
-      <input className='flex justify-center items-center border-3 border-[#FCFCFC] rounded-full w-8 h-8 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,3)} />
+      <input className='flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,0)} />
+      <input className='flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,1)} />
+      <input className='flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,2)} />
+      <input className='flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]' maxLength={1} type="text" onChange={(e)=>handlechange(e,3)} />
       </section>
-      <button onClick={()=>handlelogin()}>Login</button>
+      <button className='font-bold text-[#FCFCFC] text-2xl' onClick={()=>handlelogin()}>Login</button>
       </section>
 
     </div>
