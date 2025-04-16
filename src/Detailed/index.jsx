@@ -4,7 +4,7 @@ import trash from "../images/trash.svg";
 import left from "../images/left.svg";
 import correct from "../images/correct.svg"
 
-const index = ({ detailed,setnegarr,negarr, imgLinks,catarr,setcatarr,storedarr,setStoredArr,setStorednegArr,storednegarr }) => {
+const index = ({setedit, detailed,setnegarr,negarr, imgLinks,catarr,setcatarr,storedarr,setStoredArr,setStorednegArr,storednegarr }) => {
 
     const[deletedialog,setDeletedialog]=useState(false);
     const[deletesuccess,setDeletesuccess] = useState(false);
@@ -62,11 +62,17 @@ const  handleDeleteTransaction = (value) =>{
 
 
   const handleback = () => {
+    setedit(false)
     navigate("/home");
   };
 
   const handleDeletedialog = () =>{
     setDeletedialog(true);
+  }
+
+  const handleEdit = () =>{
+    setedit(true);
+    navigate("/income")
   }
   return (
     <div>
@@ -191,7 +197,7 @@ const  handleDeleteTransaction = (value) =>{
     :
       <section className={` w-full flex justify-center items-center fixed bottom-7 ${(deletedialog||deletesuccess)?'opacity-30':''}`}>
       <section className=" w-[90%] flex justify-center items-center bg-[#7F3DFF] h-14 rounded-3xl">
-        <button className="text-[#ffffff] text-lg font-semibold">Edit</button>
+        <button className="text-[#ffffff] text-lg font-semibold" onClick={()=>handleEdit()}>Edit</button>
       </section>
       </section>
       }

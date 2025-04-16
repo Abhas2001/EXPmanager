@@ -13,7 +13,7 @@ import Webcam from "react-webcam";
 
 
 
-const index = ({showincomepage, setshowincomepage, setcatarr,setImgLinks, setChange, change, storedarr, setStoredArr }) => {
+const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setImgLinks, setChange, change, storedarr, setStoredArr }) => {
 
   setshowincomepage(true);
   useEffect(()=>{
@@ -186,7 +186,7 @@ const index = ({showincomepage, setshowincomepage, setcatarr,setImgLinks, setCha
               placeholder="0"
               disabled={handleinputdisabled()}
               onKeyUp={()=>handleamount(event)}
-              value={val}
+              value={edit?detailed[0].input:val}
               className="text-xl font-bold text-white p-0 border-2 border-[#00A86B] enabled:outline-none focus:text-white focus:border-2 focus:outline-[#00A86B] focus:border-[#00A86B]  placeholder:text-2xl placeholder:text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               onInput={handlechange}
             />
@@ -195,7 +195,7 @@ const index = ({showincomepage, setshowincomepage, setcatarr,setImgLinks, setCha
         <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
           <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
-            <Dropdown showincomepage={showincomepage}  showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
+            <Dropdown edit={edit} detailed={detailed} showincomepage={showincomepage}  showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
           }
 
             <section
@@ -206,7 +206,7 @@ const index = ({showincomepage, setshowincomepage, setcatarr,setImgLinks, setCha
               <input
                 type="string"
                 placeholder="Description"
-                value={finalInput?finalInput:Input}
+                value={edit?detailed[0].description:finalInput?finalInput:Input}
                 onKeyUp={()=>handledesc(event)}
                 className="w-full border-[1px] py-3 border-[#F1F1FA] p-2 rounded-2xl text-black placeholder:text-[#91919F]"
                 onInput={handleInput}
