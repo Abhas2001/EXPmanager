@@ -56,7 +56,7 @@ const[Incomes,setIncomes] = useState(false);
 const[Expenses,setExpenses] = useState(false);
 const[showincomepage,setshowincomepage] = useState(false);
 
-//nkjnfdjkn
+//nkjnfdjknbdbdfhbhfbhfd
 
   useEffect(()=>{
        localStorage.setItem("Recent",JSON.stringify(catarr))
