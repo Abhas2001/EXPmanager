@@ -16,7 +16,7 @@ const index = () => {
   return (
     <div className="w-full h-screen flex flex-col  justify-center items-center">
       <section className="w-full flex justify-center items-center ">
-        <img src={hand} alt="" srcset="" />
+        <img loading="lazy" src={hand} alt="" srcset="" />
       </section>
       <section className="w-full flex flex-col justify-center items-center ">
         <p className="font-[700] text-[32px] text-[#212325]">Gain total control</p>

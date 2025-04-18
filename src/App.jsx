@@ -8,7 +8,8 @@ import Detailed from "../src/Detailed/index"
 import Report from '../src/FinancialReport/index';
 import Onboarding from '../src/Onboarding/index';
 import SignUp from '../src/SignUp/index';
-import Login from '../src/Login/index'
+import Login from '../src/Login/index';
+import Traffic from '../src/Components/traffic';
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
 function App() {

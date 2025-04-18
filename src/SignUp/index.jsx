@@ -1,8 +1,13 @@
 import React from 'react'
 import left from '../images/Back.svg';
 import show from '../assets/show.svg';
+import { useState } from 'react';
 
 const index = () => {
+
+    
+    const[name,setName] = useState('');
+
   return (
     <div>
       
