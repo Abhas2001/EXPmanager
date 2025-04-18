@@ -10,6 +10,8 @@ import income from '../images/Income.svg';
 import ex from '../images/Expense.svg';
 import Trans from '../images/Trans.svg';
 import transcolored from '../images/transcolored.svg';
+import profile from '../assets/Profile.svg';
+import budget from '../assets/Budget.svg';
 
 const index = ({setloader,sethome,transaction,home,settransaction}) => {
 
@@ -20,7 +22,7 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
     setTimeout(() => {
       setloader(false)
     },5000);
-    console.log("TRANSAC");
+  
     settransaction(true);
     navigate("/recenttransaction")
   }
@@ -44,6 +46,10 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
   const handleExpense = () =>{
     navigate("/expense")
   }
+
+  const handleAccount = () =>{
+    navigate("/account")
+  }
   return (
     <section>
       <div className={`text-black w-full flex gap-0 justify-center items-center cursor-pointer ${btn?'translate-y-[-30px] duration-1000':'translate-y-[60px]'} `}>
@@ -61,8 +67,8 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
   
     
     </div>
-    <div><img src={pie} alt="" srcset="" /></div>
-    <div><img src={notification} alt="" srcset="" /></div>
+    <div><img src={budget} alt="" srcset="" /></div>
+    <div onClick={()=>handleAccount()}><img src={profile} alt="" srcset="" /></div>
    
   </div>
   </section>

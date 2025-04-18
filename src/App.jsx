@@ -9,6 +9,7 @@ import Report from '../src/FinancialReport/index';
 import Onboarding from '../src/Onboarding/index';
 import SignUp from '../src/SignUp/index';
 import Login from '../src/Login/index';
+import Account from '../src/Account/index'
 import Traffic from '../src/Components/traffic';
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
@@ -19,7 +20,10 @@ function App() {
   let sum=0;
   let negatives=0;
  
- 
+  
+  const[name,setName] = useState('');
+  const[email,setEmail] = useState('');
+  const[pass,setPass] = useState('');
   const[change,setChange] = useState(false);
   const[totexpense,settotexpense]=useState()
   const[totIncome,settotIncome]=useState()
@@ -118,8 +122,9 @@ useEffect(()=>{
   return (
          <Routes>
           <Route path="/" element={<Onboarding/>} />
+          <Route path="/account" element={<Account name={name} sethome={sethome} transaction={transaction} settransaction={settransaction} />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/signup" element={<SignUp pass={pass} setPass={setPass} email={email} setEmail={setEmail} name={name} setName={setName}/>}/>
       <Route path="/home" element={<Home setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income edit={edit} detailed={detailed} showincomepage={showincomepage} setshowincomepage={setshowincomepage} setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense showincomepage={showincomepage} setshowincomepage={setshowincomepage} setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>

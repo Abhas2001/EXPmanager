@@ -2,11 +2,30 @@ import React from 'react'
 import left from '../images/Back.svg';
 import show from '../assets/show.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const index = () => {
+const index = ({setName,name,email,setEmail,pass,setPass}) => {
 
-    
-    const[name,setName] = useState('');
+  const navigate = useNavigate();
+
+  console.log(name,email,pass);
+   const handleName = (e) =>{
+       setName(e.target.value)
+   }
+
+   const handleEmail = (e) =>{
+     setEmail(e.target.value)
+   }
+
+   const handlePass = (e) =>{
+    setPass(e.target.value)
+   }
+
+   const handlesignup = () =>{
+    if(name.length>0&&email.length>0&&pass){
+    navigate("/login");
+    }
+   }
 
   return (
     <div>
@@ -17,10 +36,10 @@ const index = () => {
         <p></p>
       </section>
       <section className='w-full flex flex-col gap-4 p-3 mt-10'>
-        <input className='border-[1px] border-[#F1F1FA] p-3 rounded-2xl' type="text" placeholder='Name'/>
-        <input className='border-[1px] border-[#F1F1FA] p-3 rounded-2xl' type="text" placeholder='Email' />
+        <input onChange={(e)=>handleName(e)} className='border-[1px] border-[#F1F1FA] p-3 rounded-2xl' type="text" placeholder='Name'/>
+        <input onChange={(e)=>handleEmail(e)} className='border-[1px] border-[#F1F1FA] p-3 rounded-2xl' type="text" placeholder='Email' />
         <section className='w-full flex'>
-        <input className='w-full border-[1px] border-[#F1F1FA] p-3 rounded-2xl' type="text" placeholder='Password' />
+        <input onChange={(e)=>handlePass(e)} className='w-full border-[1px] border-[#F1F1FA] p-3 rounded-2xl' type="text" placeholder='Password' />
         <img className='fixed right-3 mt-2' src={show} alt="" srcset="" />
         </section>
       
@@ -33,7 +52,7 @@ const index = () => {
       </section>
 
       <section className='w-full p-4'>
-      <button className="w-full text-[#FCFCFC] bg-[#7F3DFF] text-[18px] font-[600] p-3 rounded-xl" >Sign Up</button>
+      <button onClick={()=>handlesignup()} className="w-full text-[#FCFCFC] bg-[#7F3DFF] text-[18px] font-[600] p-3 rounded-xl" >Sign Up</button>
       </section>
       <section className='w-full flex justify-center items-center'>
         <span className='flex font-[700] text-[14px] gap-1 text-[#91919F]'>Already have an account? <a className='text-[#8B50FF] font-[700] text-[14px] border-b-[1px] border-b-[#8B50FF]' href="">Login</a> </span>
