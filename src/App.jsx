@@ -6,7 +6,8 @@ import Practice from "../src/Practice/index";
 import Transaction from "../src/Transaction/index";
 import Detailed from "../src/Detailed/index"
 import Report from '../src/FinancialReport/index';
-
+import Onboarding from '../src/Onboarding/index';
+import SignUp from '../src/SignUp/index';
 import Login from '../src/Login/index'
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 
@@ -115,7 +116,9 @@ useEffect(()=>{
    
   return (
          <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Onboarding/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp/>}/>
       <Route path="/home" element={<Home setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income edit={edit} detailed={detailed} showincomepage={showincomepage} setshowincomepage={setshowincomepage} setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense showincomepage={showincomepage} setshowincomepage={setshowincomepage} setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>

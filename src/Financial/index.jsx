@@ -63,7 +63,9 @@ const index = ({storednegarr,totIncome,totexpense}) => {
                 <div onClick={()=>handlebud()} className={`w-[90px] rounded-2xl border-[4px] border-[#FFFFFF] ${bud?'':'opacity-25'}`}></div>
                 <div onClick={()=>handleqoute()} className={`w-[90px] rounded-2xl border-[4px] border-[#FFFFFF] ${qoute?'':'opacity-25'}`}></div>
             </section>
-
+   <section className='flex justify-between '>
+    <button className='opacity-0  px-4 py-96' onClick={()=>handleexp()}>1</button>
+    <section>
             <section className='w-full flex justify-center items-center mt-10'>
                 <p className='text-[#ffffff] opacity-60 text-[24px] font-semibold'>This Month</p>
             </section>
@@ -71,6 +73,9 @@ const index = ({storednegarr,totIncome,totexpense}) => {
             <section className='w-full h-56 flex flex-col gap-4 justify-center items-center'>
                 <p className='font-bold text-3xl text-[#ffffff]'>{exp?'You Spend 💸':'You Earned 💰'}</p>
                 <p className='font-bold text-3xl text-[#ffffff]'>{exp? totIncome:totexpense}</p>
+            </section>
+            </section>
+            <button className='opacity-0 px-4 py-96' onClick={()=>handleinc()}>1</button>
             </section>
             { qoute&&
             <section className='w-full flex justify-center items-center fixed bottom-8'>

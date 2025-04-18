@@ -86,25 +86,26 @@ const index = () => {
   },[shake])
    
   return (
-    <div className='w-full h-screen flex flex-col gap-20 justify-center items-center bg-[#7F3DFF]'>
-        <section className='flex flex-col gap-10'>
-      
+    <div className='w-full h-screen flex flex-col  justify-between bg-[#7F3DFF] overflow-hidden'>
+      <section className='w-full flex justify-center items-center'></section>
+        <section className='w-full flex flex-col gap-10 justify-center items-center'>
+       <section className='font-semibold text-lg text-[#FCFCFC]'>Let’s  setup your PIN</section>
         <section className={`${shake&&'translate-x-[6px]'} flex gap-3 `} >
-      <input className={`${first?'bg-[#FCFCFC]':''} flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true}/>
-      <input className={`${second&&'bg-[#FCFCFC]'} flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true} />
-      <input className={`${third&&'bg-[#FCFCFC]'} flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true} />
-      <input className={`${fourth&&'bg-[#FCFCFC]'}  flex justify-center items-center text-center border-3 border-[#FCFCFC] rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true} />
+      <input className={`${first?'bg-[#FCFCFC]':''} flex justify-center items-center text-center border-[4px] ${!first?'border-[#EEE5FF]':'border-[#FCFCFC]'} rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true}/>
+      <input className={`${second&&'bg-[#FCFCFC]'} flex justify-center items-center text-center border-[4px]  ${!second?'border-[#EEE5FF]':'border-[#FCFCFC]'} rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true} />
+      <input className={`${third&&'bg-[#FCFCFC]'} flex justify-center items-center text-center border-[4px]   ${!third?'border-[#EEE5FF]':'border-[#FCFCFC]'} rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true} />
+      <input className={`${fourth&&'bg-[#FCFCFC]'}  flex justify-center items-center text-center border-[4px] ${!fourth?'border-[#EEE5FF]':'border-[#FCFCFC]'} rounded-full w-10 h-10 text-[#FCFCFC] focus:outline-none focus:ring-0 focus:border-[#FCFCFC]`} maxLength={1} type="text" disabled={true} />
       </section>
     
       </section>
 
 
-            <section className='w-full flex flex-col gap-20'>
-              <section className='w-full flex justify-around text-2xl font-medium'>
+            <section className='w-full flex flex-col gap-20 mb-2'>
+              <section className='w-full flex justify-around '>
               {
               ['1','2','3'].map((x)=>{
                 return(
-                  <button className='font-bold text-[#FCFCFC] text-2xl' onClick={()=>handlelogin(x)}>{x}</button>
+                  <button className='font-medium text-[#FCFCFC] text-5xl' onClick={()=>handlelogin(x)}>{x}</button>
                 )
               })
              
@@ -112,11 +113,11 @@ const index = () => {
               }
                </section>
 
-               <section className='w-full flex justify-around text-2xl font-medium'>
+               <section className='w-full flex justify-around text-5xl font-medium'>
               {
               ['4','5','6'].map((x)=>{
                 return(
-                  <button className='font-bold text-[#FCFCFC] text-2xl' onClick={()=>handlelogin(x)}>{x}</button>
+                  <button className='font-medium text-[#FCFCFC] text-5xl' onClick={()=>handlelogin(x)}>{x}</button>
                 )
               })
              
@@ -124,20 +125,20 @@ const index = () => {
               }
                </section>
                
-               <section className='w-full flex justify-around text-2xl font-medium'>
+               <section className='w-full flex justify-around text-5xl font-medium'>
               {
               ['7','8','9'].map((x)=>{
                 return(
-                  <button className='font-bold text-[#FCFCFC] text-2xl' onClick={()=>handlelogin(x)}>{x}</button>
+                  <button className='font-medium text-[#FCFCFC] text-5xl' onClick={()=>handlelogin(x)}>{x}</button>
                 )
               })
              
        
               }
                </section>
-               <section className='w-full flex gap-24 ml-26 text-2xl font-medium '>
-               <button className='font-bold text-[#FCFCFC] text-2xl' ></button>
-               <button className='font-bold text-[#FCFCFC] text-2xl' onClick={()=>handlelogin(0)} >0</button>
+               <section className='w-full flex gap-24 ml-26 text-5xl font-medium '>
+               <button className='font-medium text-[#FCFCFC] text-5xl' ></button>
+               <button className='font-medium text-[#FCFCFC] text-5xl' onClick={()=>handlelogin(0)} >0</button>
                <button onClick={()=>handlelogindone()}><img src={right} alt="" srcset="" /></button>
                 </section>
             </section>
