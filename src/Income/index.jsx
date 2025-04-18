@@ -9,6 +9,7 @@ import close from "../assets/close.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
+import Loader from '../Loader/index'
 
 
 
@@ -33,6 +34,8 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   const[gallery,setGallery] = useState(false);
   const[finalInput,setFinalInput]= useState('');
   const[disabled,setDisabled] = useState(false);
+  const[pressed,setPressed] = useState(false);
+  const[loader,setloader] = useState(false);
   const navigate = useNavigate();
  
   const[dropdownarr,setDropdownarr] = useState([]);
@@ -48,7 +51,9 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   };
 
   const handleCont = () => {
+    setloader(true);
     setChange(!change);
+    setPressed(true);
     localStorage.setItem("ar7", val);
 
     const newItem = localStorage.getItem("ar7");
@@ -59,7 +64,11 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
    
     finalval.push(val);
     setcatarr((prev)=>[...prev, {"label":dropdownarr,"imglink":imgLink  ,"Exp":false,"input":val,"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
-    navigate("/home");
+    setTimeout(() => {
+      navigate("/home");
+      setloader(false);
+    }, 3000);
+   
   };
  
   const handlechange = (e) => {
@@ -246,11 +255,18 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
             </section> */}
             <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
               <button
-                className={`${!disabled&&'opacity-[0.4]'} bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer`}
+                className={`${!disabled&&'opacity-[0.4]'} bg-[#7F3DFF] w-[340px] h-[56px] text-white  rounded-2xl font-semibold cursor-pointer `}
                 onClick={handleCont}
                 disabled={!disabled}
               >
-                Continue
+  {loader ? (
+  <div className="w-full flex items-center justify-center">
+    <Loader />
+  </div>
+) : (
+  'Continue'
+)}
+
               </button>
              
             </section> 
