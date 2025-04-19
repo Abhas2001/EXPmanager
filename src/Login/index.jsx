@@ -86,7 +86,7 @@ const index = () => {
   },[shake])
    
   return (
-    <div className='w-full h-screen flex flex-col  justify-between bg-[#7F3DFF] overflow-hidden'>
+    <div className='w-full h-screen flex flex-col justify-between bg-[#7F3DFF] overflow-hidden'>
       <section className='w-full flex justify-center items-center'></section>
         <section className='w-full flex flex-col gap-10 justify-center items-center'>
        <section className='font-semibold text-lg text-[#FCFCFC]'>Let’s  setup your PIN</section>
@@ -100,7 +100,7 @@ const index = () => {
       </section>
 
 
-            <section className='w-full flex flex-col gap-20 mb-2'>
+            <section className='w-full flex flex-col gap-20 mb-16'>
               <section className='w-full flex justify-around '>
               {
               ['1','2','3'].map((x)=>{
@@ -136,8 +136,8 @@ const index = () => {
        
               }
                </section>
-               <section className='w-full flex gap-24 ml-26 text-5xl font-medium '>
-               <button className='font-medium text-[#FCFCFC] text-5xl' ></button>
+               <section className='w-full flex gap-18  text-5xl font-medium '>
+               <button className='font-medium text-[#FCFCFC] text-5xl w-28' ></button>
                <button className='font-medium text-[#FCFCFC] text-5xl' onClick={()=>handlelogin(0)} >0</button>
                <button onClick={()=>handlelogindone()}><img src={right} alt="" srcset="" /></button>
                 </section>
