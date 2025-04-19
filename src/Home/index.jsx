@@ -28,7 +28,10 @@ useEffect(()=>{
      
     <section className='flex flex-col justify-between text-white w-[420px] h-screen bg-[#FFFFFF] '>
     {loader?
+         
+         <section className='w-full h-screen flex justify-center items-center'>
       <Loader/>
+      </section>
       :
       <section>
       <section className='overflow-y-auto overflow-x-hidden h-[80vh]'>

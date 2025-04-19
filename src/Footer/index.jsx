@@ -21,10 +21,12 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
     setloader(true);
     setTimeout(() => {
       setloader(false)
-    },5000);
+      navigate("/recenttransaction")
+      settransaction(true);
+    },1000);
   
-    settransaction(true);
-    navigate("/recenttransaction")
+  
+  
   }
 
   const handleOpen = () =>{
@@ -59,7 +61,7 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
 
       </div>
     <div className="w-full h-20 bg-[#FCFCFC] relative flex justify-between px-6 pt-3">
-    <div >{home?<img src={homes} onClick={()=>handlehomes()} alt="" srcset="" />:<img onClick={()=>handlehomes()} src={unhome}/>}</div>
+    <div className='shadow-lg' >{home?<img src={homes} onClick={()=>handlehomes()} alt="" srcset="" />:<img onClick={()=>handlehomes()} src={unhome}/>}</div>
     <div onClick={()=>handletrans()}>{transaction? <img src={transcolored} alt="" srcset="" />:<img src={noncolored} alt="" srcset="" />}</div>
     <div className={`relative bottom-9 w-16 h-16 bg-white rounded-full flex justify-center items-center p-2 cursor-pointer`} onClick={handleOpen}> 
     
