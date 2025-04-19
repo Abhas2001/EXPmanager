@@ -168,8 +168,8 @@ const index = ({storedarr,storednegarr,catarr,negarr,totexpense,totIncome}) => {
         <section>
             <div className='w-full flex justify-center'>
                 <section className='w-[342px] h-16 bg-[#F1F1FA] flex justify-between rounded-4xl'>
-                     <button onClick={()=>handleincomehilight()} className={`${!expensehilight&&incomehilight?'bg-[#7F3DFF] text-[#FCFCFC]':'text-[#000000]'}  ml-3 px-12 my-2 rounded-4xl  font-semibold`}>Expense</button>
-                     <button onClick={()=>handleexpensehilight()} className={`${expensehilight&&!incomehilight?'bg-[#7F3DFF] text-[#FCFCFC]':'text-[#000000]'} mr-3 px-12 my-2 rounded-4xl  font-semibold`}>Income</button>
+                     <button onClick={()=>handleincomehilight()} className={`${!expensehilight&&incomehilight?'bg-[#7F3DFF] text-[#FCFCFC] transition-all duration-900 ease-in-out ':'text-[#000000]'}  ml-3 px-12 my-2 rounded-4xl  font-semibold`}>Expense</button>
+                     <button onClick={()=>handleexpensehilight()} className={`${expensehilight&&!incomehilight?'bg-[#7F3DFF] text-[#FCFCFC] transition-all duration-900 ease-in-out ':'text-[#000000]'} mr-3 px-12 my-2 rounded-4xl  font-semibold`}>Income</button>
                 </section>
             </div>
         </section>

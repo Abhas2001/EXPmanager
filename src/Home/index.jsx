@@ -20,8 +20,7 @@ useEffect(()=>{
 },[loader])
 
   
-  settransaction(false);
-  setprofilecolored(false);
+
 
   return (
        

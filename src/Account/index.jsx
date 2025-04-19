@@ -16,6 +16,10 @@ const index = ({sethome,settransaction,transaction,name,profilecolored,setprofil
     const handleAccount = () =>{
         navigate("/recenttransaction")
     }
+
+    const handlelogout = () =>{
+        navigate("/")
+    }
   return (
     <div className="w-full h-screen bg-[#F6F6F6]">
           {loader?
@@ -42,7 +46,7 @@ const index = ({sethome,settransaction,transaction,name,profilecolored,setprofil
             <section className="flex  gap-2 border-b-2 border-[#E3E5E5] p-3" onClick={()=>handleAccount()}><img src={Acc} alt="" srcset="" />   <span className=" flex justify-center items-center font-medium text-[16px] "> Account</span> </section>
             <section className="flex  gap-2 border-b-2 border-[#E3E5E5] p-3"><img src={setting} alt="" srcset="" />   <span className=" flex justify-center items-center font-medium text-[16px] ">Settings</span> </section>
             <section className="flex  gap-2 border-b-2 border-[#E3E5E5] p-3"><img src={expot} alt="" srcset="" />   <span className=" flex justify-center items-center font-medium text-[16px] ">Export Data</span> </section>
-            <section className="flex  gap-2 p-3"><img src={logout} alt="" srcset="" />   <span className=" flex justify-center items-center font-medium text-[16px] ">Logout</span> </section>
+            <section onClick={()=>handlelogout()} className="flex  gap-2 p-3"><img src={logout} alt="" srcset="" />   <span className=" flex justify-center items-center font-medium text-[16px] ">Logout</span> </section>
   
         </section>
       </section>

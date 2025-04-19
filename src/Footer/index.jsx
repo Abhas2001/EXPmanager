@@ -31,6 +31,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     setTimeout(() => {
       setloader(false)
       settransaction(true);
+      setprofilecolored(false);
       navigate("/recenttransaction")
     
     },1000);
@@ -95,7 +96,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     
     </div>
     <div><img src={budget} alt="" srcset="" /></div>
-    <div onClick={()=>handleAccount()}>{profilecolored&&!home?<img src={profilec} alt="" srcset="" />:<img src={profile} alt="" srcset="" />}</div>
+    <div onClick={()=>handleAccount()}>{profilecolored?<img src={profilec} alt="" srcset="" />:<img src={profile} alt="" srcset="" />}</div>
    
   </div>
   </section>
