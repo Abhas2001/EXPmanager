@@ -68,7 +68,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
     setTimeout(() => {
       navigate("/home");
       setloader(false);
-    }, 500);
+    }, 1000);
    
   };
  

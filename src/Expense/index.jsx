@@ -9,7 +9,7 @@ import close from "../assets/close.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
-
+import correct from "../images/correct.svg"
 
 
 
@@ -32,6 +32,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
   const[gallery,setGallery] = useState(false);
   const[finalInput,setFinalInput]= useState('');
   const[disabled,setDisabled] = useState(false);
+  const[loader,setloader] = useState(false);
   const navigate = useNavigate();
  
   const[dropdownarr,setDropdownarr] = useState([]);
@@ -47,6 +48,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
   };
 
   const handleCont = () => {
+    setloader(true);
     setChange(!change);
     localStorage.setItem("ar8", val);
 
@@ -58,7 +60,10 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
 
     finalval.push(val);
     setnegarr((prev)=>[...prev, {"label":dropdownarr,"Exp":true,"imglink":imgLink, "input":-(val),"description":Input,"time":now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),"CurrentD":now.getDate()}])
-    navigate("/home");
+    setTimeout(() => {
+      navigate("/home");
+      setloader(false);
+    }, 1000);
   };
  
   const handlechange = (e) => {
@@ -241,11 +246,18 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
             </section> */}
             <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
             <button
-                className={`${!disabled&&'opacity-[0.4]'} bg-[#7F3DFF] text-white p-4 px-32 rounded-2xl font-semibold cursor-pointer`}
+                className={`${!disabled&&'opacity-[0.4]'}  ${!loader?'w-[340px] bg-[#7F3DFF]':'w-[80px] bg-[#FFFFFF] transition-all duration-500 ease-in-out '} h-[56px] text-white  rounded-2xl font-semibold cursor-pointer `}
                 onClick={handleCont}
                 disabled={!disabled}
               >
-                Continue
+  {loader ? (
+  <div className="w-full flex items-center justify-center">
+   <img src={correct} alt="" srcset="" />
+  </div>
+) : (
+  'Continue'
+)}
+
               </button>
              
             </section> 

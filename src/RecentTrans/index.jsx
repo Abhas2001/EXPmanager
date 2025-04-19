@@ -305,7 +305,7 @@ const handledetailed = (values) =>{
     navigate("/detailed");
 }
   const handleTransactions = () => {
-    sethome(false);
+    
     
     setTimeout(() => {
       setloader(true);
