@@ -10,7 +10,7 @@ import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
 import Left from '../images/Back.svg';
 
-const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes }) => {
+const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes,setloader,loader, profilecolored,setprofilecolored }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
@@ -90,7 +90,7 @@ const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,set
         </section>
       <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     
-        <Footer sethome={sethome} transaction={transaction} settransaction={settransaction} />
+        <Footer  profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} loader={loader} sethome={sethome} transaction={transaction} settransaction={settransaction} />
       </section>
     </section>
 }

@@ -12,17 +12,21 @@ import Trans from '../images/Trans.svg';
 import transcolored from '../images/transcolored.svg';
 
 import profile from '../assets/Profile.svg';
+import profilec from '../assets/coloredprofile.svg';
 import budget from '../assets/Budget.svg';
 
-const index = ({setloader,sethome,transaction,home,settransaction}) => {
+const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored}) => {
 
   const[btn,setBtn] = useState(false);
   const[colored,setcolored] = useState(false);
+ 
+
   const navigate = useNavigate();
   const handletrans = () =>{
     setloader(true);
     sethome(false);
     setcolored(true);
+    setprofilecolored(false);
    
     setTimeout(() => {
       setloader(false)
@@ -45,9 +49,11 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
   }
   const handlehomes = () => {
     console.log("clicked");
-    navigate("/home")
+    
     settransaction(false);
+    setprofilecolored(false);
     sethome(true);
+    navigate("/home")
     
   }
 
@@ -56,7 +62,20 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
   }
 
   const handleAccount = () =>{
-    navigate("/account")
+    setloader(true);
+    setprofilecolored(true);
+    setcolored(false)
+    sethome(false)
+    settransaction(false);
+
+    setTimeout(() => {
+      setloader(false)
+      settransaction(false);
+ 
+      navigate("/account")
+    
+    },1000);
+ 
   }
   return (
     <section>
@@ -76,7 +95,7 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
     
     </div>
     <div><img src={budget} alt="" srcset="" /></div>
-    <div onClick={()=>handleAccount()}><img src={profile} alt="" srcset="" /></div>
+    <div onClick={()=>handleAccount()}>{profilecolored&&!home?<img src={profilec} alt="" srcset="" />:<img src={profile} alt="" srcset="" />}</div>
    
   </div>
   </section>
