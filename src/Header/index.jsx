@@ -6,7 +6,7 @@ import up from '../images/Frame 27.svg';
 import { useNavigate } from 'react-router-dom';
 
 
-const index = ({inputval,totexpense,negatives,setExpenses,setIncomes,totIncome}) => {
+const index = ({settransaction,setloader,Incomes,Expenses,inputval,totexpense,negatives,setExpenses,setIncomes,totIncome}) => {
  
   const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   let d=new Date();
@@ -17,14 +17,31 @@ const index = ({inputval,totexpense,negatives,setExpenses,setIncomes,totIncome})
   const handleExpenses = () =>{
     setIncomes(false);
     setExpenses(true);
-    navigate("/recenttransaction")
+    setTimeout(() => {
+      setloader(true);
+    }, 200);
+    
+    setTimeout(() => {
+      setloader(false);
+      settransaction(true);
+      navigate("/recenttransaction")
+    }, 1000);
   }
 
   
   const handleIncomes = () =>{
     setIncomes(true);
     setExpenses(false);
-    navigate("/recenttransaction")
+    setTimeout(() => {
+      setloader(true);
+    }, 200);
+    
+    setTimeout(() => {
+      setloader(false);
+      settransaction(true);
+      navigate("/recenttransaction")
+    }, 1000);
+ 
   }
   return (
     <section className='w-full h-[170px] text-black rounded-b-[32px] bg-linear-to-b from-[#FFF6E5] to-[#F8EDD8]'>
@@ -46,7 +63,7 @@ const index = ({inputval,totexpense,negatives,setExpenses,setIncomes,totIncome})
         
 
         <section className='flex w-full justify-center items-center gap-4 pt-3'>
-            <div className='bg-[#00A86B] w-[150px] h-[70px] rounded-3xl text-white'>
+            <div className={`bg-[#00A86B] ${!Incomes?'w-[150px] h-[70px] shadow-[0_0_2px_2px_rgba(0,0,0,0.3)]':'w-[150px] h-[70px] shadow-[0_0_1px_1px_rgba(0,0,0,0.3)] translate-y-[4px]'} rounded-3xl text-white`}>
               <section className='flex gap-2 w-full h-full justify-center items-center' onClick={()=>handleIncomes()}>
                
                <div className='bg-[#FCFCFC] p-1 rounded-xl'><img src={up} alt="" srcset="" /></div>
@@ -56,7 +73,7 @@ const index = ({inputval,totexpense,negatives,setExpenses,setIncomes,totIncome})
               </div>
               </section>  
               </div>
-            <div className='bg-[#FD3C4A] w-[150px] h-[70px] rounded-3xl text-white'>
+            <div className={`bg-[#FD3C4A] ${!Expenses?'w-[150px] h-[70px] shadow-[0_0_2px_2px_rgba(0,0,0,0.3)]':'w-[150px] h-[70px] shadow-[0_0_1px_1px_rgba(0,0,0,0.3)] translate-y-[4px]'}  rounded-3xl text-white`}>
                   
             <section className='flex gap-2 w-full h-full justify-center items-center' onClick={()=>handleExpenses()}>
                

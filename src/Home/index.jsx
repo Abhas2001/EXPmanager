@@ -6,7 +6,7 @@ import Recent from '../RecentTrans/index'
 import { useState } from 'react';
 import Loader from '../Loader/index';
 
-const index = ({setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
+const index = ({Incomes,Expenses,setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
  
 const[loader,setloader] =useState(false);
 useEffect(()=>{
@@ -35,18 +35,19 @@ useEffect(()=>{
       :
       <section>
       <section className='overflow-y-auto overflow-x-hidden h-[80vh]'>
-      <Header setIncomes={setIncomes} setExpenses={setExpenses} inputval={inputval} totexpense={totexpense} totIncome={totIncome} negatives={negatives} />
+      <Header settransaction={settransaction} setloader={setloader} Expenses={Expenses} Incomes={Incomes} setIncomes={setIncomes} setExpenses={setExpenses} inputval={inputval} totexpense={totexpense} totIncome={totIncome} negatives={negatives} />
         <section> <span className='text-lg font-semibold text-[#292B2D] px-3'>Spend Frequency</span>
       <Frequency storedarr={storedarr} storednegarr={storednegarr}/>
       </section>
-       <Recent setDetailed={setDetailed} sethome={sethome} catarr={catarr} negarr={negarr} settransaction={settransaction}/>
+       <Recent home={home} setloader={setloader}  setDetailed={setDetailed} sethome={sethome} catarr={catarr} negarr={negarr} settransaction={settransaction}/>
       </section>
-      <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">
-          <Footer setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
-        </section>
+      
         </section>
 }
     </section>
+    <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">
+          <Footer setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
+        </section>
 
     </section>
     

@@ -10,6 +10,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
 import Loader from '../Loader/index'
+import correct from "../images/correct.svg"
 
 
 
@@ -67,7 +68,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
     setTimeout(() => {
       navigate("/home");
       setloader(false);
-    }, 3000);
+    }, 500);
    
   };
  
@@ -255,13 +256,13 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
             </section> */}
             <section className={`${showoverlay?'hidden':""} w-full flex justify-center items-center mb-12`}>
               <button
-                className={`${!disabled&&'opacity-[0.4]'} bg-[#7F3DFF] w-[340px] h-[56px] text-white  rounded-2xl font-semibold cursor-pointer `}
+                className={`${!disabled&&'opacity-[0.4]'}  ${!loader?'w-[340px] bg-[#7F3DFF]':'w-[80px] bg-[#FFFFFF] transition-all duration-500 ease-in-out '} h-[56px] text-white  rounded-2xl font-semibold cursor-pointer `}
                 onClick={handleCont}
                 disabled={!disabled}
               >
   {loader ? (
   <div className="w-full flex items-center justify-center">
-    <Loader />
+   <img src={correct} alt="" srcset="" />
   </div>
 ) : (
   'Continue'

@@ -8,7 +8,7 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({Expenses,Incomes,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
+const index = ({home,setloader, Expenses,Incomes,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
   const d = new Date();
 
@@ -306,9 +306,16 @@ const handledetailed = (values) =>{
 }
   const handleTransactions = () => {
     sethome(false);
-    settransaction(true);
-    console.log("click");
-    navigate("/recenttransaction");
+    
+    setTimeout(() => {
+      setloader(true);
+    }, 200);
+    setTimeout(() => {
+      setloader(false);
+      settransaction(true);
+      navigate("/recenttransaction");
+    },900);
+   
   };
   return (
     <section >
@@ -420,7 +427,7 @@ const handledetailed = (values) =>{
                 : "All Transaction"}
             </span>{" "}
        
-            <div className="p-1 px-3 bg-[#EEE5FF] rounded-full flex justify-center items-center">
+            <div className={`p-1 px-3 bg-[#EEE5FF] ${home?'shadow-[0_0_2px_2px_rgba(0,0,0,0.3)]':'translate-y-[4px]'} rounded-full flex justify-center items-center`}>
               <button
                 className="text-[#7F3DFF] text-sm font-medium"
                 onClick={() => handleTransactions()}

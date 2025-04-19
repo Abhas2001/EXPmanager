@@ -10,19 +10,25 @@ import income from '../images/Income.svg';
 import ex from '../images/Expense.svg';
 import Trans from '../images/Trans.svg';
 import transcolored from '../images/transcolored.svg';
+
 import profile from '../assets/Profile.svg';
 import budget from '../assets/Budget.svg';
 
 const index = ({setloader,sethome,transaction,home,settransaction}) => {
 
   const[btn,setBtn] = useState(false);
+  const[colored,setcolored] = useState(false);
   const navigate = useNavigate();
   const handletrans = () =>{
     setloader(true);
+    sethome(false);
+    setcolored(true);
+   
     setTimeout(() => {
       setloader(false)
-      navigate("/recenttransaction")
       settransaction(true);
+      navigate("/recenttransaction")
+    
     },1000);
   
   
@@ -61,8 +67,8 @@ const index = ({setloader,sethome,transaction,home,settransaction}) => {
 
       </div>
     <div className="w-full h-20 bg-[#FCFCFC] relative flex justify-between px-6 pt-3">
-    <div className='shadow-lg' >{home?<img src={homes} onClick={()=>handlehomes()} alt="" srcset="" />:<img onClick={()=>handlehomes()} src={unhome}/>}</div>
-    <div onClick={()=>handletrans()}>{transaction? <img src={transcolored} alt="" srcset="" />:<img src={noncolored} alt="" srcset="" />}</div>
+    <div className={`${home&&' transition-all duration-500 ease-in-out '}`} >{home?<img src={homes} onClick={()=>handlehomes()} alt="" srcset="" />:<img onClick={()=>handlehomes()} src={unhome}/>}</div>
+    <div className={`${transaction&&'  transition-all duration-500 ease-in-out '}`} onClick={()=>handletrans()}>{colored||transaction? <img src={transcolored} alt="" srcset="" />:<img src={noncolored} alt="" srcset="" />}</div>
     <div className={`relative bottom-9 w-16 h-16 bg-white rounded-full flex justify-center items-center p-2 cursor-pointer`} onClick={handleOpen}> 
     
       <img className={`${btn?"rotate-45":"rotate-0"}`} src={add} alt="" srcset="" />
