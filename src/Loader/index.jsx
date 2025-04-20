@@ -7,7 +7,7 @@ const index = () => {
 
 
 
-        <div className="card flex justify-content-center items-center w-6 h-6 ">
+        <div className="card flex justify-content-center items-center w-8 h-8 ">
             <ProgressSpinner />
         </div>
     

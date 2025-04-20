@@ -37,6 +37,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   const[disabled,setDisabled] = useState(false);
   const[pressed,setPressed] = useState(false);
   const[loader,setloader] = useState(false);
+  const[loading,setloading] = useState(false);
   const navigate = useNavigate();
  
   const[dropdownarr,setDropdownarr] = useState([]);
@@ -52,7 +53,16 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   };
 
   const handleCont = () => {
-    setloader(true);
+
+    setTimeout(() => {
+      setloading(true);
+      console.log(loading);
+    }, 200);
+    setTimeout(() => {
+      setloader(true);
+      setloading(false);
+    }, 1000);
+  
     setChange(!change);
     setPressed(true);
     localStorage.setItem("ar7", val);
@@ -68,7 +78,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
     setTimeout(() => {
       navigate("/home");
       setloader(false);
-    }, 1000);
+    }, 2000);
    
   };
  
@@ -175,7 +185,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   </Webcam>
  
   :
-      <section className=" flex flex-col justify-between text-white w-[375px] h-screen bg-[#00A86B] ">
+      <section className=" flex flex-col justify-between text-white w-[420px] h-screen bg-[#00A86B] ">
 
         <section className=" w-full flex justify-between p-4">
           <button className="text-white cursor-pointer" onClick={handleBack}>
@@ -185,7 +195,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
           <span></span>
         </section>
 
-        <section className="w-full flex flex-col justify-start px-4">
+        <section className="w-full flex flex-col justify-start px-6">
           <span>How much?</span>
           <section className="pt-2 flex">
             <p className="flex justify-center items-center text-lg font-bold">
@@ -202,7 +212,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
             />
           </section>
         </section>
-        <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
+        <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px] px-2`}>
           <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
             <Dropdown edit={edit} detailed={detailed} showincomepage={showincomepage}  showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>
@@ -260,7 +270,14 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
                 onClick={handleCont}
                 disabled={!disabled}
               >
-  {loader ? (
+  {loading?(
+     <section className="w-full flex justify-center items-center">
+    <Loader/>
+    </section>
+
+  ):
+  
+  loader ? (
   <div className="w-full flex items-center justify-center">
    <img src={correct} alt="" srcset="" />
   </div>

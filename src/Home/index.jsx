@@ -46,7 +46,7 @@ useEffect(()=>{
 }
     </section>
     <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">
-          <Footer profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
+          <Footer loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
         </section>
 
     </section>

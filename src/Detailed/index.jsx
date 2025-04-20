@@ -131,7 +131,7 @@ const  handleDeleteTransaction = (value) =>{
               Category
             </span>
             <span className="font-semibold text-[16px] text-[#0D0E0F]">
-             {detailed[0].label}
+             {detailed[0]?.label}
             </span>
           </div>
 
@@ -165,7 +165,7 @@ const  handleDeleteTransaction = (value) =>{
         </p>
       </section>
 
-      {detailed[0].img && (
+      {detailed[0]?.img && (
         <section className={`${deletesuccess&&'hidden'} mt-8`}>
           <span className="font-semibold text-[16px] text-[#91919F] ml-5">
             Attachment

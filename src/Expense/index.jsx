@@ -165,7 +165,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
   </Webcam>
  
   :
-      <section className="flex flex-col justify-between text-white w-[375px] h-screen bg-[#FD3C4A] ">
+      <section className="flex flex-col justify-between text-white w-[420px] h-screen bg-[#FD3C4A] ">
 
         <section className=" w-full flex justify-between p-4">
           <button className="text-white cursor-pointer" onClick={handleBack}>
@@ -175,7 +175,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
           <span></span>
         </section>
 
-        <section className="w-full flex flex-col justify-start px-4">
+        <section className="w-full flex flex-col justify-start px-6">
           <span>How much?</span>
           <section className="pt-2 flex">
             <p className="flex justify-center items-center text-lg font-bold">
@@ -192,7 +192,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
             />
           </section>
         </section>
-        <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px]`}>
+        <section className={` ${showoverlay?'bg-gray-50':'bg-[#ffffff]'} rounded-t-4xl w-full min-h-[556px] px-2`}>
           <section className={`max-h-[458px] ${showoverlay&&'opacity-40'}`}>
           {
             <Dropdown showincomepage={showincomepage}  showoverlay={showoverlay} dropdownarr={dropdownarr} setDropdownarr={setDropdownarr} setDisabled={setDisabled} flag={flag} setflag={setflag} label={'Category'}/>

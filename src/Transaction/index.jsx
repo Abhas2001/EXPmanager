@@ -9,8 +9,9 @@ import Filter from '../Filter/index';
 import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
 import Left from '../images/Back.svg';
+import Loader from '../Loader/index';
 
-const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes,setloader,loader, profilecolored,setprofilecolored }) => {
+const Index = ({sethome,totexpense,home,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes,setloader,loader, profilecolored,setprofilecolored }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
@@ -44,6 +45,13 @@ const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,set
 
   return (
     <section className={`w-full h-screen flex justify-center items-center bg-black `}>
+     {loader?
+         
+         <section className='w-full h-screen flex justify-center items-center bg-white'>
+      <Loader/>
+      </section>
+      :
+      <section>
 { financialreport?
  
  <Financial totexpense={totexpense} storednegarr={storednegarr} totIncome={totIncome}/>
@@ -88,12 +96,15 @@ const Index = ({sethome,totexpense,storednegarr,totIncome,catarr,transaction,set
       <section className={`${showfilter?'':'hidden'} h-[95%] w-full bg-[#FFFFFF] rounded-t-4xl shadow-2xl fixed bottom-0`}>
         <Filter Expenses={Expenses} Incomes={Incomes} setIncomes={setIncomes}  setExpenses={setExpenses} setcount={setcount} option={option} setOption={setOption} setShowFilter={setShowFilter} setHighest={setHighest} highest={highest} newest={newest} oldest={oldest} setNewest={setNewest} setOldest={setOldest}  setLowest={setLowest} lowest={lowest}/> 
         </section>
-      <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
-    
-        <Footer  profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} loader={loader} sethome={sethome} transaction={transaction} settransaction={settransaction} />
-      </section>
+     
     </section>
 }
+</section>
+}
+<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
+    
+    <Footer loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
+    </section>
     </section>
   );
 };

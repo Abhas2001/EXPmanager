@@ -11,11 +11,11 @@ import ex from '../images/Expense.svg';
 import Trans from '../images/Trans.svg';
 import transcolored from '../images/transcolored.svg';
 
-import profile from '../assets/Profile.svg';
+import profileuncolored from '../assets/colorprof.svg';
 import profilec from '../assets/coloredprofile.svg';
 import budget from '../assets/Budget.svg';
 
-const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored}) => {
+const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored,loader}) => {
 
   const[btn,setBtn] = useState(false);
   const[colored,setcolored] = useState(false);
@@ -64,6 +64,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
 
   const handleAccount = () =>{
     setloader(true);
+    console.log("GOBHII",loader);
     setprofilecolored(true);
     setcolored(false)
     sethome(false)
@@ -96,7 +97,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     
     </div>
     <div><img src={budget} alt="" srcset="" /></div>
-    <div onClick={()=>handleAccount()}>{profilecolored?<img src={profilec} alt="" srcset="" />:<img src={profile} alt="" srcset="" />}</div>
+    <div onClick={()=>handleAccount()}>{profilecolored?<img src={profilec} alt="" srcset="" />:<img src={profileuncolored}/>}</div>
    
   </div>
   </section>
