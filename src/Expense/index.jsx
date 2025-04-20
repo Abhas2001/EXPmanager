@@ -9,6 +9,7 @@ import close from "../assets/close.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import Overlay from "../Overlay/index";
 import Webcam from "react-webcam";
+import Loader from '../Loader/index'
 import correct from "../images/correct.svg"
 
 
@@ -33,6 +34,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
   const[finalInput,setFinalInput]= useState('');
   const[disabled,setDisabled] = useState(false);
   const[loader,setloader] = useState(false);
+  const[loading,setloading] = useState(false);
   const navigate = useNavigate();
  
   const[dropdownarr,setDropdownarr] = useState([]);
@@ -48,7 +50,14 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
   };
 
   const handleCont = () => {
-    setloader(true);
+    setTimeout(() => {
+      setloading(true);
+      console.log(loading);
+    }, 200);
+    setTimeout(() => {
+      setloader(true);
+      setloading(false);
+    }, 1000);
     setChange(!change);
     localStorage.setItem("ar8", val);
 
@@ -63,7 +72,7 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
     setTimeout(() => {
       navigate("/home");
       setloader(false);
-    }, 1000);
+    }, 2000);
   };
  
   const handlechange = (e) => {
@@ -250,7 +259,14 @@ const index = ({showincomepage, setshowincomepage, setnegarr,setImgLinks, setCha
                 onClick={handleCont}
                 disabled={!disabled}
               >
-  {loader ? (
+{loading?(
+     <section className="w-full flex justify-center items-center">
+    <Loader/>
+    </section>
+
+  ):
+  
+  loader ? (
   <div className="w-full flex items-center justify-center">
    <img src={correct} alt="" srcset="" />
   </div>
