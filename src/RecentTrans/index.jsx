@@ -8,15 +8,36 @@ import Tran from "../images/Tran.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const index = ({home,setloader, Expenses,Incomes,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
+const index = ({home,dark,setloader, Expenses,Incomes,setDetailed, catarr,newest,negarr, settransaction, sethome, label, highest,lowest,oldest,option}) => {
   const navigate = useNavigate();
   const d = new Date();
 
-
+    const[l,setL] = useState(false);
   let Today = catarr.filter((x) => x.CurrentD === d.getDate()).concat(negarr?.filter((x) => x.CurrentD === d.getDate()));
   let Todayexp = negarr?.filter((x) => x.CurrentD === d.getDate())
   let Yesterday = catarr.filter((x) => x.CurrentD !== d.getDate()).concat(negarr?.filter((x)=> x.CurrentD !== d.getDate()));
   let Total = catarr.concat(negarr);
+
+
+
+useEffect(()=>{
+  handlezoomin();
+},[])
+
+  const handlezoomout = () =>{
+      setTimeout(() => {
+        setL(false);
+        handlezoomin();
+      }, 1000);
+  }
+
+  const handlezoomin = () =>{
+    setTimeout(() => {
+      setL(true);
+      handlezoomout();
+    }, 1000);
+     
+  }
  
 let Naya = [];
 Naya = Total.filter((x)=>
@@ -421,13 +442,13 @@ const handledetailed = (values) =>{
         <section>
           <div className="w-full flex justify-between items-between text-black p-4">
             {" "}
-            <span className="text-lg font-semibold text-[#292B2D]">
+            <span className={`text-lg font-semibold ${!dark?'text-[#292B2D]':'text-[#FFFFFF]'}`}>
               {label === "detailed" && !highest && !lowest && !newest && !oldest
                 ? "Today"
                 : "All Transaction"}
             </span>{" "}
        
-            <div className={`p-1 px-3 bg-[#EEE5FF] ${home?'shadow-[2px_2px_2px_2px_rgba(0,0,0,0.3)]':'shadow-[0_0_2px_2px_rgba(0,0,0,0.3)] translate-y-[4px]'} rounded-full flex justify-center items-center`}>
+            <div className={`p-1 px-3 bg-[#EEE5FF] ${l?'scale-75':'scale-100'} ${home?'shadow-[2px_2px_2px_2px_rgba(0,0,0,0.3)]':'shadow-[0_0_2px_2px_rgba(0,0,0,0.3)] translate-y-[4px]'} rounded-full flex justify-center items-center`}>
               <button
                 className="text-[#7F3DFF] text-sm font-medium"
                 onClick={() => handleTransactions()}

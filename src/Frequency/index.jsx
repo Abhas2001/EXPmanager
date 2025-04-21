@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { LineChart } from '@mui/x-charts/LineChart';
 import { Chart } from 'primereact/chart';
 
-const index = ({storedarr,storednegarr}) => {
+const index = ({storedarr,storednegarr,dark}) => {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
     const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];

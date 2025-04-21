@@ -6,7 +6,7 @@ import Recent from '../RecentTrans/index'
 import { useState } from 'react';
 import Loader from '../Loader/index';
 
-const index = ({Incomes,loader,setloader,profilecolored,setprofilecolored,Expenses,setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
+const index = ({Incomes,dark,loader,setloader,profilecolored,setprofilecolored,Expenses,setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
 
 useEffect(()=>{
   sethome(true);
@@ -26,7 +26,7 @@ useEffect(()=>{
        
     <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
      
-    <section className='flex flex-col justify-between text-white w-[420px] h-screen bg-[#FFFFFF] '>
+    <section className={`flex flex-col justify-between text-white w-[420px] h-screen ${dark?'bg-gray':'bg-[#FFFFFF]'} `}>
     {loader?
          
          <section className='w-full h-screen flex justify-center items-center'>
@@ -36,10 +36,10 @@ useEffect(()=>{
       <section>
       <section className='overflow-y-auto overflow-x-hidden h-[80vh]'>
       <Header settransaction={settransaction} setloader={setloader} Expenses={Expenses} Incomes={Incomes} setIncomes={setIncomes} setExpenses={setExpenses} inputval={inputval} totexpense={totexpense} totIncome={totIncome} negatives={negatives} />
-        <section> <span className='text-lg font-semibold text-[#292B2D] px-3'>Spend Frequency</span>
-      <Frequency storedarr={storedarr} storednegarr={storednegarr}/>
+        <section> <span className={`text-lg font-semibold ${!dark?'text-[#292B2D]':'text-[#FFFFFF]'} px-3`}>Spend Frequency</span>
+      <Frequency dark={dark} storedarr={storedarr} storednegarr={storednegarr}/>
       </section>
-       <Recent home={home} setloader={setloader}  setDetailed={setDetailed} sethome={sethome} catarr={catarr} negarr={negarr} settransaction={settransaction}/>
+       <Recent dark={dark} home={home} setloader={setloader}  setDetailed={setDetailed} sethome={sethome} catarr={catarr} negarr={negarr} settransaction={settransaction}/>
       </section>
       
         </section>

@@ -64,8 +64,8 @@ const[showincomepage,setshowincomepage] = useState(false);
 const[edit,setedit] = useState(false);
 const[profilecolored,setprofilecolored] = useState(false);
 const[loader,setloader] = useState(false);
-
-//nkjnfdjknbdbdfhbhfbhfd
+const[dark,setdark] = useState(false);
+console.log("DARK",dark);
 
   useEffect(()=>{
        localStorage.setItem("Recent",JSON.stringify(catarr))
@@ -124,10 +124,11 @@ useEffect(()=>{
   return (
          <Routes>
           <Route path="/" element={<Onboarding/>} />
-          <Route path="/account" element={<Account home={home} setloader={setloader} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} name={name} sethome={sethome} transaction={transaction} settransaction={settransaction} />} />
+          <Route path="/account" element={<Account setdark={setdark} home={home} setloader={setloader} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} name={name} sethome={sethome} transaction={transaction} settransaction={settransaction}  Expenses={Expenses}  Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr}  catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp pass={pass} setPass={setPass} email={email} setEmail={setEmail} name={name} setName={setName}/>}/>
-      <Route path="/home" element={<Home setloader={setloader} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} Expenses={Expenses}  Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
+      <Route path="/home" 
+      element={<Home dark={dark} setloader={setloader} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} Expenses={Expenses}  Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} negarr={negarr} home={home} sethome={sethome} transaction={transaction} settransaction={settransaction} catarr={catarr} negatives={negatives} totIncome={totIncome} totexpense={totexpense} storednegarr={storednegarr} storedarr={storedarr}/>}/>
       <Route path="/income" element={<Income edit={edit} detailed={detailed} showincomepage={showincomepage} setshowincomepage={setshowincomepage} setImgLinks={setImgLinks} setcatarr={setcatarr} setStoredArr={setStoredArr} change={change} setChange={setChange} storedarr={storedarr}/>} />
       <Route path="/expense" element={<Expense showincomepage={showincomepage} setshowincomepage={setshowincomepage} setImgLinks={setImgLinks} setnegarr={setnegarr} setStorednegArr={setStorednegArr} change={change} setChange={setChange} storedarr={storedarr}/>}/>
       <Route path="/recenttransaction" element={<Transaction home={home}  profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} loader={loader} totexpense={totexpense} totIncome={totIncome} storednegarr={storednegarr} Expenses={Expenses} Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
