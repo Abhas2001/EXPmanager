@@ -50,6 +50,8 @@ const index = ({storedarr,storednegarr,dark}) => {
                 }
             ]
         };
+
+        //bgehdfghegfhghfr
         const options = {
             maintainAspectRatio: false,
             aspectRatio: 1.8,
