@@ -15,7 +15,7 @@ import correct from "../images/correct.svg"
 
 
 
-const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setImgLinks, setChange, change, storedarr, setStoredArr }) => {
+const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setImgLinks, setChange, change, storedarr, setStoredArr,catarr }) => {
 
   setshowincomepage(true);
   useEffect(()=>{
@@ -27,7 +27,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   let inputval = localStorage.getItem("ar1");
   console.log(inputval);
 
-  const [val, setVal] = useState();
+  const [val, setVal] = useState(edit?detailed[0].input:'');
   const [Input, setInput] = useState('');
   const [finalval, setfinalVal] = useState([]);
   const[openCamera,setOpenCamera] = useState(false);
@@ -38,6 +38,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   const[pressed,setPressed] = useState(false);
   const[loader,setloader] = useState(false);
   const[loading,setloading] = useState(false);
+  const[index,setindex] = useState();
   const navigate = useNavigate();
  
   const[dropdownarr,setDropdownarr] = useState([]);
@@ -83,10 +84,19 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
   };
  
   const handlechange = (e) => {
+  
+    const indexs = storedarr.indexOf(val)
+    setindex(indexs);
+
     setVal(e.target.value);
+ 
     console.log(val);
   };
 
+  useEffect(()=>{
+    storedarr.splice(index,1,val)
+    console.log("OLDDVAL",storedarr,index);
+  },[val])
   
 
   const handleInput = (e) => {
@@ -206,7 +216,7 @@ const index = ({edit,detailed,showincomepage, setshowincomepage, setcatarr,setIm
               placeholder="0"
               disabled={handleinputdisabled()}
               onKeyUp={()=>handleamount(event)}
-              value={edit?detailed[0].input:val}
+              value={val}
               className="text-xl font-bold text-white p-0 border-2 border-[#00A86B] enabled:outline-none focus:text-white focus:border-2 focus:outline-[#00A86B] focus:border-[#00A86B]  placeholder:text-2xl placeholder:text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               onInput={handlechange}
             />
