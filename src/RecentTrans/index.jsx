@@ -330,12 +330,12 @@ const handledetailed = (values) =>{
      sethome(false);
     setTimeout(() => {
       setloader(true);
-    }, 200);
+    }, 900);
     setTimeout(() => {
       setloader(false);
       settransaction(true);
       navigate("/recenttransaction");
-    },900);
+    },1500);
    
   };
   return (
@@ -448,13 +448,27 @@ const handledetailed = (values) =>{
                 : "All Transaction"}
             </span>{" "}
        
-            <div className={`p-1 px-3 bg-[#EEE5FF] ${l?'scale-75':'scale-100'} ${home?'shadow-[2px_2px_2px_2px_rgba(0,0,0,0.3)]':'shadow-[0_0_2px_2px_rgba(0,0,0,0.3)] translate-y-[4px]'} rounded-full flex justify-center items-center`}>
+            <div className={`p-1 px-3 bg-[#EEE5FF]  ${home?'shadow-[2px_2px_2px_2px_rgba(0,0,0,0.3)]':'shadow-[0_0_2px_2px_rgba(0,0,0,0.3)] translate-y-[1px]'} rounded-full flex justify-center items-center`}>
               <button
-                className="text-[#7F3DFF] text-sm font-medium"
+                className=" text-[#7F3DFF] text-sm font-medium"
                 onClick={() => handleTransactions()}
               >
-               See All
+               <span className="w-[48px] flex gap-[2px]">
+               <span className={`${!home&&'translate-y-[-380px] translate-x-[-380px] w-0 transition-all duration-500 ease-in-out'}`}>
+               {"See"} 
+               </span>
+               <span className={`${home&&'hidden'}`}>
+               {"See"} 
+               </span>
+               <span className={`${!home&&'translate-y-[380px] translate-x-[-380px] w-0 transition-all duration-500 ease-in-out'}`}>
+               {"All"}
+               </span>
+               <span className={`${home&&'hidden'}`}>
+               {"All"} 
+               </span>
+               </span>
               </button>
+
             </div>
    
             
