@@ -15,8 +15,10 @@ const Dropdown = ({edit,detailed,showincomepage,showoverlay,walletdropdownarr, s
     
    
     const[bold,setBold] = useState(false);
+
+
    
-   console.log("HUSDHF",showincomepage);
+   console.log("HUSDHF",dropdownarr);
     const handleShowdropdown = () => {
         setDropdown(!showdropdown);
         setflag(!flag);
@@ -68,7 +70,7 @@ const Dropdown = ({edit,detailed,showincomepage,showoverlay,walletdropdownarr, s
                   
                   
                   
-                  {!edit?
+              
                   <p className={`${dropdownarr.length>0?'text-[#393939] font-medium':'text-[#91919F]'}`}>
                     {dropdownarr.length>0?
                     
@@ -102,10 +104,9 @@ const Dropdown = ({edit,detailed,showincomepage,showoverlay,walletdropdownarr, s
                     )
                   :
                   label}</p>
-                  :
-                  <p className='text-[#393939] font-medium'>{detailed[0].label}</p>
                   
-                  }{" "}
+                  
+                  {" "}
                   </section>
                   :
                   <section>

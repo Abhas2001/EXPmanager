@@ -62,6 +62,11 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     navigate("/expense")
   }
 
+
+  const handleTransfer = () =>{
+    navigate("/transfer")
+  }
+
   const handleAccount = () =>{
     setloader(true);
     console.log("GOBHII",loader);
@@ -83,7 +88,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     <section>
       <div className={`text-black w-full flex gap-0 justify-center items-center cursor-pointer ${btn?'translate-y-[-30px] duration-1000':'translate-y-[60px]'} `}>
         <span onClick={handleIncome}><img src={income} alt="" srcset="" /></span>
-        <span className={`${btn?'translate-y-[-50px]':'translate-y-[60px]'}`}><img src={Trans} alt="" srcset="" /></span>
+        <span onClick={handleTransfer} className={`${btn?'translate-y-[-50px]':'translate-y-[60px]'}`}><img src={Trans} alt="" srcset="" /></span>
         <span onClick={handleExpense}><img src={ex} alt="" srcset="" /></span>
 
       </div>
