@@ -6,18 +6,14 @@ import Recent from '../RecentTrans/index'
 import { useState } from 'react';
 import Loader from '../Loader/index';
 
-const index = ({Incomes,dark,loader,setloader,profilecolored,setprofilecolored,Expenses,setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
+const index = ({budgetcolored,setBudgetcolored,Incomes,dark,loader,setloader,profilecolored,setprofilecolored,Expenses,setIncomes,setExpenses, setDetailed,home,sethome,transaction,catarr,negarr,inputval,totexpense,totIncome,negatives,storedarr,settransaction,storednegarr}) => {
 
 useEffect(()=>{
   sethome(true);
   
 },[])
  
-useEffect(()=>{
-  console.log("LOADER ACTI",loader);
 
-
-},[loader])
 
   
 
@@ -46,7 +42,7 @@ useEffect(()=>{
 }
     </section>
     <section className="fixed w-full bottom-0 md:static md:w-auto md:bottom-auto">
-          <Footer loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
+          <Footer budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
         </section>
 
     </section>

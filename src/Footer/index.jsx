@@ -12,13 +12,15 @@ import Trans from '../images/Trans.svg';
 import transcolored from '../images/transcolored.svg';
 
 import profileuncolored from '../assets/colorprof.svg';
+import budgetcolores from '../assets/Budgetcolored.svg';
 import profilec from '../assets/coloredprofile.svg';
 import budget from '../assets/Budget.svg';
 
-const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored,loader}) => {
+const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored,loader,budgetcolored,setBudgetcolored}) => {
 
   const[btn,setBtn] = useState(false);
   const[colored,setcolored] = useState(false);
+
  
 
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     
     settransaction(false);
     setprofilecolored(false);
+    setBudgetcolored(false);
     sethome(true);
     navigate("/home")
     
@@ -67,7 +70,13 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     navigate("/transfer")
   }
 
+  const handleBudget = () =>{
+     sethome(false);
+    setBudgetcolored(true);
+    navigate("/budget")
+  }
   const handleAccount = () =>{
+    setBudgetcolored(false);
     setloader(true);
     console.log("GOBHII",loader);
     setprofilecolored(true);
@@ -101,7 +110,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
   
     
     </div>
-    <div><img src={budget} alt="" srcset="" /></div>
+    <div onClick={()=>handleBudget()}>{budgetcolored?<img src={budgetcolores} alt="" srcset="" />:<img src={budget} alt="" srcset="" />}</div>
     <div onClick={()=>handleAccount()}>{profilecolored?<img src={profilec} alt="" srcset="" />:<img src={profileuncolored}/>}</div>
    
   </div>
