@@ -10,7 +10,7 @@ import user from '../assets/userlogo.avif';
 import Export from '../Exportpdf/index';
 import { useNavigate } from "react-router-dom";
 
-const index = ({sethome,setdark,settransaction,transaction,name,profilecolored,setprofilecolored,setloader,loader,home,Expenses,Incomes,setExpenses,setIncomes,setDetailed,negarr,catarr,totIncome,totexpense,negatives,storednegarr,storedarr}) => {
+const index = ({sethome,setdark,budgetcolored,setBudgetcolored,settransaction,transaction,name,profilecolored,setprofilecolored,setloader,loader,home,Expenses,Incomes,setExpenses,setIncomes,setDetailed,negarr,catarr,totIncome,totexpense,negatives,storednegarr,storedarr}) => {
 
     const navigate = useNavigate()
     const[exportpdf,setExportpdf] = useState(false);
@@ -69,7 +69,7 @@ const index = ({sethome,setdark,settransaction,transaction,name,profilecolored,s
 }
       <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0`}>
     
-    <Footer home={home} setloader={setloader} loader={loader} setprofilecolored={setprofilecolored} profilecolored={profilecolored} sethome={sethome} transaction={transaction} settransaction={settransaction} />
+    <Footer budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} home={home} setloader={setloader} loader={loader} setprofilecolored={setprofilecolored} profilecolored={profilecolored} sethome={sethome} transaction={transaction} settransaction={settransaction} />
   </section>
   </section>
 }

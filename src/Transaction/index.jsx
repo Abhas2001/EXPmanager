@@ -11,7 +11,7 @@ import arrow from '../images/Vector.svg'
 import Left from '../images/Back.svg';
 import Loader from '../Loader/index';
 
-const Index = ({sethome,totexpense,home,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes,setloader,loader, profilecolored,setprofilecolored }) => {
+const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes,setloader,loader, profilecolored,setprofilecolored }) => {
   const navigate = useNavigate();
   const[showfilter,setShowFilter]  = useState(false);
   const[highest,setHighest] = useState(false);
@@ -103,7 +103,7 @@ const Index = ({sethome,totexpense,home,storednegarr,totIncome,catarr,transactio
 }
 <section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     
-    <Footer loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
+    <Footer budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
     </section>
     </section>
   );

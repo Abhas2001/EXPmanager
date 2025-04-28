@@ -29,7 +29,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     sethome(false);
     setcolored(true);
     setprofilecolored(false);
-   
+    setBudgetcolored(false);
     setTimeout(() => {
       setloader(false)
       settransaction(true);
@@ -52,7 +52,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
   }
   const handlehomes = () => {
     console.log("clicked");
-    
+   
     settransaction(false);
     setprofilecolored(false);
     setBudgetcolored(false);
@@ -71,7 +71,9 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
   }
 
   const handleBudget = () =>{
+    settransaction(false);
      sethome(false);
+     setprofilecolored(false);
     setBudgetcolored(true);
     navigate("/budget")
   }
@@ -102,7 +104,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
 
       </div>
     <div className="w-full h-20 bg-[#FCFCFC] relative flex justify-between px-6 pt-3">
-    <div className={`${home&&' transition-all duration-500 ease-in-out '}`} >{home?<img src={homes} onClick={()=>handlehomes()} alt="" srcset="" />:<img onClick={()=>handlehomes()} src={unhome}/>}</div>
+    <div className={`${home&&' transition-all duration-500 ease-in-out '}`} onClick={()=>handlehomes()}  >{home?<img src={homes} alt="" srcset="" />:<img src={unhome}/>}</div>
     <div className={`${transaction&&'  transition-all duration-500 ease-in-out '}`} onClick={()=>handletrans()}>{colored||transaction? <img src={transcolored} alt="" srcset="" />:<img src={noncolored} alt="" srcset="" />}</div>
     <div className={`relative bottom-9 w-16 h-16 bg-white rounded-full flex justify-center items-center p-2 cursor-pointer`} onClick={handleOpen}> 
     
