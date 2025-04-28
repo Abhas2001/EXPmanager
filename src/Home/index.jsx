@@ -22,7 +22,7 @@ useEffect(()=>{
        
     <section className={`w-full h-screen flex justify-center items-center bg-black overflow-hidden`}>
      
-    <section className={`flex flex-col justify-between text-white w-[420px] h-screen ${dark?'bg-gray':'bg-[#FFFFFF]'} `}>
+    <section className={`flex flex-col justify-between text-white w-[430px] h-screen ${dark?'bg-gray':'bg-[#FFFFFF]'} `}>
     {loader?
          
          <section className='w-full h-screen flex justify-center items-center'>

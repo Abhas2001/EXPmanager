@@ -57,7 +57,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
  <Financial totexpense={totexpense} storednegarr={storednegarr} totIncome={totIncome}/>
  :
 
-    <section className="md:w-auto md:flex md:justify-center md:items-center w-full h-screen flex flex-col bg-gray-50 ">
+    <section className="md:w-auto md:flex md:justify-center md:items-center  h-screen flex flex-col bg-gray-50 w-[430px]">
 
 
    
