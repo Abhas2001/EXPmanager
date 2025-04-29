@@ -14,7 +14,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
   return (
     <>
     { showCreate?
-    <Create/>
+    <Create setShowCreate={setShowCreate}/>
     :
     <div className='w-full h-screen bg-[#7F3DFF]'>
         

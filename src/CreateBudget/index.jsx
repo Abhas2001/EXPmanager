@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import Footer from '../Footer/index'
-import prev from '../assets/prev.svg';
-import Create from '../CreateBudget/index'
 
-const index = () => {
+import prev from '../assets/prev.svg';
+
+
+const index = ({setShowCreate}) => {
      
     const[slide,setslide] = useState(false)
     const[count,setcount] = useState(1);
+    const[selected,setselected] = useState('');
    
 
     const handleslide = () =>{
@@ -21,8 +22,11 @@ const index = () => {
     }
 
     const handleChange = (vak) =>{
-      
-        console.log(vak);
+       setselected(vak);
+    }
+
+    const handleComplete = () =>{
+        setShowCreate(false);
     }
 
   return (
@@ -63,11 +67,17 @@ const index = () => {
   </div>
   
 </section>
+{ selected.length>0&&
+<section className='w-full'>
+    <input className='w-full' type="range" />
+</section>
+}
+
 </section>
 
 
 <section className='bg-[#7F3DFF] text-[#ffffff] w-[343px] h-14 rounded-2xl flex justify-center items-center fixed bottom-4 left-4'>
-<span className='font-semibold'>Continue</span>
+<span className='font-semibold' onClick={()=>handleComplete()}>Continue</span>
 </section>
     </section>
 
