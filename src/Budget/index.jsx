@@ -7,7 +7,7 @@ import Create from '../CreateBudget/index'
 const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored,loader, budgetcolored,setBudgetcolored}) => {
       
 
-    const[showCreate,setShowCreate] = useState(true);
+    const[showCreate,setShowCreate] = useState(false);
     const handleCreate = () =>{
             setShowCreate(true);
     }

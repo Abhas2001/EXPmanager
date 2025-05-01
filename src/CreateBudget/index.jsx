@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import prev from '../assets/prev.svg';
 
@@ -8,6 +9,8 @@ const index = ({setShowCreate}) => {
     const[slide,setslide] = useState(false)
     const[count,setcount] = useState(1);
     const[selected,setselected] = useState('');
+    const navigate = useNavigate();
+
    
 
     const handleslide = () =>{
@@ -29,12 +32,17 @@ const index = ({setShowCreate}) => {
         setShowCreate(false);
     }
 
+
+    const handleback = () =>{
+        navigate("/budget");
+    }
+
   return (
     <div className='w-full h-screen bg-[#7F3DFF]'>
         
     <section className='w-full h-[60%] flex flex-col justify-between bg-[#7F3DFF]'>
       <section className='w-full flex justify-between text-[#ffffff] p-8'>
-        <span><img src={prev} alt="" srcset="" /></span>
+        <span onClick={()=>handleback()}><img src={prev} alt="" srcset="" /></span>
         <span className='text-[24px] font-[500]'>Create Budget</span>
         <span><img className='hidden' src={prev} alt="" srcset="" /></span>
       </section>
