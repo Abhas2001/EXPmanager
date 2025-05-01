@@ -34,7 +34,7 @@ const index = ({setShowCreate}) => {
 
 
     const handleback = () =>{
-        navigate("/budget");
+     setShowCreate(false)
     }
 
   return (
