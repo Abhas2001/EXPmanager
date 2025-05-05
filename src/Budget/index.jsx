@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import Footer from '../Footer/index'
 import prev from '../assets/prev.svg';
 import Create from '../CreateBudget/index'
@@ -11,10 +11,13 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
     const handleCreate = () =>{
             setShowCreate(true);
     }
+
+    const[option,setOption] = useState('');
+    const[bgtvalue,setBgtvalue] = useState()
   return (
     <>
     { showCreate?
-    <Create setShowCreate={setShowCreate}/>
+    <Create setShowCreate={setShowCreate} setOption={setOption} setBgtvalue={setBgtvalue}/>
     :
     <div className='w-full h-screen bg-[#7F3DFF]'>
         
@@ -26,10 +29,24 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
           </section>
         </section>
        <section className='h-[90%] w-full bg-[#ffffff] rounded-t-4xl'>
+          {option&&bgtvalue &&
+          <section className='w-full flex flex-col py-4'>
+            <span>{option}</span>
+            <span>{bgtvalue}</span>
+          </section>
+}
+
         <section className='w-full h-full flex flex-col justify-center items-center'>
             <section className='text-[#91919F] h-full flex flex-col justify-center items-center mb-16'>
-            <span className='w-full flex justify-center items-center'>You don’t have a budget.</span><span>
-Let’s make one so you in control.</span>
+                { option?'':
+            <span className='w-full flex justify-center items-center'>You don’t have a budget.</span>
+                }
+                { option?'':
+                <span>
+Let’s make one so you in control.
+</span>
+}
+
 </section>
 <section onClick={()=>handleCreate()} className='bg-[#7F3DFF] text-[#ffffff] w-[343px] h-14 rounded-2xl flex justify-center items-center fixed bottom-28'>
 <span className='font-semibold'>Create Budget</span>
