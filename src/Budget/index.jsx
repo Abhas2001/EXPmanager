@@ -30,7 +30,7 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
         </section>
        <section className='h-[90%] w-full bg-[#ffffff] rounded-t-4xl'>
           {option&&bgtvalue &&
-          <section className='w-full flex flex-col py-4'>
+          <section className='w-full flex flex-col py-4 w-[80%] h-[230px] bg-[#FFFFFF] shadow-4xl'>
             <span>{option}</span>
             <span>{bgtvalue}</span>
           </section>
