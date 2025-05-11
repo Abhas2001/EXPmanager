@@ -116,7 +116,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
 }
 </section>
 }
-<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-8 ${showfilter?'hidden':""}`}>
+<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-7 ${showfilter?'hidden':""}`}>
     
     <Footer budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
     </section>
