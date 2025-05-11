@@ -10,6 +10,7 @@ import Financial from '../Financial/index';
 import arrow from '../images/Vector.svg'
 import Left from '../images/Back.svg';
 import Loader from '../Loader/index';
+import { useEffect } from 'react';
 
 const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storednegarr,totIncome,catarr,transaction,settransaction,negarr,setDetailed,Expenses,Incomes,setExpenses,setIncomes,setloader,loader, profilecolored,setprofilecolored }) => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
   const[option,setOption] = useState('')
   const[count,setcount]= useState(0);
   const[financialreport,setFinancialreport] = useState(false);
+  const[opacity,setOpacity] = useState(false);
   
   console.log(option);
   
@@ -43,6 +45,19 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
     setFinancialreport(true);
   }
 
+
+  useEffect(()=>{
+
+    if(transaction){
+      setOpacity(true);
+      setTimeout(() => {
+         setOpacity(false);
+      }, 200);
+    }
+
+  },[transaction])
+
+
   return (
     <section className={`w-full h-screen flex justify-center items-center bg-black `}>
      {loader?
@@ -51,7 +66,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
       <Loader/>
       </section>
       :
-      <section>
+      <section className={`${opacity?'opacity-25':'opacity-100 transition-all duration-[500ms] ease-in-out'}`}>
 { financialreport?
  
  <Financial totexpense={totexpense} storednegarr={storednegarr} totIncome={totIncome}/>
@@ -101,7 +116,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
 }
 </section>
 }
-<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-10 ${showfilter?'hidden':""}`}>
+<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-8 ${showfilter?'hidden':""}`}>
     
     <Footer budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
     </section>
