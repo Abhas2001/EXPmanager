@@ -59,7 +59,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
 
 
   return (
-    <section className={`w-full h-screen flex justify-center items-center bg-black `}>
+    <section className={`w-full h-screen overflow-hidden flex justify-center items-center bg-black `}>
      {loader?
          
          <section className='w-full h-screen flex justify-center items-center bg-white'>
@@ -102,7 +102,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
           </div>
         </section>
         </section>
-        <section className='w-full h-full overflow-y-auto'>
+        <section className='w-full h-full '>
           <Recent Expenses={Expenses} Incomes={Incomes} setDetailed={setDetailed} negarr={negarr} label={'detailed'} option={option} catarr={catarr} newest={newest}  highest={highest} lowest={lowest}  oldest={oldest}/>
         </section>
       </section>
@@ -116,7 +116,7 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
 }
 </section>
 }
-<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-7 ${showfilter?'hidden':""}`}>
+<section className={`bg-white shadow-md md:w-full md:static w-full fixed bottom-0 ${showfilter?'hidden':""}`}>
     
     <Footer budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>
     </section>
