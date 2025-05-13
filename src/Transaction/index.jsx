@@ -52,21 +52,21 @@ const Index = ({sethome,budgetcolored,setBudgetcolored,totexpense,home,storedneg
       setOpacity(true);
       setTimeout(() => {
          setOpacity(false);
-      }, 200);
+      }, 100);
     }
 
   },[transaction])
 
 
   return (
-    <section className={`w-full h-screen overflow-hidden flex justify-center items-center bg-black `}>
+    <section className={`w-full h-screen overflow-hidden flex justify-center items-center bg-black  `}>
      {loader?
          
          <section className='w-full h-screen flex justify-center items-center bg-white'>
       <Loader/>
       </section>
       :
-      <section className={`${opacity?'opacity-25':'opacity-100 transition-all duration-[500ms] ease-in-out'}`}>
+      <section className={`${opacity?'opacity-25':'opacity-100 transition-all duration-[500ms] ease-in-out'}`} >
 { financialreport?
  
  <Financial totexpense={totexpense} storednegarr={storednegarr} totIncome={totIncome}/>

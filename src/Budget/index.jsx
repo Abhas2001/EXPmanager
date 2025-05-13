@@ -1,10 +1,10 @@
 
-import React, { use, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import Footer from '../Footer/index'
 import prev from '../assets/prev.svg';
 import Create from '../CreateBudget/index'
 
-const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolored,profilecolored,loader, budgetcolored,setBudgetcolored}) => {
+const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprofilecolored,profilecolored,loader, budgetcolored,setBudgetcolored}) => {
       
 
     const[showCreate,setShowCreate] = useState(false);
@@ -14,6 +14,28 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
 
     const[option,setOption] = useState('');
     const[bgtvalue,setBgtvalue] = useState()
+    const[Fiver,setFiver] = useState()
+
+    useEffect(()=>{
+
+        if(option){
+              
+            negarr.map((x)=>{
+                if(
+                   x.label[0]=option
+                ){
+                    setFiver((prev)=>prev+x.input)
+                }
+            })
+
+        }
+
+    },[option])
+
+
+    console.log(Fiver);
+
+    
   return (
     <>
     { showCreate?
@@ -28,11 +50,15 @@ const index = ({setloader,sethome,transaction,home,settransaction,setprofilecolo
             <span className='rotate-180'><img src={prev} alt="" srcset="" /></span>
           </section>
         </section>
-       <section className='h-[90%] w-full bg-[#ffffff] rounded-t-4xl'>
+       <section className='h-[90%] w-full bg-[#FCFCFC] rounded-t-4xl p-3'>
           {option&&bgtvalue &&
-          <section className='w-full flex flex-col py-4 w-[80%] h-[230px] bg-[#FFFFFF] shadow-4xl'>
-            <span>{option}</span>
+          <section className='w-full flex flex-col py-4 w-[80%] h-[230px] bg-[#FFFFFF] shadow-xl rounded-xl px-3'>
+            <section className='flex flex-col'>
+            <span className='text-lg font-bold'>{option}</span>
+            <span>Remaining Amount</span>
+            <progress value={40}/>
             <span>{bgtvalue}</span>
+            </section>
           </section>
 }
 

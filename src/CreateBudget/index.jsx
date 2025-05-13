@@ -76,8 +76,8 @@ const index = ({setShowCreate,setBgtvalue,setOption}) => {
     </section>
    <section className='h-[40%] w-full bg-[#ffffff] rounded-t-4xl flex justify-center items-center'>
     <section className='w-full h-full flex flex-col '>
-        <section className='text-[#91919F] h-full flex flex-col gap-4 px-4 py-4 '>
-            <select onChange={(e)=>handleChange(e.target.value)}  className='border-2 border-[#F1F1FA] w-[394px]  p-2 rounded-3xl' id="hdfbjhdbhf">
+        <section className='text-[#91919F] h-full flex flex-col gap-4 px-4 py-6 '>
+            <select onChange={(e)=>handleChange(e.target.value)}  className='border-2 border-[#F1F1FA] w-[384px] py-3 p-2 rounded-3xl' id="hdfbjhdbhf">
             
          <option value="" disabled selected hidden>Category</option>
         

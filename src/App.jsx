@@ -21,7 +21,6 @@ function App() {
 
   let sum=0;
   let negatives=0;
- localStorage.clear()
   
   const[name,setName] = useState('');
   const[email,setEmail] = useState('');
@@ -123,6 +122,7 @@ useEffect(()=>{
   localStorage.setItem("finalval",JSON.stringify(storedarr))
   localStorage.setItem("negval",JSON.stringify(storednegarr))
 
+
    
   return (
          <Routes>
@@ -137,7 +137,7 @@ useEffect(()=>{
       <Route path="/recenttransaction" element={<Transaction budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} home={home}  profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} loader={loader} totexpense={totexpense} totIncome={totIncome} storednegarr={storednegarr} Expenses={Expenses} Incomes={Incomes} setExpenses={setExpenses} setIncomes={setIncomes} setDetailed={setDetailed} sethome={sethome} settransaction={settransaction} transaction={transaction} catarr={catarr} negarr={negarr}/>}/>
       <Route path="/detailed" element={<Detailed setedit={setedit} setnegarr={setnegarr} storednegarr={storednegarr} setStorednegArr={setStorednegArr} negarr={negarr}  catarr={catarr} setcatarr={setcatarr} detailed={detailed} imgLinks={imgLinks} storedarr={storedarr} setStoredArr={setStoredArr}/>} />
       <Route path="/report" element={<Report totexpense={totexpense} totIncome={totIncome} negarr={negarr} catarr={catarr} storedarr={storedarr} storednegarr={storednegarr}/>}/>
-      <Route path="/budget" element={<Budget  budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>}/>
+      <Route path="/budget" element={<Budget negarr={negarr}  budgetcolored={budgetcolored} setBudgetcolored={setBudgetcolored} loader={loader} profilecolored={profilecolored} setprofilecolored={setprofilecolored} setloader={setloader} sethome={sethome} home={home} transaction={transaction} settransaction={settransaction}/>}/>
        </Routes>
      
   );
