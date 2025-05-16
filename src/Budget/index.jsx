@@ -38,7 +38,10 @@ const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprof
 
     },[option])
 
-const progress =  (Math.abs(Fiver)/bgtvalue ) * 100;
+let progress =  (Math.abs(Fiver)/bgtvalue ) * 100;
+if(bgtvalue-Math.abs(Fiver)<0){
+    progress=100;
+}
 
     
   return (
@@ -63,7 +66,7 @@ const progress =  (Math.abs(Fiver)/bgtvalue ) * 100;
                     <div className='w-4 h-4 rounded-full bg-[#0077FF]'></div>
                 <span className='text-[14px] text-[#212325] font-bold '>{ option}</span>
                 </div>
-            <span className='text-[#212325] font-bold text-[24px]'>Remaining Amount {bgtvalue-Math.abs(Fiver)}</span>
+            <span className='text-[#212325] font-bold text-[24px]'>Remaining Amount ${(bgtvalue-Math.abs(Fiver)<0)?0: bgtvalue-Math.abs(Fiver)}</span>
             <div className='bg-[#F1F1FA] rounded-lg h-6' >
                 <div className={`bg-[#0077FF] h-6 rounded-r-lg`}   style={{ width: `${progress}%` }}></div>
             </div>
