@@ -14,17 +14,23 @@ const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprof
 
     const[option,setOption] = useState('');
     const[bgtvalue,setBgtvalue] = useState()
-    const[Fiver,setFiver] = useState()
+    const[Fiver,setFiver] = useState(0)
+    const[total,setTotal] = useState(0)
 
     useEffect(()=>{
 
         if(option){
               
             negarr.map((x)=>{
+                console.log("dayna", String(x.label[0]) === String(option));
+                
+            
                 if(
-                   x.label[0]=option
+                    String(x.label[0]) === String(option)
                 ){
-                    setFiver((prev)=>prev+x.input)
+                    console.log("day", x.input);
+                    setFiver((prev)=>prev + x.input)
+                  
                 }
             })
 
@@ -33,7 +39,7 @@ const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprof
     },[option])
 
 
-    console.log(Fiver);
+    console.log(Math.abs(Fiver),"dhaga");
 
     
   return (
@@ -54,10 +60,10 @@ const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprof
           {option&&bgtvalue &&
           <section className='w-full flex flex-col py-4 w-[80%] h-[230px] bg-[#FFFFFF] shadow-xl rounded-xl px-3'>
             <section className='flex flex-col'>
-            <span className='text-lg font-bold'>{option}</span>
+            <span className='text-lg font-bold'>{ option}</span>
             <span>Remaining Amount</span>
             <progress value={40}/>
-            <span>{bgtvalue}</span>
+            <span>{bgtvalue-Math.abs(Fiver)}</span>
             </section>
           </section>
 }
