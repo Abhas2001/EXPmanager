@@ -123,7 +123,7 @@ const Dropdown = ({edit,detailed,showincomepage,showoverlay,walletdropdownarr, s
                 </button>
               </section>
               {showdropdown&&label==='Category'&& (
-                <section className={` border-[1px] border-[#F1F1FA]  ${!showincomepage?'h-[15vh]':'h-[6vh]'} w-[340px] ml-4 rounded-2xl overflow-y-scroll`}>
+                <section className={` border-[1px] border-[#F1F1FA]  ${!showincomepage?'h-[15vh]':'h-[6vh]'} w-[90%] ml-4 rounded-2xl overflow-y-scroll`}>
                   <section className="w-full text-[#212325]">
                   { !showincomepage?
                     <ul className="w-full flex flex-col  ">
@@ -185,7 +185,7 @@ const Dropdown = ({edit,detailed,showincomepage,showoverlay,walletdropdownarr, s
             { showdropdown&&label==='Wallet'&&
                 (
                                   
-                <section className=" border-[1px] border-[#F1F1FA]  h-[15vh] w-[340px] ml-4 rounded-2xl overflow-y-scroll">
+                <section className=" border-[1px] border-[#F1F1FA]  h-[15vh] w-[90%] ml-4 rounded-2xl overflow-y-scroll">
                 <section className="w-full text-[#212325]">
                   <ul className="w-full flex flex-col  ">
                     <li className="bg-gray-50 font-medium px-3 p-1 w-full flex gap-2 border-b-[1px] border-gray-100" 
