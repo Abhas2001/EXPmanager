@@ -110,8 +110,10 @@ const index = ({setShowCreate,setBgtvalue,setOption}) => {
 </section>
 
 
-<section className=' bg-[#7F3DFF] text-[#ffffff] w-[393px] h-14 rounded-2xl flex justify-center items-center fixed bottom-4 left-4'>
+<section className='w-full flex justify-center items-center fixed bottom-4 '>
+<section className=' bg-[#7F3DFF] text-[#ffffff] w-[375px] h-14 rounded-2xl flex justify-center items-center '>
 <span className='font-semibold' onClick={()=>handleComplete()}>Continue</span>
+</section>
 </section>
     </section>
 

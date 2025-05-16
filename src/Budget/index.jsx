@@ -38,8 +38,7 @@ const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprof
 
     },[option])
 
-
-    console.log(Math.abs(Fiver),"dhaga");
+const progress =  (Math.abs(Fiver)/bgtvalue ) * 100;
 
     
   return (
@@ -60,10 +59,15 @@ const index = ({setloader,sethome,negarr,transaction,home,settransaction,setprof
           {option&&bgtvalue &&
           <section className='w-full flex flex-col py-4 w-[80%] h-[230px] bg-[#FFFFFF] shadow-xl rounded-xl px-3'>
             <section className='flex flex-col'>
-            <span className='text-lg font-bold'>{ option}</span>
-            <span>Remaining Amount</span>
-            <progress value={40}/>
-            <span>{bgtvalue-Math.abs(Fiver)}</span>
+                <div className='flex items-center gap-2 border-2 border-[#F1F1FA] rounded-2xl p-2'>
+                    <div className='w-4 h-4 rounded-full bg-[#0077FF]'></div>
+                <span className='text-[14px] text-[#212325] font-bold '>{ option}</span>
+                </div>
+            <span className='text-[#212325] font-bold text-[24px]'>Remaining Amount {bgtvalue-Math.abs(Fiver)}</span>
+            <div className='bg-[#F1F1FA] rounded-lg h-6' >
+                <div className={`bg-[#0077FF] h-6 rounded-r-lg`}   style={{ width: `${progress}%` }}></div>
+            </div>
+            <span>{'$500 of $700'}</span>
             </section>
           </section>
 }
